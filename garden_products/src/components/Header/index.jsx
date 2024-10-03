@@ -9,21 +9,41 @@ import s from "./index.module.css";
 export default function Header() {
   return (
     <header className={s.nav_container}>
-      <div className={s.nav_icons_left}>
-        <img src={treeIcon} alt="" />
-        <img src={switchIcon} alt="" />
+      <div className={s.header_container_top}>
+
+        <div className={s.nav_icons_left}>
+          <img className={s.tree_icon} src={treeIcon} alt="" />
+          <img className={s.switch_icon} src={switchIcon} alt="" />
+        </div>
+
+        <nav className={s.nav_menu_container}>
+          <div className={s.discount_container}>
+            <p className={s.discount_text}>1 day discount!</p>
+          </div>
+
+          <div className={s.nav_menu}>       
+            <Link to="/">Main page</Link>
+            <Link to="/categories">Categories</Link>
+            <Link to="/products">All Products</Link>
+            <Link to="/sales">All Sales</Link>
+          </div>
+
+        </nav>
+
+        <div className={s.nav_icons_right}>
+          <img className={s.heart_icon} src={heartIcon} alt="" />
+          <img className={s.bag_icon} src={bagIcon} alt="" />
+        </div>
+
       </div>
 
-      <nav className="nav_menu">
-        <Link to="/">Main page</Link>
-        <Link to="/categories">Categories</Link>
-        <Link to="/products">All Products</Link>
-        <Link to="/sales">All Sales</Link>
-      </nav>
+      {/* Контейнер с фоновым изображением, текстом и кнопкой */}
+      <div className={s.header_image_container}>
+        <p className={s.header_image_text}>
+          Amazing Discounts on Garden Products!
+        </p>
 
-      <div className="nav_icons_right">
-        <img src={heartIcon} alt="" />
-        <img src={bagIcon} alt="" />
+        <button className={s.header_image_button}>Check out</button>
       </div>
     </header>
   );
