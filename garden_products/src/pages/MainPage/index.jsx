@@ -3,12 +3,18 @@ import CategoriesContainer from "../../components/CategoriesContainer";
 import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../requests/categories";
+import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 
 function MainPage() {
-  const categorieState = useSelector((store) => store.categories);
-  const dispatch = useDispatch();
-  useEffect(() => dispatch(getAllCategories), []);
+ 
+  const categorieState = useSelector(store => store.categories)
+  const dispatch = useDispatch()
 
+  useEffect(()=>{
+    dispatch(changeStatusAction());
+    dispatch(getAllCategories)},[])
+
+  const {data, status} = categorieState
   return (
     <div className={s.main_page}>
       <section className={s.container}>
@@ -21,8 +27,11 @@ function MainPage() {
             </a>
           </div>
         </div>
-        <CategoriesContainer categories={categorieState} />
-        <p></p>
+        {status === 'loading' ? (
+        'Categories are loading...'
+      ) : (
+        <CategoriesContainer categories={data} />
+      )}
       </section>
     </div>
   );
