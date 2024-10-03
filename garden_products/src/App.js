@@ -17,7 +17,6 @@ function App() {
     
     <div className="App">
       <Header />
-      123
      <Routes>
      <Route path='/' element={<MainPage/>} />
         <Route path='/products' element={<ProductsPage/>} />
