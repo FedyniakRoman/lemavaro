@@ -40,6 +40,9 @@
     text-decoration: none;
     white-space: nowrap;
 }
+.btn_div:hover{
+    background-color: #F2F6D3;
+}
 .btn_link{
     color: #8B8B8B;
     cursor: pointer;
