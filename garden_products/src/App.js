@@ -24,7 +24,7 @@ function App() {
         <Route path='/cart' element={<CartPage />} />
         <Route path='/categories' element={<CategoriesPage/>} />
         <Route path='/categories/:category_name' element={<ProductsByCategoryPage/>} />
-        <Route path='/sales' element=<SalesPage/> />
+        <Route path='/sales' element={<SalesPage/>} />                                      {/*ПРОВЕРКА*/}
         <Route path='/favorites' element={<FavoritesPage/>} />
         <Route path='*' element={<NotFoundPage/>} />
      </Routes>
