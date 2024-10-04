@@ -13,11 +13,8 @@
     max-width: 518px;
     width: 100%;
     gap: 32px;
-    font-family: "Monserrat", sans-serif;
     font-weight: 20px;
     line-height: 130%;
-    
-   
     flex-direction: row;
 }
 
@@ -32,32 +29,28 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
-
 }
 
 .discount_container {
- display: flex;
-background-color: #92A134;
-border-radius: 6px;
-max-width: 150px;
-width: 100%;
-justify-content: center;
-padding: 6px;
-font-weight: 16px;
-line-height: 126%;
-font-family: "Monserrat", sans-serif;
-color: white;
-/* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
-/* -webkit-text-stroke: 0.5px black; */
-margin-top: 30px;
-margin-bottom: 12px;
-    
+    display: flex;
+    background-color: #92A134;
+    border-radius: 6px;
+    max-width: 150px;
+    width: 100%;
+    justify-content: center;
+    padding: 6px;
+    font-weight: 16px;
+    line-height: 126%;
+    color: white;
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    /* -webkit-text-stroke: 0.5px black; */
+    margin-top: 30px;
+    margin-bottom: 12px;
 }
 
 .discount_text{
     display: flex;
     text-align: center;
-    
 }
 
 .nav_icons_left {
@@ -80,6 +73,7 @@ margin-bottom: 12px;
     max-height: 70px;
     height: 100%;
 }
+
 .switch_icon {
     max-width: 60px;
     width: 100%;
@@ -101,7 +95,6 @@ margin-bottom: 12px;
     height: 100%;
     margin-right: 40px;
 }
-
 
 .header_container_top {
     display: flex;
@@ -139,7 +132,9 @@ margin-bottom: 12px;
 .header_image_button {
     background-color: #92A134;
     color: white;
-    padding: 56px 16px;
+    font-family: Montserrat, regular;
+    font-weight: 600;
+    padding: 16px 56px;
     font-size: 20px;
     border: none;
     border-radius: 5px;
