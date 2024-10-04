@@ -26,13 +26,9 @@
 .btn_div{
     align-items: center;
     display: flex;
-    
     border: 1px solid #ddd;
-    border: 1px solid var(--grey-divider, #ddd);
     border-radius: 6px;
-    border-radius: var(--radius-small, 6px);
     color: #8b8b8b;
-    color: var(--txt-grey, #8b8b8b);
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
@@ -40,9 +36,11 @@
     text-decoration: none;
     white-space: nowrap;
 }
+.btn_div:hover{
+    background-color: #F2F6D3;
+}
 .btn_link{
     color: #8B8B8B;
     cursor: pointer;
     text-decoration: none;
-    transition: all .3s ease-in-out;
 }
