@@ -4,6 +4,7 @@ import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../requests/categories";
 import { changeStatusAction } from "../../store/reducers/categoriesReducer";
+import DiscountForm from "../../components/FormContainer";
 
 function MainPage() {
  
@@ -32,6 +33,7 @@ function MainPage() {
       ) : (
         <CategoriesContainer categories={data} />
       )}
+      <DiscountForm />
       </section>
     </div>
   );

@@ -21,7 +21,10 @@
 .nav_menu a{
     color: #424436;
     text-decoration: none;
+    
 }
+
+
 
 
 .nav_menu_container {
@@ -46,12 +49,19 @@
     /* -webkit-text-stroke: 0.5px black; */
     margin-top: 30px;
     margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.discount_container:hover {
+    opacity: 0.5;
 }
 
 .discount_text{
     display: flex;
     text-align: center;
 }
+
+
 
 .nav_icons_left {
     display: flex;
@@ -140,7 +150,10 @@
     border-radius: 5px;
     cursor: pointer;
     max-width: 220px;
-    width: 100%;
+    width: 100%; 
     margin: 0px 40px 210px 40px;
     text-align: center;
+}
+.header_image_button:hover {
+    opacity: 0.8;
 }
