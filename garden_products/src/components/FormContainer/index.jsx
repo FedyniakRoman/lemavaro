@@ -17,11 +17,11 @@ function DiscountForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    e.preventDefault();
   
     // Отправка данных на сервер с помощью fetch
-    fetch('https://example.com/api/submit-form', { 
-      method: 'POST', // Метод запроса
+    fetch('http://localhost:3000/form', { 
+      method: 'POST', // тут нам нужно еще над ссылкой прорабоать и разобраться
       headers: {
         'Content-Type': 'application/json', // Указываем, что данные в формате JSON
       },
@@ -35,7 +35,7 @@ function DiscountForm() {
       })
       .then((data) => {
         console.log('Ответ сервера:', data); // Обрабатываем данные, полученные от сервера
-        // Здесь можно показать уведомление пользователю о том, что данные успешно отправлены
+
       })
       .catch((error) => {
         console.error('Ошибка:', error); // Обрабатываем ошибки
