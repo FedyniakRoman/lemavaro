@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CategoriesContainer from '../../components/CategoriesContainer'
 import { changeStatusAction } from '../../store/reducers/categoriesReducer'
 
+
 function CategoriesPage() {
 
   const categorieState = useSelector(store => store.categories)

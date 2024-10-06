@@ -15,7 +15,8 @@ function ProductsPage() {
   }, []);
 
   const { products, status } = productsState;
- 
+
+  
   return (
     <div>
         <ProductsContainer products={products} />

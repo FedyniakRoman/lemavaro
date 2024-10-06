@@ -3,8 +3,7 @@ import s from './index.module.css'
 import ProductCard from '../ProductCard';
 
 function ProductsContainer({products}) {
-   
-    console.log(products);
+  
     
   return (
     <div className={s.container}>
