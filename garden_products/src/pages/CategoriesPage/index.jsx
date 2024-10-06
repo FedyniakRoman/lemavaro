@@ -14,7 +14,7 @@ function CategoriesPage() {
     dispatch(getAllCategories)},[])
 
   const {data, status} = categorieState
-  console.log(data);
+
   
   return (
     <div>

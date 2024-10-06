@@ -7,15 +7,17 @@ import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import DiscountForm from "../../components/FormContainer";
 
 function MainPage() {
- 
-  const categorieState = useSelector(store => store.categories)
-  const dispatch = useDispatch()
+  const categorieState = useSelector((store) => store.categories);
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(changeStatusAction());
-    dispatch(getAllCategories)},[])
+    dispatch(getAllCategories);
+  }, []);
 
-  const {data, status} = categorieState
+  const { data, status } = categorieState;
+  const limitedData = Array.isArray(data) ? data.slice(0, 4) : [];
+
   return (
     <div className={s.main_page}>
       <section className={s.container}>
@@ -28,12 +30,11 @@ function MainPage() {
             </a>
           </div>
         </div>
-        {status === 'loading' ? (
-        'Categories are loading...'
-      ) : (
-        <CategoriesContainer categories={data} />
-      )}
-      <DiscountForm />
+        {status === "loading" ? (
+          "Categories are loading..."
+        ) : (
+          <CategoriesContainer categories={limitedData} />
+        )}
       </section>
     </div>
   );

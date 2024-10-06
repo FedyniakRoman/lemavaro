@@ -22,7 +22,6 @@ function App() {
         <Route path='/products/:id' element={<SingleProductPage />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/categories' element={<CategoriesPage />} />
-        {/* Решение конфликта. Выбери, что тебе нужно: */}
         <Route path='/categories/:category_id' element={<ProductsByCategoryPage />} />  {/* Я выбрал вариант с id */}
         <Route path='/sales' element={<SalesPage />} />  {/* Исправлена синтаксическая ошибка */}
         <Route path='/favorites' element={<FavoritesPage />} />
