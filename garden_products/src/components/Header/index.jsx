@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import treeIcon from "../../assets/images/tree.svg";
 import switchIcon from "../../assets/images/switch.svg";
 import heartIcon from "../../assets/images/heart.svg";
@@ -8,13 +8,30 @@ import s from "./index.module.css";
 
 export default function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleTreeIconClick = () => {
+    navigate('/'); 
+  };
 
   return (
     <header className={s.nav_container}>
       <div className={s.header_container_top}>
         <div className={s.nav_icons_left}>
-          <img className={s.tree_icon} src={treeIcon} alt="" />
-          <img className={s.switch_icon} src={switchIcon} alt="" />
+          <img
+            className={s.tree_icon}
+            src={treeIcon}
+            alt="Tree Icon"
+            onClick={handleTreeIconClick}
+            style={{ cursor: "pointer" }}
+          />
+          
+          <img
+            className={s.switch_icon}
+            src={switchIcon}
+            alt="Switch Icon"
+            style={{ cursor: "pointer" }} 
+          />
         </div>
 
         <nav className={s.nav_menu_container}>
@@ -31,16 +48,15 @@ export default function Header() {
         </nav>
 
         <div className={s.nav_icons_right}>
-          <img className={s.heart_icon} src={heartIcon} alt="" />
-          <img className={s.bag_icon} src={bagIcon} alt="" />
+          <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+          <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
         </div>
       </div>
 
-      {/* Отображаем контейнер с фоновым изображением только на главной странице */}
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
           <p className={s.header_image_text}>
-            Amazing Discounts on Garden Products!
+            Amazing Discounts on Garden Products!
           </p>
           <button className={s.header_image_button}>Check out</button>
         </div>
