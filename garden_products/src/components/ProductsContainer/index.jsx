@@ -3,17 +3,20 @@ import s from './index.module.css'
 import ProductCard from '../ProductCard';
 
 function ProductsContainer({products}) {
-  
-    
   return (
     <div className={s.container}>
-    {products.map(product => <ProductCard
-      key={product.id}
-      {...product}
-    />)
-    }
-  </div>
-  )
+      {Array.isArray(products) ? (
+        products.map(product => (
+          <ProductCard
+            key={product.id}
+            {...product}
+          />
+        ))
+      ) : (
+        <p>Loading products...</p>
+      )}
+    </div>
+  );
 }
 
-export default ProductsContainer
+export default ProductsContainer;

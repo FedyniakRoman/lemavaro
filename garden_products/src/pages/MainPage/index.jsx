@@ -22,7 +22,19 @@ function MainPage() {
   const { data, statusCategorie } = categorieState;
   const limitedData = Array.isArray(data) ? data.slice(0, 4) : [];
   const { products, statusProduct } = productsState;
-  console.log('State Products',products);
+  
+   // Filtere Produkte mit Rabatt (discont_price nicht null)
+  //  const discountedProducts = products.filter(product => product.discont_price !== null);
+  //   console.log(discountedProducts);
+    
+   // Funktion, um Produkte zufällig zu mischen
+  //  const getRandomProducts = (arr, num) => {
+  //    const shuffled = arr.sort(() => 0.5 - Math.random()); // Mische die Produkte
+  //    return shuffled.slice(0, num); // Wähle die ersten 'num' Produkte
+  //  };
+ 
+  //  // Wähle zufällig 4 Produkte aus
+  //  const randomDiscountedProducts = getRandomProducts(discountedProducts, 4);
 
   return (
     <div className={s.main_page}>
