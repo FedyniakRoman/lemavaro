@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
-import heartIcon from "../../assets/images/heart.svg";
-import bagIcon from "../../assets/images/bag.svg";
+import heartIcon from "../../assets/images/heartWhite.svg";
+import bagIcon from "../../assets/images/bagWhite_new.svg";
 
 function ProductCard({ id, title, image, price, discont_price }) {
 
@@ -41,10 +41,10 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <Link to={`/products/${id}`} className={s.img_link}>
           <h3 className={s.title}>{title}</h3>
         </Link>
-      </div>
       <div className={s.price_container}>
         <p className={s.price_original}>{`$${price}`}</p>
         <p className={s.price_discounted}>{`$${discont_price}`}</p>
+      </div>
       </div>
  <div className={s.sale_value_container}>
         {saleValue !== null && (
