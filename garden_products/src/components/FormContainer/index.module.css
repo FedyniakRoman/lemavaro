@@ -1,8 +1,9 @@
 .form_container {
     display: flex;
     flex-direction: column;
-    background-color: #0B710B;
-    margin-top: 74px;
+    background: linear-gradient(to right, #87933D, #55610B);
+    max-width: 1400px;
+    margin: 74px auto 0 auto ;
 }
 
 .form_and_image_container {
@@ -37,7 +38,7 @@
     height: 58px; 
     margin-bottom: 16px;
     border-radius: 6px;
-    background-color: #0B710B;
+    background-color: #55610B;
     border: 0.5px solid rgba(255, 252, 252, 0.5);
     color: white;
     padding-left: 32px;

@@ -58,9 +58,9 @@ function MainPage() {
           <CategoriesContainer categories={limitedData} />
         )}
       </section>
-      <div className={s.container}>
+      {/* <div className={s.container}> */}
         <DiscountForm />
-      </div>
+      {/* </div> */}
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Sale</h1>
