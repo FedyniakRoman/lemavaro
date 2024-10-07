@@ -4,7 +4,7 @@
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    height: 458px;
+    height: 422px;
     overflow: hidden;
     position: relative;
     row-gap: 20px;
@@ -13,6 +13,8 @@
 
 .img_container {
     position: relative;
+    height: 284px;
+    width: 316px;
 }
 .img_container:hover{
     opacity: 0.5;
@@ -89,8 +91,9 @@
     flex: 1 0;
     flex-direction: column;
     gap: 16px;
-    padding: 0 32px 32px;
+    /* padding: 0 32px 32px; */
     width: 316px;
+    /* height: 118px; */
 }
 .img_link{
     text-decoration: none;
