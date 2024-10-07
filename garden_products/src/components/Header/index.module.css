@@ -6,6 +6,7 @@
     max-width: 1400px;
     /* width: 100%; */
     margin: 0 auto;
+    border-bottom: 1px solid grey;
     
 }
 .nav_menu {
@@ -142,7 +143,7 @@
 .header_image_button {
     background-color: #92A134;
     color: white;
-    font-family: Montserrat, regular;
+    font-family: 'Montserrat', regular;
     font-weight: 600;
     padding: 16px 56px;
     font-size: 20px;
