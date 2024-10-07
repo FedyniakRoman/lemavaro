@@ -38,7 +38,7 @@ function MainPage() {
   let randomDiscountedProducts = Array.isArray(products)
     ? getRandomProducts(discountedProducts, 4)
     : [];
-  console.log(randomDiscountedProducts);
+ 
 
   return (
     <div className={s.main_page}>
