@@ -34,9 +34,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
           </button>
         </div>
         <div className={s.add_btn_container}>
-          <div className={s.add_btn_card}>
             <button className={s.add_btn}>Add to cart</button>
-          </div>
         </div>
       </div>
       <div className={s.products_information}>

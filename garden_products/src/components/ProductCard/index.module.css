@@ -64,17 +64,24 @@
     right: 10px;
     transition: .3s;
     width: calc(100% - 20px); 
+ 
 }
 .card:hover .add_btn_container {
     visibility: visible;
     opacity: 1;
   }
-.add_btn_card{
 
-}
 .add_btn{
     padding: 16px 32px;
     width: 100%;
+    background: #92A134;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 130%;
 }
 .products_information{
     align-items: flex-start;
@@ -97,7 +104,6 @@
     -webkit-line-clamp: 1;
     align-self: stretch;
     color: #282828;
-    color: var(--txt-black, #282828);
     display: -webkit-box;
     font-size: 20px;
     font-weight: 500;
@@ -118,7 +124,6 @@
     font-size: 20px;
     align-self: flex-end;
     color: #8b8b8b;
-    color: var(--txt-grey, #8b8b8b);
     display: flex;
     font-weight: 500;
     text-decoration: line-through;
@@ -132,7 +137,7 @@
     top: 16px;
 }
 .sale_value{
-    background: #393;
+    background:#F26D22;
     border-radius: 6px;
     color: #fff;
     font-size: 20px;

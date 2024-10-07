@@ -8,7 +8,6 @@ import { getAllProducts } from "../../requests/products";
 import ProductsContainer from "../../components/ProductsContainer";
 import DiscountForm from "../../components/FormContainer";
 
-
 function MainPage() {
   const categorieState = useSelector((store) => store.categories);
   const productsState = useSelector((store) => store.products);
@@ -23,20 +22,24 @@ function MainPage() {
   const { data, statusCategorie } = categorieState;
   const limitedData = Array.isArray(data) ? data.slice(0, 4) : [];
   const { products, statusProduct } = productsState;
-  
+
   // //  Filtere Produkte mit Rabatt (discont_price nicht null)
-  let discountedProducts = Array.isArray(products) ? products.filter(product => product.discont_price !== null) : [];
+  let discountedProducts = Array.isArray(products)
+    ? products.filter((product) => product.discont_price !== null)
+    : [];
 
   //  // Funktion, um Produkte zufällig zu mischen
-   let getRandomProducts = (arr, num) => {
-     const shuffled = arr.sort(() => 0.5 - Math.random()); // Mische die Produkte
-     return shuffled.slice(0, num); // Wähle die ersten 'num' Produkte
-   };
-   
+  let getRandomProducts = (arr, num) => {
+    const shuffled = arr.sort(() => 0.5 - Math.random()); // Mische die Produkte
+    return shuffled.slice(0, num); // Wähle die ersten 'num' Produkte
+  };
+
   //   // Wähle zufällig 4 Produkte aus
-   let randomDiscountedProducts = Array.isArray(products) ? getRandomProducts(discountedProducts, 4) : [];
-   console.log(randomDiscountedProducts);
-   
+  let randomDiscountedProducts = Array.isArray(products)
+    ? getRandomProducts(discountedProducts, 4)
+    : [];
+  console.log(randomDiscountedProducts);
+
   return (
     <div className={s.main_page}>
       <section className={s.container}>
@@ -55,7 +58,9 @@ function MainPage() {
           <CategoriesContainer categories={limitedData} />
         )}
       </section>
-      <DiscountForm />
+      <div className={s.container}>
+        <DiscountForm />
+      </div>
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Sale</h1>
@@ -69,7 +74,7 @@ function MainPage() {
         {statusProduct === "loading" ? (
           "Sale products are loading..."
         ) : (
-          <ProductsContainer products={randomDiscountedProducts} /> 
+          <ProductsContainer products={randomDiscountedProducts} />
         )}
       </section>
     </div>
