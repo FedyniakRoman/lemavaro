@@ -51,7 +51,6 @@ function ProductsPage() {
           />
           <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
           <input type="checkbox" name="discount" className={s.input_discount}/>
-          <span class="checkmark"></span>
           <label htmlFor="sort" className={s.label_sort}>
             Sorted
             <select name="sort" className={s.select_sort}>
