@@ -42,8 +42,10 @@ function ProductCard({ id, title, image, price, discont_price }) {
           <h3 className={s.title}>{title}</h3>
         </Link>
       <div className={s.price_container}>
-        <p className={s.price_original}>{`$${price}`}</p>
-        <p className={s.price_discounted}>{`$${discont_price}`}</p>
+      <p className={s.price_original}>{`$${price}`}</p>
+          {discont_price !== null && ( 
+            <p className={s.price_discounted}>{`$${discont_price}`}</p>
+          )}
       </div>
       </div>
  <div className={s.sale_value_container}>
