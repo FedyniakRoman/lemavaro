@@ -106,6 +106,7 @@
     border: .0625rem solid #ddd;
     border-radius: .375rem;
     transition: all .3s ease-in-out;
+    background-color: white;
 }
 
 .input_discount:checked {

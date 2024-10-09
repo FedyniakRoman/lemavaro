@@ -35,35 +35,28 @@
 .icons_container{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     position: absolute;
-    right: 5px;
+    right: 16px;
     top: 16px;
 }
 .btn_icon_heart {
-    background-color: initial;
-    border: none;
     cursor: pointer;
-    width: 5vw;
-}
-.img_icon_heart, .img_icon_bag{
+    width: 48px;
     height: auto;
-    max-width: 100%;
     vertical-align: middle;
+    color: white;
 }
-
-/* a:hover {
-    background-color: #fa0606;
-    cursor: pointer;
-} */
-
-
 
 .btn_icon_bag{
     background-color: initial;
     border: none;
     cursor: pointer;
-    width: 5vw;
+    width: 48px;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    color: white;
 }
 .add_btn_container{
     bottom: 30px;
