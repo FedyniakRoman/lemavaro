@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(246, 246, 237);
+    padding: 40px;
+}
+
+h1 {
+    font-family: Montserrat;
+
+    line-height: 70.4px;
+    text-align: left;
+    font-size: 64px;
+    color: #424436;
+    margin-bottom: 20px;
+}
+
+.info_footer {
+     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    gap: 40px; 
+   
+
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 12px;
+    padding: 16px;
+    background-color: #F2F6D3;
+    gap: 16px;
+}
+
+.label,
+.socials,
+.address,
+.working {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: left;
+    color: #8B8B8B;
+}
+
+.number,
+.address_detail,
+.working_hours,
+.icon {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    text-align: left;
+}
+
+.img {
+    width: 100%;
+    max-width: 1360px;
+    /* Максимальная ширина изображения */
+    height: 350px;
+    /* Фиксированная высота */
+    border-radius: var(--radiusbig);
+    margin-top: 20px;
+}
