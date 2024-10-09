@@ -51,6 +51,14 @@
     max-width: 100%;
     vertical-align: middle;
 }
+
+/* a:hover {
+    background-color: #fa0606;
+    cursor: pointer;
+} */
+
+
+
 .btn_icon_bag{
     background-color: initial;
     border: none;
