@@ -56,9 +56,10 @@ export default function Header() {
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
           <p className={s.header_image_text}>
-            Amazing Discounts on Garden Products!
+            Amazing Discounts <br/> on Garden Products!
           </p>
           <button className={s.header_image_button}>Check out</button>
+         
         </div>
       )}
     </header>

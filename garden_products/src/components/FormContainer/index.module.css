@@ -4,6 +4,7 @@
     background: linear-gradient(to right, #87933D, #55610B);
     max-width: 1400px;
     margin: 74px auto 0 auto ;
+    border-radius: 12px;
 }
 
 .form_and_image_container {
