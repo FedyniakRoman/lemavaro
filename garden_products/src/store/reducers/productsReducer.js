@@ -1,21 +1,23 @@
-const defaultCategoriesState  = {
-    data: {},
+const defaultProductsState  = {
+    products: {},
     status: 'loading'
 }
 
-const LOAD_CATEGORIES = 'LOAD_CATEGORIES'
+const LOAD_PRODUCTS = 'LOAD_PRODUCTS'
 const CHANGE_STATUS_TO_LOADING = 'CHANGE_STATUS_TO_LOADING';
 
-export const loadCategoriesAction = categories => ({
-    type: LOAD_CATEGORIES,
-    payload: categories
+export const loadProductsAction = products => ({
+    type: LOAD_PRODUCTS,
+    payload: products
 })
+
 export const changeStatusAction = () => ({ type: CHANGE_STATUS_TO_LOADING });
 
-export const categoriesReducer = (state = defaultCategoriesState , action) => {
-    if(action.type === LOAD_CATEGORIES){
+export const productsReducer = (state = defaultProductsState , action) => {
+    console.log('Reducer state:', state); 
+    if(action.type === LOAD_PRODUCTS){
         return {
-            data: action.payload,
+            products: action.payload,
             status: 'ready'
         }
     } else if (action.type === CHANGE_STATUS_TO_LOADING) {
@@ -25,4 +27,4 @@ export const categoriesReducer = (state = defaultCategoriesState , action) => {
         }
     }
     return state
-}
+} 
