@@ -1,17 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: rgb(246, 246, 237);
-    padding: 40px;
-}
 
 h1 {
     font-family: Montserrat;
-
     line-height: 70.4px;
     text-align: left;
     font-size: 64px;
@@ -19,7 +8,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-.info_footer {
+
+
+.info_footer{
      display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
@@ -63,14 +54,12 @@ h1 {
     font-weight: 600;
     line-height: 44px;
     text-align: left;
+    gap: 10px;
 }
 
-.img {
-    width: 100%;
-    max-width: 1360px;
-    /* Максимальная ширина изображения */
-    height: 350px;
-    /* Фиксированная высота */
-    border-radius: var(--radiusbig);
-    margin-top: 20px;
-}
+.mapComponent{
+width: 1360px;
+height: 350px;
+gap: 0px;
+border-radius: var(--radiusbig);
+opacity: 0px;}

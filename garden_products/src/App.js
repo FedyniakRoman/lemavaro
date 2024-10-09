@@ -13,6 +13,7 @@ import SalesPage from './pages/SalesPage';
 import FavoritesPage from './pages/FavoritesPage';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -28,7 +29,7 @@ function App() {
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
+<Footer/>
 
     </div>
   );
