@@ -11,8 +11,11 @@ body{
   font-weight: 500;
   min-height: 100vh;
   width: 100%;
+  background-color: #FFFFF1;
+
 }
 
 a:hover{
   color: #92A134; /*Надписи становятся зелеными при наведении*/
 } 
+
