@@ -1,4 +1,4 @@
-
+import Footer from './components/Footer/index.jsx';
 import Header from './components/Header/index.jsx';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -11,6 +11,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import SalesPage from './pages/SalesPage';
 import FavoritesPage from './pages/FavoritesPage';
+
+
 
 function App() {
   return (
@@ -27,7 +29,7 @@ function App() {
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
+<Footer/>
 
     </div>
   );
