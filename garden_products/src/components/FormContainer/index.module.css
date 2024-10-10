@@ -39,7 +39,7 @@
     height: 58px; 
     margin-bottom: 16px;
     border-radius: 6px;
-    background-color: #55610B;
+    background: linear-gradient(to right, #6d772b, #55610B);
     border: 0.5px solid rgba(255, 252, 252, 0.5);
     color: white;
     padding-left: 32px;
