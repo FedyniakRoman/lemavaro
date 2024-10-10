@@ -1,0 +1,23 @@
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto; 
+    padding-top: 40px;
+  }
+  
+
+  h2 {
+    font-size: 64px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 40px;
+    color: #424436; 
+    line-height: 70.4px;
+  }
+  
+ 
+  .loading {
+    color: #888;
+    text-align: center;
+    margin-top: 50px;
+  }
