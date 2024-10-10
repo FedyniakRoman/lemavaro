@@ -35,8 +35,10 @@ h1 {
     padding: 32px 0px 0px 0px;
     background-color: #F2F6D3;
     gap: 16px;
-    width: Fill (780px)px;
-    height: Fill (194px)px;
+    /* width: Fill (780px)px;
+    height: Fill (194px)px; */
+    width: 100%;
+    height: 100%; 
 }
 
 
