@@ -1,17 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import treeIcon from "../../assets/images/tree.svg";
 import switchIcon from "../../assets/images/switch.svg";
 import heartIcon from "../../assets/images/heart.svg";
 import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
+import ProductCard from "../ProductCard";
+
 
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productOfTheDay, setProductOfTheDay] = useState(null); 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleTreeIconClick = () => {
-    navigate('/'); 
+    navigate('/');
+  };
+
+  const getRandomProduct = (products) => {
+    const randomIndex = Math.floor(Math.random() * products.length);
+    return products[randomIndex];
+  };
+
+  const handleOpenModal = async () => {
+    setIsModalOpen(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      
+      const response = await fetch("http://localhost:3333/products/all"); 
+      if (!response.ok) {
+        throw new Error("Error");
+      }
+      const products = await response.json();
+
+      const randomProduct = getRandomProduct(products); 
+      setProductOfTheDay(randomProduct); 
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -25,7 +63,6 @@ export default function Header() {
             onClick={handleTreeIconClick}
             style={{ cursor: "pointer" }}
           />
-          
           <img
             className={s.switch_icon}
             src={switchIcon}
@@ -35,7 +72,7 @@ export default function Header() {
         </div>
 
         <nav className={s.nav_menu_container}>
-          <div className={s.discount_container}>
+          <div className={s.discount_container} onClick={handleOpenModal}>
             <p className={s.discount_text}>1 day discount!</p>
           </div>
 
@@ -64,6 +101,33 @@ export default function Header() {
          
         </div>
       )}
+
+      
+{isModalOpen && (
+  <div className={s.modal_overlay} onClick={handleCloseModal}>
+    <div className={s.modal_content} onClick={(e) => e.stopPropagation()}>
+      <div className={s.modal_header_container}>
+        <h2 className={s.modal_header}>50% discount on product of the day</h2>
+        <button className={s.modal_close_button} onClick={handleCloseModal}>X</button>
+      </div>
+
+      {productOfTheDay && (
+        <div className={s.modal_product_card_container}>
+          <ProductCard
+            id={productOfTheDay.id}
+            title={productOfTheDay.title}
+            image={productOfTheDay.image}
+            price={productOfTheDay.price}
+            discont_price={productOfTheDay.discont_price}
+          />
+          <div className={s.add_to_cart_container}>
+            <button className={s.add_to_cart_button}>Add to cart</button>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+)}
     </header>
   );
 }

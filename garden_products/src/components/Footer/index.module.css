@@ -1,0 +1,89 @@
+.container_footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+}
+
+h1 {
+    font-family: Montserrat;
+    text-align: left;
+    font-size: 64px;
+    color: #424436;
+    margin-bottom: 20px;
+}
+
+.info_footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* padding: 40px; */
+    justify-content: space-between;
+    align-items: start;
+    /* width: Fill (1, 360px)px;
+    height: Hug (150px)px; */
+
+    border-radius: 8px;
+    gap: 32px;
+
+}
+
+.colum{
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 32px 0px 0px 0px;
+    background-color: #F2F6D3;
+    gap: 16px;
+    /* width: Fill (780px)px;
+    height: Fill (194px)px; */
+    width: 100%;
+    height: 100%; 
+}
+
+
+.label,
+.socials,
+.address,
+.working {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #8B8B8B;
+    padding-left: 25px;
+}
+
+.number,
+.address_detail,
+.working_hours {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    text-align: left;
+    margin: 10px 0px;
+    padding-left:25px;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+.map_container {
+    display: block;
+    flex-direction:row ;
+    width: 100%;
+    height: 400px; 
+    margin-top: 32px;
+    border-radius: 8px;
+}
+
+.map {
+    width: 100%;
+    height: 100%; 
+    border: 2px solid #d3d3d3;
+    border-radius: 8px;
+}
