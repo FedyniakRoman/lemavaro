@@ -15,15 +15,11 @@ h1 {
 
 .info_footer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* padding: 40px; */
-    justify-content: space-between;
-    align-items: start;
-    /* width: Fill (1, 360px)px;
-    height: Hug (150px)px; */
-
-    border-radius: 8px;
-    gap: 32px;
+    grid-template-columns: 2fr 1.5fr; 
+    grid-template-rows: 1fr 1.5fr;
+    gap: 20px;
+    width: 100%;
+    height: 400px;
 
 }
 
@@ -35,10 +31,10 @@ h1 {
     padding: 32px 0px 0px 0px;
     background-color: #F2F6D3;
     gap: 16px;
-    /* width: Fill (780px)px;
-    height: Fill (194px)px; */
     width: 100%;
     height: 100%; 
+    max-height: 194px;
+    justify-content: flex-start;
 }
 
 
@@ -52,6 +48,7 @@ h1 {
     line-height: 26px;
     color: #8B8B8B;
     padding-left: 25px;
+    margin-bottom: 10px;
 }
 
 .number,
@@ -77,7 +74,6 @@ h1 {
     flex-direction:row ;
     width: 100%;
     height: 400px; 
-    margin-top: 32px;
     border-radius: 8px;
 }
 
