@@ -49,7 +49,9 @@ export default function Header() {
 
         <div className={s.nav_icons_right}>
           <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+          <Link to={'/cart'}>
           <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+          </Link>
         </div>
       </div>
 

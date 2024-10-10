@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
-// import heartIcon from "../../assets/images/heartWhite.svg";
-// import bagIcon from "../../assets/images/bagWhite_new.svg";
 import { BsHandbagFill } from "react-icons/bs";
 import { TiHeartFullOutline  } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { addProductToCartAction } from "../../store/reducers/cartReducer";
 
 function ProductCard({ id, title, image, price, discont_price }) {
 
@@ -17,6 +17,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
   };
 
   const saleValue = calculateSaleValue(price, discont_price);
+  const dispatch = useDispatch()
   return (
     <div className={s.card}>
       <div className={s.img_container}>
@@ -27,17 +28,9 @@ function ProductCard({ id, title, image, price, discont_price }) {
             className={s.img}
           />
         </Link>
-        {/* <div className={s.icons_container}>
-          <button className={s.btn_icon_heart}>
-            <img src={heartIcon} alt="Heart Icon" className={s.img_icon_heart}/>
-          </button>
-          <button className={s.btn_icon_bag}>
-            <img className={s.img_icon_bag} src={bagIcon} alt="Bag Icon" />
-          </button>
+        <div className={s.add_btn_container} >
+            <button className={s.add_btn} onClick={()=>dispatch(addProductToCartAction({id, title, image, price, discont_price}))}>Add to cart</button>
         </div>
-        <div className={s.add_btn_container}>
-            <button className={s.add_btn}>Add to cart</button>
-        </div> */}
         <div className={s.icons_container}>
         <TiHeartFullOutline  className={s.btn_icon_heart}/>
         <BsHandbagFill className={s.btn_icon_bag}/>
