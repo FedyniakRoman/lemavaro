@@ -1,0 +1,15 @@
+.container {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 20px;
+}
+.wrapper {
+    margin-bottom: 5rem;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 110%;
+    margin-bottom: 2.5rem;
+}

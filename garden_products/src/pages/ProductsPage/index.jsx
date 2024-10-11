@@ -62,7 +62,7 @@ function ProductsPage() {
             </select>
           </label>
         </form>
-        <div className={s.container}>
+        <div className={s.products_container}>
           <ProductsContainer products={products} />
         </div>
       </div>

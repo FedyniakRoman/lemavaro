@@ -7,18 +7,17 @@ import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
 import ProductCard from "../ProductCard";
 
-
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [productOfTheDay, setProductOfTheDay] = useState(null); 
+  const [productOfTheDay, setProductOfTheDay] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleTreeIconClick = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const getRandomProduct = (products) => {
@@ -32,15 +31,14 @@ export default function Header() {
     setError(null);
 
     try {
-      
-      const response = await fetch("http://localhost:3333/products/all"); 
+      const response = await fetch("http://localhost:3333/products/all");
       if (!response.ok) {
         throw new Error("Error");
       }
       const products = await response.json();
 
-      const randomProduct = getRandomProduct(products); 
-      setProductOfTheDay(randomProduct); 
+      const randomProduct = getRandomProduct(products);
+      setProductOfTheDay(randomProduct);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -67,7 +65,7 @@ export default function Header() {
             className={s.switch_icon}
             src={switchIcon}
             alt="Switch Icon"
-            style={{ cursor: "pointer" }} 
+            style={{ cursor: "pointer" }}
           />
         </div>
 
@@ -85,9 +83,11 @@ export default function Header() {
         </nav>
 
         <div className={s.nav_icons_right}>
-          <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
-          <Link to={'/cart'}>
-          <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+          <Link to={"/favorites"}>
+            <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+          </Link>
+          <Link to={"/cart"}>
+            <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
           </Link>
         </div>
       </div>
@@ -95,39 +95,44 @@ export default function Header() {
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
           <p className={s.header_image_text}>
-            Amazing Discounts <br/> on Garden Products!
+            Amazing Discounts <br /> on Garden Products!
           </p>
           <button className={s.header_image_button}>Check out</button>
-         
         </div>
       )}
 
-      
-{isModalOpen && (
-  <div className={s.modal_overlay} onClick={handleCloseModal}>
-    <div className={s.modal_content} onClick={(e) => e.stopPropagation()}>
-      <div className={s.modal_header_container}>
-        <h2 className={s.modal_header}>50% discount on product of the day</h2>
-        <button className={s.modal_close_button} onClick={handleCloseModal}>X</button>
-      </div>
+      {isModalOpen && (
+        <div className={s.modal_overlay} onClick={handleCloseModal}>
+          <div className={s.modal_content} onClick={(e) => e.stopPropagation()}>
+            <div className={s.modal_header_container}>
+              <h2 className={s.modal_header}>
+                50% discount on product of the day
+              </h2>
+              <button
+                className={s.modal_close_button}
+                onClick={handleCloseModal}
+              >
+                X
+              </button>
+            </div>
 
-      {productOfTheDay && (
-        <div className={s.modal_product_card_container}>
-          <ProductCard
-            id={productOfTheDay.id}
-            title={productOfTheDay.title}
-            image={productOfTheDay.image}
-            price={productOfTheDay.price}
-            discont_price={productOfTheDay.discont_price}
-          />
-          <div className={s.add_to_cart_container}>
-            <button className={s.add_to_cart_button}>Add to cart</button>
+            {productOfTheDay && (
+              <div className={s.modal_product_card_container}>
+                <ProductCard
+                  id={productOfTheDay.id}
+                  title={productOfTheDay.title}
+                  image={productOfTheDay.image}
+                  price={productOfTheDay.price}
+                  discont_price={productOfTheDay.discont_price}
+                />
+                <div className={s.add_to_cart_container}>
+                  <button className={s.add_to_cart_button}>Add to cart</button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
-    </div>
-  </div>
-)}
     </header>
   );
 }
