@@ -1,16 +1,14 @@
-import React from 'react'
-import s from './index.module.css'
+import React from 'react';
+import s from './index.module.css';
 import ProductCard from '../ProductCard';
 
-function ProductsContainer({products}) {
+function ProductsContainer({ products }) {
+  console.log('Полученные продукты:', products); // Проверка, что продукты приходят
   return (
     <div className={s.container}>
-      {Array.isArray(products) ? (
-        products.map(product => (
-          <ProductCard
-            key={product.id}
-            {...product}
-          />
+      {Array.isArray(products) && products.length > 0 ? (
+        products.map((product) => (
+          <ProductCard key={product.id} {...product} />
         ))
       ) : (
         <p>Loading products...</p>
@@ -19,4 +17,4 @@ function ProductsContainer({products}) {
   );
 }
 
-export default ProductsContainer;
+export default ProductsContainer
