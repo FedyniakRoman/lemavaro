@@ -40,11 +40,14 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <div className={s.price_container}>
           {discont_price ? (
             <>
-              <p className={s.price_original}>{`$${price}`}</p>
+              {/* Старая цена отображается зачеркнутой */}
+              <p className={s.price_original} style={{ textDecoration: 'line-through' }}>{`$${price}`}</p>
+              {/* Новая цена отображается без зачеркнутого стиля */}
               <p className={s.price_discounted}>{`$${discont_price}`}</p>
             </>
           ) : (
-            <p className={s.price_original}>{`$${price}`}</p>
+            // Если скидки нет, отображаем только обычную цену без зачёркивания
+            <p className={s.price_no_discount}>{`$${price}`}</p>
           )}
         </div>
       </div>
