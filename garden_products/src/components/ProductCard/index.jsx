@@ -7,53 +7,71 @@ import { useDispatch } from "react-redux";
 import { addProductToCartAction } from "../../store/reducers/cartReducer";
 
 function ProductCard({ id, title, image, price, discont_price }) {
-
   const calculateSaleValue = (price, discont_price) => {
     if (price > 0 && discont_price !== null) {
       const saleValue = ((price - discont_price) / price) * 100;
-      return Math.round(saleValue)
+      return Math.round(saleValue);
     }
     return null;
   };
 
   const saleValue = calculateSaleValue(price, discont_price);
+<<<<<<< HEAD
   const dispatch = useDispatch()
+=======
+
+>>>>>>> origin/main
   return (
     <div className={s.card}>
       <div className={s.img_container}>
         <Link to={`/products/${id}`} className={s.img_link}>
-          <img
-            src={`http://localhost:3333${image}`}
-            alt={title}
-            className={s.img}
-          />
+          <img src={`http://localhost:3333${image}`} alt={title} className={s.img} />
         </Link>
+<<<<<<< HEAD
         <div className={s.add_btn_container} >
             <button className={s.add_btn} onClick={()=>dispatch(addProductToCartAction({id, title, image, price, discont_price}))}>Add to cart</button>
         </div>
         <div className={s.icons_container}>
         <TiHeartFullOutline  className={s.btn_icon_heart}/>
         <BsHandbagFill className={s.btn_icon_bag}/>
+=======
+        <div className={s.icons_container}>
+          <button className={s.btn_icon_heart}>
+            <img src={heartIcon} alt="Heart Icon" className={s.img_icon_heart} />
+          </button>
+          <button className={s.btn_icon_bag}>
+            <img className={s.img_icon_bag} src={bagIcon} alt="Bag Icon" />
+          </button>
+        </div>
+        <div className={s.add_btn_container}>
+          <button className={s.add_btn}>Add to cart</button>
+>>>>>>> origin/main
         </div>
       </div>
       <div className={s.products_information}>
         <Link to={`/products/${id}`} className={s.img_link}>
           <h3 className={s.title}>{title}</h3>
         </Link>
-      <div className={s.price_container}>
-      <p className={s.price_original}>{`$${price}`}</p>
-          {discont_price !== null && ( 
-            <p className={s.price_discounted}>{`$${discont_price}`}</p>
+        <div className={s.price_container}>
+          {discont_price ? (
+            <>
+              {/* Старая цена отображается зачеркнутой */}
+              <p className={s.price_original} style={{ textDecoration: 'line-through' }}>{`$${price}`}</p>
+              {/* Новая цена отображается без зачеркнутого стиля */}
+              <p className={s.price_discounted}>{`$${discont_price}`}</p>
+            </>
+          ) : (
+            // Если скидки нет, отображаем только обычную цену без зачёркивания
+            <p className={s.price_no_discount}>{`$${price}`}</p>
           )}
+        </div>
       </div>
-      </div>
- <div className={s.sale_value_container}>
-        {saleValue !== null && (
+      {saleValue !== null && (
+        <div className={s.sale_value_container}>
           <p className={s.sale_value}>{`-${saleValue}%`}</p>
-        )}
-      </div>
+        </div>
+      )}
     </div>
-    
   );
 }
 

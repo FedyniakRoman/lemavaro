@@ -30,10 +30,12 @@
     overflow: hidden;
     position: relative;
 }
-.img:hover{
+
+.img:hover {
     opacity: 0.5;
 }
-.icons_container{
+
+.icons_container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -41,14 +43,27 @@
     right: 16px;
     top: 16px;
 }
+<<<<<<< HEAD
 .btn_icon_heart {
     cursor: pointer;
     width: 48px;
+=======
+
+.btn_icon_heart, .btn_icon_bag {
+    background-color: initial;
+    border: none;
+    cursor: pointer;
+    width: 5vw;
+}
+
+.img_icon_heart, .img_icon_bag {
+>>>>>>> origin/main
     height: auto;
     vertical-align: middle;
     color: white;
 }
 
+<<<<<<< HEAD
 .btn_icon_bag{
     background-color: initial;
     border: none;
@@ -60,6 +75,9 @@
     color: white;
 }
 .add_btn_container{
+=======
+.add_btn_container {
+>>>>>>> origin/main
     bottom: 30px;
     left: 10px;
     opacity: 0;
@@ -69,11 +87,12 @@
     width: calc(100% - 20px); 
     margin: 0 auto;
 }
+
 .card:hover .add_btn_container {
     opacity: 1;
 }
 
-.add_btn{
+.add_btn {
     padding: 16px 32px;
     width: 100%;
     background: #92A134;
@@ -85,10 +104,12 @@
     font-weight: 600;
     line-height: 130%;
 }
-.add_btn:hover{
+
+.add_btn:hover {
     background-color: #424436;
 }
-.products_information{
+
+.products_information {
     align-items: flex-start;
     display: flex;
     flex: 1 0;
@@ -96,16 +117,16 @@
     gap: 16px;
     padding: 0 32px 32px;
     width: 316px;
-    /* height: 118px; */
 }
-.img_link{
+
+.img_link {
     text-decoration: none;
     color: #282828;
     cursor: pointer;
-    text-decoration: none;
     transition: all .3s ease-in-out;
 }
-.title{
+
+.title {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     align-self: stretch;
@@ -117,25 +138,38 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.price_container{
+
+
+.price_container {
     align-items: center;
     display: flex; 
 }
-.price_original{
-    font-size: 30px;
-    font-weight: 600;
+
+
+.price_original {
+    font-size: 20px;
+    color: #8b8b8b;
+    font-weight: 500;
+    text-decoration: line-through; 
     padding-right: 16px;
 }
-.price_discounted{
-    font-size: 20px;
-    align-self: center;
-    color: #8b8b8b;
-    display: flex;
-    font-weight: 500;
-    text-decoration: line-through;
+
+
+.price_discounted {
+    font-size: 30px;
+    font-weight: 600;
+    color: #424436; 
     padding-top: 8px;
 }
-.sale_value_container{
+
+.price_no_discount {
+    font-size: 30px;
+    font-weight: 600;
+    color: #424436; 
+}
+
+
+.sale_value_container {
     align-items: flex-start;
     display: flex;
     justify-content: flex-end;
@@ -143,8 +177,10 @@
     position: absolute;
     top: 16px;
 }
-.sale_value{
-    background:#F26D22;
+
+
+.sale_value {
+    background: #F26D22;
     border-radius: 6px;
     color: #fff;
     font-size: 20px;

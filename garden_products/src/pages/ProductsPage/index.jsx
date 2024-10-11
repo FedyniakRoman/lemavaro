@@ -3,7 +3,7 @@ import { getAllProducts } from "../../requests/products";
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import ProductsContainer from "../../components/ProductsContainer";
-import s from './index.module.css'
+import s from './index.module.css';
 import { Link } from "react-router-dom";
 
 function ProductsPage() {
@@ -12,8 +12,8 @@ function ProductsPage() {
 
   useEffect(() => {
     dispatch(changeStatusAction());
-    dispatch(getAllProducts);
-  }, []);
+    dispatch(getAllProducts()); // Исправлено: вызов функции
+  }, [dispatch]);
 
   const { products, status } = productsState;
 
@@ -62,11 +62,16 @@ function ProductsPage() {
             </select>
           </label>
         </form>
-        <div className={s.products_container}>
-          <ProductsContainer products={products} />
+        <div className={s.container}>
+          {status === 'loading' ? (
+            'Loading products...'
+          ) : (
+            <ProductsContainer products={products} />
+          )}
         </div>
       </div>
     </section>
   );
 }
+
 export default ProductsPage;

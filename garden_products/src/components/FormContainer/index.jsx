@@ -20,7 +20,7 @@ function DiscountForm() {
     e.preventDefault();
   
     // Отправка данных на сервер с помощью fetch
-    fetch('http://localhost:3000/form', { 
+    fetch('http://localhost:3333/sale/send', { 
       method: 'POST', // тут нам нужно еще над ссылкой прорабоать и разобраться
       headers: {
         'Content-Type': 'application/json', // Указываем, что данные в формате JSON
