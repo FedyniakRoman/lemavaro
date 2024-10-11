@@ -1,0 +1,51 @@
+.not_found_page_container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 690px;
+    font-family: Montserrat, regular;
+}
+.notFoundImage {
+    margin: 80px auto 32px auto;
+}
+
+.not_found_title {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 70.4px;
+    margin-bottom: 16px;
+}
+
+.not_found_text {
+    text-align: center;
+    color: #8B8B8B;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    max-width: 664px;
+}
+
+.not_found_button {
+    margin: 32px auto 80px auto;
+    display: block;  
+    max-width: 664px; 
+    padding: 16px 56px 16px 56px;
+    background-color: #92A134;
+    color: #ffffff;
+    text-decoration: none; 
+    border: none;
+    border-radius: 6px;
+    text-align: center; 
+    line-height: 26px;
+    font-family: 'Montserrat', regular;
+    font-size: 20px;
+}
+
+.not_found_button:hover {
+    opacity: 0.8;
+}
+
+a {
+    text-decoration: none; 
+}
