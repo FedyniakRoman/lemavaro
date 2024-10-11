@@ -20,7 +20,6 @@ function CartPage() {
           </div>
         </div>
       </div>
-      <div className={s.wrapper}>
         <div className={s.cart_container}>
           {cartState.length === 0 ? (
             <p>Looks like you have no items in your basket currently.</p>
@@ -28,7 +27,6 @@ function CartPage() {
             <CartCortainer products={cartState} />
           )}
         </div>
-      </div>
     </section>
   );
 }

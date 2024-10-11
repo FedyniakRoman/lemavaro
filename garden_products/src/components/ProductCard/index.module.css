@@ -43,27 +43,14 @@
     right: 16px;
     top: 16px;
 }
-<<<<<<< HEAD
 .btn_icon_heart {
     cursor: pointer;
     width: 48px;
-=======
-
-.btn_icon_heart, .btn_icon_bag {
-    background-color: initial;
-    border: none;
-    cursor: pointer;
-    width: 5vw;
-}
-
-.img_icon_heart, .img_icon_bag {
->>>>>>> origin/main
     height: auto;
     vertical-align: middle;
     color: white;
 }
 
-<<<<<<< HEAD
 .btn_icon_bag{
     background-color: initial;
     border: none;
@@ -75,9 +62,6 @@
     color: white;
 }
 .add_btn_container{
-=======
-.add_btn_container {
->>>>>>> origin/main
     bottom: 30px;
     left: 10px;
     opacity: 0;

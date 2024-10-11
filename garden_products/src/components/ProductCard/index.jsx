@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsHandbagFill } from "react-icons/bs";
 import { TiHeartFullOutline  } from "react-icons/ti";
 import { addProductToCartAction } from "../../store/reducers/cartReducer";
+import { useDispatch } from "react-redux";
 
 function ProductCard({ id, title, image, price, discont_price }) {
   const calculateSaleValue = (price, discont_price) => {
@@ -13,7 +14,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
     }
     return null;
   };
-
+  const dispatch = useDispatch()
   const saleValue = calculateSaleValue(price, discont_price);
   return (
     <div className={s.card}>
