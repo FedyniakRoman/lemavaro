@@ -9,7 +9,7 @@ import { cartReducer } from './reducers/cartReducer';
 const rootReducer = combineReducers({
     categories: categoriesReducer,
     products: productsReducer,
-    theme: themeReducer                     //Редьюсер для Смены Темы.
+    theme: themeReducer,                     //Редьюсер для Смены Темы.
     cart: cartReducer
 
 })
