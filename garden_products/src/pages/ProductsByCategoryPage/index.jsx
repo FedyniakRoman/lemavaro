@@ -84,7 +84,7 @@ function ProductsByCategoryPage() {
         </ul>
       </nav>
 
-      <h2>{category ? category.title : "Category"}</h2>
+      <h2 className={s.title}>{category ? category.title : "Category"}</h2>
 
       {/* Форма для фильтрации и сортировки */}
       <form action="" className={s.form}>

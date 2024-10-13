@@ -1,6 +1,7 @@
 .container {
     margin: 0 auto;
     max-width: 1400px;
+    padding: 0 20px;
 }
 
 .nav {
@@ -46,6 +47,7 @@
 
 .wrapper {
     margin-bottom: 5rem;
+    /* padding: 0 20px; */
 }
 
 .title {
