@@ -6,6 +6,9 @@ import heartIcon from "../../assets/images/heart.svg";
 import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
 import ProductCard from "../ProductCard";
+//----------------------------------------------------------------------------------------
+import ThemeToggle from "../ThemeToggle"; //Импорт компонента для переключения Темы Приложения - Светлая/Темная (Lev)
+import { FaSun, FaMoon } from 'react-icons/fa'; //Импорт иконок. Не используются в текущем варианте.
 
 export default function Header() {
   const location = useLocation();
@@ -61,12 +64,21 @@ export default function Header() {
             onClick={handleTreeIconClick}
             style={{ cursor: "pointer" }}
           />
+
+{/* --Новый переключатель-- */}
+<ThemeToggle/> {/*Компонент для переключения Темы (Светлая/Темная) (Lev)*/}
+
+{/* --Наш изначальный переключатель--
+Внимание! Следующие 5 строк оставлены для того, чтобы было видно, что мой вариант перелючателя немного отличается от того, что был изначально.
+Также немного менялась рамка переключателя при переключении темы. Но, я устранил этот эффект подбором значения height в файле ThemeToggle/index.module.css
+Переключатель выглядит неплохо, но, боюсь, что такие подборы по пикселям могут негативно сказаться при последующей мобильной адаптаци... (Лев)*/}
           <img
             className={s.switch_icon}
             src={switchIcon}
             alt="Switch Icon"
             style={{ cursor: "pointer" }}
           />
+
         </div>
 
         <nav className={s.nav_menu_container}>

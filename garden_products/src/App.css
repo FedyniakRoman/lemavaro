@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 body{
+
+  transition: background-color 0.3s, color 0.3s; /*Плавное переключение Темы (Lev)*/
+
   color: #282828;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -12,7 +15,18 @@ body{
   min-height: 100vh;
   width: 100%;
   background-color: #FFFFF1;
+}
 
+/* Светлая тема */
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Тёмная тема */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
 }
 
 a:hover{
