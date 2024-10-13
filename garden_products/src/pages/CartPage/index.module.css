@@ -1,0 +1,74 @@
+.container {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 20px;
+}
+
+.title_container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    height: 70px;
+    gap: 35px;
+}
+
+/* .wrapper {
+    margin-bottom: 5rem;
+} */
+
+.title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 110%;
+    white-space: nowrap;
+    color: #424436;
+}
+
+.nav_container {
+    width: 100%;
+    padding: 12px 0;
+    display: flex;
+}
+
+.nav_list {
+    display: flex;
+    padding-top: 10px;
+    align-content: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.item {
+    padding: 0 20px;
+    border: .0625rem solid #ddd;
+    border-radius: .375rem;
+    font-size: 1rem;
+    line-height: 126%;
+    padding: .5rem 1rem;
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFF1;
+}
+
+.linie {
+    background: #ddd;
+    height: 1px;
+    width: 100%; /* Setzt die Breite der Linie auf 100% */
+    position: absolute;
+    top: 60%; /* Positioniert die Linie in der Mitte des Items */
+    left: 0; /* Startet die Linie von der linken Seite */
+    transform: translateY(-50%); /* Zentriert die Linie vertikal */
+}
+
+.cart_container{
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    gap: 16px;
+}
+
