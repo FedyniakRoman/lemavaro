@@ -3,7 +3,12 @@
     max-width: 1400px;
     padding: 0 20px;
 }
-
+.cart_container{
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
 .title_container {
     align-items: center;
     display: flex;
@@ -14,14 +19,10 @@
     gap: 35px;
 }
 
-/* .wrapper {
-    margin-bottom: 5rem;
-} */
-
-.title {
+.title_page {
     font-size: 64px;
     font-weight: 700;
-    line-height: 110%;
+    line-height: 71px;
     white-space: nowrap;
     color: #424436;
 }
@@ -45,30 +46,92 @@
 
 .item {
     padding: 0 20px;
-    border: .0625rem solid #ddd;
-    border-radius: .375rem;
-    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
     line-height: 126%;
-    padding: .5rem 1rem;
+    padding: 8px 16px;
     position: relative;
     z-index: 1;
     background-color: #FFFFF1;
+    color: #8B8B8B;
 }
 
 .linie {
     background: #ddd;
     height: 1px;
-    width: 100%; /* Setzt die Breite der Linie auf 100% */
+    width: 100%;
     position: absolute;
-    top: 60%; /* Positioniert die Linie in der Mitte des Items */
-    left: 0; /* Startet die Linie von der linken Seite */
-    transform: translateY(-50%); /* Zentriert die Linie vertikal */
+    top: 60%;
+    left: 0; 
+    transform: translateY(-50%); 
 }
 
-.cart_container{
+.order_container{
+    background-color: #F2F6D3;
+    border-radius: 12px;
+    max-height: 582px;
+    padding: 32px 32px 0;
+    width: 548px;
+}
+
+.order_title{
+    color: #282828;
+    font-weight: 700; 
+    padding-bottom: 24px;
+    font-size: 40px;
+    line-height: 44px;
+}
+.total_items{
+    color: #8b8b8b;
+    font-weight: 500;
+    font-size: 40px;
+}
+.total_price_box{
+    align-items: baseline;
     display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    gap: 16px;
+    justify-content: space-between;
+    padding-bottom: 32px;
 }
+.total_title{
+    color: #8b8b8b;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+}
+.total_sum{
+    color: #282828;
+    font-weight: 700;
+    font-size: 64px;
+}
+.order_form{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 32px;
+    row-gap: 16px;
+    width: 100%;
+}
+.input{
+    background-color: #fcfeff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #8B8B8B;
+    font-size: 20px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    outline: none;
+    width: 100%;
+    padding: 16px 32px;
 
+}
+.form_button{
+    background-color: #92A134;
+    color: #fff;
+    padding: 16px 32px;
+    border: 1px solid #92A134;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+}
