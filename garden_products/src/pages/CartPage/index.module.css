@@ -19,10 +19,10 @@
     gap: 35px;
 }
 
-.title {
+.title_page {
     font-size: 64px;
     font-weight: 700;
-    line-height: 110%;
+    line-height: 71px;
     white-space: nowrap;
     color: #424436;
 }
@@ -46,30 +46,31 @@
 
 .item {
     padding: 0 20px;
-    border: .0625rem solid #ddd;
-    border-radius: .375rem;
-    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
     line-height: 126%;
-    padding: .5rem 1rem;
+    padding: 8px 16px;
     position: relative;
     z-index: 1;
     background-color: #FFFFF1;
+    color: #8B8B8B;
 }
 
 .linie {
     background: #ddd;
     height: 1px;
-    width: 100%; /* Setzt die Breite der Linie auf 100% */
+    width: 100%;
     position: absolute;
-    top: 60%; /* Positioniert die Linie in der Mitte des Items */
-    left: 0; /* Startet die Linie von der linken Seite */
-    transform: translateY(-50%); /* Zentriert die Linie vertikal */
+    top: 60%;
+    left: 0; 
+    transform: translateY(-50%); 
 }
 
 .order_container{
-    background: #f1f3f4;
+    background-color: #F2F6D3;
     border-radius: 12px;
-    max-height: 682px;
+    max-height: 582px;
     padding: 32px 32px 0;
     width: 548px;
 }
@@ -79,6 +80,7 @@
     font-weight: 700; 
     padding-bottom: 24px;
     font-size: 40px;
+    line-height: 44px;
 }
 .total_items{
     color: #8b8b8b;
@@ -95,6 +97,7 @@
     color: #8b8b8b;
     font-weight: 500;
     font-size: 40px;
+    line-height: 52px;
 }
 .total_sum{
     color: #282828;
@@ -105,18 +108,30 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 32px;
-    row-gap: 32px;
+    row-gap: 16px;
     width: 100%;
 }
 .input{
     background-color: #fcfeff;
     border: 1px solid #ddd;
-    color: #282828;
+    border-radius: 6px;
+    color: #8B8B8B;
+    font-size: 20px;
+    line-height: 26px;
+    font-family: 'Montserrat';
     font-weight: 500;
     outline: none;
     width: 100%;
+    padding: 16px 32px;
+
 }
 .form_button{
-    background-color: #393;
+    background-color: #92A134;
     color: #fff;
+    padding: 16px 32px;
+    border: 1px solid #92A134;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
 }

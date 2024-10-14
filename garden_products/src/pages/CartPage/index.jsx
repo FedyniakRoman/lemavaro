@@ -16,7 +16,7 @@ function CartPage() {
   return (
     <section className={s.container}>
       <div className={s.title_container}>
-        <h2 className={s.title}>Shopping cart</h2>
+        <h2 className={s.title_page}>Shopping cart</h2>
         <div className={s.nav_container}>
           <div className={s.nav_list}>
             <div className={s.linie}></div>
@@ -33,7 +33,7 @@ function CartPage() {
           <>
             <CartCortainer products={cartState} />
             <div className={s.order_container}>
-              <h3 className={s.order_title}>Order Details</h3>
+              <h3 className={s.order_title}>Order details</h3>
               <p className={s.total_items}>{`${cartState.length} items`}</p>
               <div className={s.total_price_box}>
                 <p className={s.total_title}>Total</p>
@@ -42,6 +42,7 @@ function CartPage() {
               <form className={s.order_form}>
                 <input type="text" placeholder="Name" name="name" className={s.input} />
                 <input type="tel" placeholder="Phone number" className={s.input} />
+                <input type="email" placeholder="Email" className={s.input} />
                 <button className={s.form_button}>Checkout</button>
               </form>
             </div>

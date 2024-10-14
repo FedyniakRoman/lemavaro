@@ -7,8 +7,9 @@ import { deleteProductFromCartAction } from "../../store/reducers/cartReducer";
 // Компонент для отображения товара в корзине
 function CartItem({ id, image, title, count, price, discont_price }) {
   const dispatch = useDispatch(); // Инициализация функции dispatch для вызова действий в Redux
-  console.log(discont_price);
   
+  
+
   return (
     <div className={s.card}>
       <img
@@ -18,7 +19,7 @@ function CartItem({ id, image, title, count, price, discont_price }) {
       />
       <div className={s.info_block}>
         <div className={s.top_section}>
-          <p>{title}</p> {/* Название товара */}
+          <p className={s.product_title}>{title}</p> {/* Название товара */}
           {/* Кнопка для удаления товара из корзины */}
           <IoIosClose className={s.icon_delete}
             onClick={() => dispatch(deleteProductFromCartAction(id))}
