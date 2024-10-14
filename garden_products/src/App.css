@@ -19,8 +19,8 @@ body{
 
 /* Светлая тема */
 body.light {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #FFFFF1;
+  color: #282828;
 }
 
 /* Тёмная тема */

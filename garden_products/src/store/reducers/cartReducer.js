@@ -19,10 +19,10 @@ const checkProduct = (state, payload) => {
   const product = state.find((el) => el.id === payload.id);  // Поиск продукта по его id в состоянии корзины
 
   if (product) {
-    product.count++;  // Если продукт найден, увеличиваем количество
+    product.initialCount++;  // Если продукт найден, увеличиваем количество
     return [...state];  // Возвращаем обновлённое состояние корзины
   } else {
-    return [...state, { ...payload, count: 1 }];  // Если продукт не найден, добавляем его в корзину с количеством 1
+    return [...state, { ...payload, initialCount: 1 }];  // Если продукт не найден, добавляем его в корзину с количеством 1
   }
 };
 
