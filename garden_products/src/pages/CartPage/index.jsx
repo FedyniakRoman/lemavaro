@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 function CartPage() {
   const cartState = useSelector((store) => store.cart);
 
-  let totalSum = cartState.reduce((acc, elem)=>{
-    return elem.discont_price !== null 
-    ? acc + (elem.discont_price * elem.count) 
-    : acc + (elem.price * elem.count);
-  },0)
-  
+  let totalSum = cartState.reduce((acc, elem) => {
+    return elem.discont_price !== null
+      ? acc + (elem.discont_price * elem.count)
+      : acc + (elem.price * elem.count);
+  }, 0);
 
   return (
     <section className={s.container}>
@@ -31,21 +30,23 @@ function CartPage() {
         {cartState.length === 0 ? (
           <p>Looks like you have no items in your basket currently.</p>
         ) : (
-          <CartCortainer products={cartState} />
+          <>
+            <CartCortainer products={cartState} />
+            <div className={s.order_container}>
+              <h3 className={s.order_title}>Order Details</h3>
+              <p className={s.total_items}>{`${cartState.length} items`}</p>
+              <div className={s.total_price_box}>
+                <p className={s.total_title}>Total</p>
+                <p className={s.total_sum}>{`$${totalSum}`}</p>
+              </div>
+              <form className={s.order_form}>
+                <input type="text" placeholder="Name" name="name" className={s.input} />
+                <input type="tel" placeholder="Phone number" className={s.input} />
+                <button className={s.form_button}>Checkout</button>
+              </form>
+            </div>
+          </>
         )}
-      </div>
-      <div className={s.order_container}>
-        <h3 className={s.order_title}>Order Details</h3>
-        <p className={s.total_items}>{`${cartState.length} items`}</p>
-        <div className={s.total_price_box}>
-          <p className={s.total_title}>Total</p>
-          <p className={s.total_sum}>{`$${totalSum}`}</p>
-        </div>
-        <form className={s.order_form}>
-          <input type="text" placeholder="Name" name="name" className={s.input} />
-          <input type="tel" placeholder="Phone number" className={s.input}/>
-          <button className={s.form_button}>Checkout</button>
-        </form>
       </div>
     </section>
   );

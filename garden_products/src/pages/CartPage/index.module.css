@@ -66,13 +66,6 @@
     transform: translateY(-50%); /* Zentriert die Linie vertikal */
 }
 
-.cart_container{
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    gap: 16px;
-}
-
 .order_container{
     background: #f1f3f4;
     border-radius: 12px;

@@ -19,6 +19,8 @@ function SalesPage() {
   let discountedProducts = Array.isArray(products)
   ? products.filter((product) => product.discont_price !== null)
   : [];
+
+  
   return (
     <section className={s.container}>
       <nav className={s.nav}>
