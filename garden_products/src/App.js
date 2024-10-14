@@ -11,12 +11,23 @@ import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import SalesPage from './pages/SalesPage';
 import FavoritesPage from './pages/FavoritesPage';
-
-
+//------------------------------------------------------------------ (Lev)
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import ThemeToggle from './components/ThemeToggle/index.jsx';
+//---------------------------------------------------------------------
 
 function App() {
+
+  const theme = useSelector((state) => state.theme.mode);
+
+  useEffect(() => {
+    document.body.className = theme; //Добавление класса 'light' или 'dark' ко Всем Компонентам Приложения (Lev)
+  }, [theme]) //Инициализация
+
   return (
     <div className="App">
+      {/* <ThemeToggle/> Компонент для переключения Темы (Светлая/Темная) (Lev) Эту строку можно удалить. */}
       <Header />
       <Routes>
         <Route path='/' element={<MainPage />} />

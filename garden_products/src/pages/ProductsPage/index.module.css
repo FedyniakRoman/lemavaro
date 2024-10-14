@@ -1,6 +1,8 @@
+/* ProductsPage */
 .container {
     margin: 0 auto;
     max-width: 1400px;
+    padding: 0 20px;
 }
 
 .nav {
@@ -53,6 +55,7 @@
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 2.5rem;
+    color: #282828;
 }
 
 .form {
@@ -106,6 +109,7 @@
     border: .0625rem solid #ddd;
     border-radius: .375rem;
     transition: all .3s ease-in-out;
+    background-color: white;
 }
 
 .input_discount:checked {

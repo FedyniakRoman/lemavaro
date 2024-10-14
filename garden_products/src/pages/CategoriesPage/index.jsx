@@ -33,7 +33,7 @@ function CategoriesPage() {
     </nav>
     <div className={s.wrapper}>
       <h2 className={s.title}>Categories</h2>
-    <div className={s.container}>
+    <div className={s.categories_container}>
       {status === 'loading' ? (
         'Categories are loading...'
       ) : (
