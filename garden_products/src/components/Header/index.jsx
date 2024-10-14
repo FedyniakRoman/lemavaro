@@ -6,9 +6,7 @@ import heartIcon from "../../assets/images/heart.svg";
 import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
 import ProductCard from "../ProductCard";
-//----------------------------------------------------------------------------------------
-import ThemeToggle from "../ThemeToggle"; //Импорт компонента для переключения Темы Приложения - Светлая/Темная (Lev)
-import { FaSun, FaMoon } from 'react-icons/fa'; //Импорт иконок. Не используются в текущем варианте.
+import ThemeToggle from "../ThemeToggle"; // Импорт компонента для переключения Темы Приложения
 
 export default function Header() {
   const location = useLocation();
@@ -19,29 +17,55 @@ export default function Header() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Функция для перехода на главную страницу
   const handleTreeIconClick = () => {
     navigate("/");
   };
 
+  // Функция для получения случайного продукта из массива продуктов
   const getRandomProduct = (products) => {
     const randomIndex = Math.floor(Math.random() * products.length);
     return products[randomIndex];
   };
 
+  // Функция для открытия модального окна и загрузки продукта дня
   const handleOpenModal = async () => {
     setIsModalOpen(true);
     setLoading(true);
     setError(null);
 
+    const today = new Date().toDateString(); // Текущая дата в строковом формате
+    const savedProduct = JSON.parse(localStorage.getItem("productOfTheDay")); // Проверяем, есть ли сохраненный товар в localStorage
+
+    // Если товар дня уже сохранен и дата совпадает с сегодняшней
+    if (savedProduct && savedProduct.discountDate === today) {
+      setProductOfTheDay(savedProduct); // Используем сохраненный товар
+      setLoading(false);
+      return;
+    }
+
+    // Если товара нет в localStorage или дата не совпадает — загружаем новый товар
     try {
       const response = await fetch("http://localhost:3333/products/all");
       if (!response.ok) {
-        throw new Error("Error");
+        throw new Error("Error fetching products");
       }
       const products = await response.json();
 
+      // Выбираем случайный продукт
       const randomProduct = getRandomProduct(products);
-      setProductOfTheDay(randomProduct);
+
+      // Устанавливаем 50% скидку и сохраняем в localStorage
+      const discountProduct = {
+        ...randomProduct,
+        discont_price: randomProduct.price / 2, // Устанавливаем цену с 50% скидкой
+        discountDate: today // Привязываем скидку к сегодняшнему дню
+      };
+
+      // Сохраняем товар в localStorage
+      localStorage.setItem("productOfTheDay", JSON.stringify(discountProduct));
+
+      setProductOfTheDay(discountProduct);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -49,6 +73,7 @@ export default function Header() {
     }
   };
 
+  // Функция для закрытия модального окна
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -65,20 +90,14 @@ export default function Header() {
             style={{ cursor: "pointer" }}
           />
 
-{/* --Новый переключатель-- */}
-<ThemeToggle/> {/*Компонент для переключения Темы (Светлая/Темная) (Lev)*/}
+          <ThemeToggle />
 
-{/* --Наш изначальный переключатель--
-Внимание! Следующие 5 строк оставлены для того, чтобы было видно, что мой вариант перелючателя немного отличается от того, что был изначально.
-Также немного менялась рамка переключателя при переключении темы. Но, я устранил этот эффект подбором значения height в файле ThemeToggle/index.module.css
-Переключатель выглядит неплохо, но, боюсь, что такие подборы по пикселям могут негативно сказаться при последующей мобильной адаптаци... (Лев)*/}
-          <img
+          {/* <img
             className={s.switch_icon}
             src={switchIcon}
             alt="Switch Icon"
             style={{ cursor: "pointer" }}
-          />
-
+          /> */}
         </div>
 
         <nav className={s.nav_menu_container}>
@@ -110,8 +129,8 @@ export default function Header() {
             Amazing Discounts <br /> on Garden Products!
           </p>
           <Link to="/sales" className={s.header_image_button}>
-  Check out
-</Link>
+            Check out
+          </Link>
         </div>
       )}
 
@@ -130,15 +149,20 @@ export default function Header() {
               </button>
             </div>
 
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+
             {productOfTheDay && (
               <div className={s.modal_product_card_container}>
+                
                 <ProductCard
                   id={productOfTheDay.id}
                   title={productOfTheDay.title}
                   image={productOfTheDay.image}
-                  price={productOfTheDay.price}
-                  discont_price={productOfTheDay.discont_price}
+                  price={productOfTheDay.price} 
+                  discont_price={productOfTheDay.discont_price.toFixed(2)} // Округляем цену с 50% скидкой 
                 />
+
                 <div className={s.add_to_cart_container}>
                   <button className={s.add_to_cart_button}>Add to cart</button>
                 </div>
