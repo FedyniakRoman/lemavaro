@@ -1,7 +1,6 @@
 import { loadProductsAction } from "../store/reducers/productsReducer";
 import { loadSingleProductAction } from "../store/reducers/singleProductReducer";
 
-import { loadProductsAction } from '../store/reducers/productsReducer';
 
 // Получение всех товаров
 export const getAllProducts = () => (dispatch) => {
@@ -11,16 +10,15 @@ export const getAllProducts = () => (dispatch) => {
     .catch(err => console.error('Error fetching products:', err));
 }
 
-export const getSingleProductPage =(product_id)=> {
-return dispatch  => {
+export const getSingleProductPage =(product_id) =>  (dispatch) => {
     fetch(`http://localhost:3333/products/${product_id}`)
     .then(res => res.json())
-    .then(json => dispatch (loadSingleProductAction(json)))
-    .catch(error =>  console.error("Error fetching product:", error))
+    .then(json => dispatch(loadSingleProductAction(json)))
+    .catch(err => console.error("Error fetching product:", err))
     }
-}
 
-};
+
+
 
 export const getProductsByCategory = (category_id) => (dispatch) => {
     fetch(`http://localhost:3333/categories/${category_id}`) // Запрос продуктов по категории
