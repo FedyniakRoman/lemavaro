@@ -9,8 +9,8 @@ function CartPage() {
 
   let totalSum = cartState.reduce((acc, elem) => {
     return elem.discont_price !== null
-      ? acc + (elem.discont_price * elem.count)
-      : acc + (elem.price * elem.count);
+      ? acc + (elem.discont_price * elem.initialCount)
+      : acc + (elem.price * elem.initialCount);
   }, 0);
 
   return (
