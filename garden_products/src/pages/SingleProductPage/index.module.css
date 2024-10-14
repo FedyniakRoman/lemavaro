@@ -1,145 +1,214 @@
-.container {
-  margin: 0 auto;
-  max-width: 1400px;
+.container_single_card {
+  max-width: 1360px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  margin: 0px auto;
+  margin-top: 50px;
+  gap: 32px;
+  padding-bottom: 40px;
 }
 
-.img {
-  position: relative; 
+
+.image {
+  width: 760px;
+  max-height: 572px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  flex-shrink: 0;
 }
 
-.product_image {
-width: Fixed (780px)px;
-height: Fixed (572px)px;
-gap: 32px;
-opacity: 0px;
-border-radius: 10px;
+.inform_section {
+  max-width: 640px;
+  height: 572px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 28px;
+
 }
 
-.icons_container {
-  position: absolute; /* Позиционирование иконок */
-  top: 10px; 
-  right: 10px; 
+
+.section_title_and_icons {
+  gap: 16px;
+  opacity: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }
 
-.product_title {
-  font-size: 24px; /* Размер заголовка */
-  font-weight: bold; /* Жирный шрифт */
-  margin: 10px 0; /* Отступы сверху и снизу */
+
+.title {
+  color: #424436;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: 0.03em;
+  text-align: left;
 }
+
+.icon_heart {
+  margin-left: auto;
+  cursor: pointer;
+  color: #424436;
+  width: 44px;
+  height: 38px;
+
+}
+
 
 .price_section {
-  display: flex; /* Flex для выравнивания цен */
-  align-items: center; /* Центрируем элементы по вертикали */
-  margin: 10px 0; /* Отступы сверху и снизу */
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  gap: 26px;
+  opacity: 0px;
+  padding-top: 20px;
+
 }
 
-.current_price {
-  font-size: 20px; /* Размер текущей цены */
-  font-weight: bold; /* Жирный шрифт для текущей цены */
-  color: #92A134; /* Цвет текущей цены */
-  margin-right: 10px; /* Отступ справа */
+.price_original {
+  color: #424436;
+
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 70.4px;
+  text-align: left;
 }
 
-.original_price {
-  text-decoration: line-through; /* Перечеркивание оригинальной цены */
-  margin-right: 10px; /* Отступ справа */
-  color: #888; /* Цвет перечеркнутой цены */
+.price_discounted {
+  color: #8B8B8B;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 52px;
+  text-align: left;
+  text-decoration: line-through;
+
 }
 
-.discount {
-  background-color: #FF5733; /* Цвет фона для скидки */
-  color: #fff; /* Цвет текста для скидки */
-  padding: 4px 8px; /* Отступы вокруг текста скидки */
-  border-radius: 4px; /* Скругленные углы для скидки */
+
+.discount_badge {
+  color: #FFFFFF;
+  background-color: #F26D22;
+  width: 47px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  position: relative;
+  top: -20px;
+  margin-bottom: 10px;
+
 }
 
-.quantity_section {
-  display: flex; /* Flex для расположения элементов */
-  align-items: center; /* Центрируем элементы по вертикали */
-  margin: 10px 0; /* Отступы сверху и снизу */
+
+
+.add_to_cart_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 20px;
+  margin-bottom: 20px;
+  gap: 32px;
 }
 
-.quantity_minus, .quantity_plus {
-  padding: 10px; /* Отступы внутри кнопок */
-  background: #92A134; /* Цвет кнопок */
-  color: white; /* Цвет текста на кнопках */
-  border: none; /* Без границы */
-  border-radius: 5px; /* Скругленные углы */
-  cursor: pointer; /* Курсор указателя при наведении */
-  font-size: 18px; /* Размер шрифта */
-  margin: 0 5px; /* Отступы между кнопками */
+.quantity_controls {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #DDDDDD;
+  border-radius: 6px;
+  height: 55px;
+  width: 210px;
+  overflow: hidden;
 }
 
-.quantity_input {
-  width: 50px; /* Ширина поля ввода */
-  text-align: center; /* Выравнивание текста по центру */
-  border: 1px solid #ddd; /* Граница вокруг поля */
-  border-radius: 5px; /* Скругленные углы для поля */
+
+.quantity_btn {
+  width: 28%;
+  height: 55px;
+
+  border: 1px solid #DDDDDD;
+  background-color: #fff;
+  color: #DDDDDD;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.add_btn { 
-  padding: 16px 32px; /* Отступы внутри кнопки */
-  width: 100%; /* Ширина кнопки на 100% родительского элемента */
-  background: #92A134; /* Цвет фона кнопки */
-  border: none; /* Без границы */
-  border-radius: 6px; /* Скругление углов */
-  color: #fff; /* Цвет текста */
-  cursor: pointer; /* Курсор при наведении */
-  font-size: 20px; /* Размер шрифта */
-  font-weight: 600; /* Жирный шрифт */
-  line-height: 130%; /* Высота строки */
+.quantity_btn:hover {
+  background-color: #92A134;
+  cursor: pointer;
+}
+
+
+.quantity_value {
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.add_btn {
+  width: 316px;
+  height: 55px;
+  padding: 16px 32px 16px 32px;
+
+
+  background: #92A134;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+
 }
 
 .add_btn:hover {
-  background-color: #424436; /* Цвет фона кнопки при наведении */
+  background-color: #424436;
 }
 
-.description_section {
-  margin-top: 20px; /* Отступ сверху */
-}
-
-.description_title {
-  font-size: 20px; 
-  font-weight: bold; 
+.description {
+  color: #424436;
+  padding-top: 10px;
   margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+
 }
 
-.product_description {
-  font-family: Montserrat;
-font-size: 20px;
-font-weight: 600;
-line-height: 26px;
-text-align: left;
+.description_text {
+  text-align: center;
 
-  color: #424436; 
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.8px;
+  text-align: left;
+  padding-top: 10px;
+
 }
 
-.read_more {
-font-family: Montserrat;
-font-size: 16px;
-font-weight: 500;
-line-height: 20.8px;
-text-align: left;
 
-  color: #424436; 
-  cursor: pointer;
+.read {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.8px;
+  text-align: left;
+  color: #424436;
   text-decoration: underline;
-}
+margin-bottom: 30px;
 
-  
-.add_to_cart_btn{
-    padding: 16px 32px;
-    width: 100%;
-    background: #92A134;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 130%;
-}
-.add_to_cart_btn:hover{
-    background-color: #424436;
 }

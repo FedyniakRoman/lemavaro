@@ -8,7 +8,7 @@ const SET_LOADING_STATUS = "SET_LOADING_STATUS";
 
 export const loadSingleProductAction = product => ({
   type: LOAD_SINGLE_PRODUCT,
-  payload: product,
+  payload: product
 });
 
 export const setLoadingStatus = () => ({
@@ -18,7 +18,7 @@ export const setLoadingStatus = () => ({
 export const singleProductReducer = (state = defaultStatus, action) => {
   if (action.type === LOAD_SINGLE_PRODUCT) {
     return{
-        //...state,
+        // ...state,
         data: action.payload,
         status: 'ready'
     } 

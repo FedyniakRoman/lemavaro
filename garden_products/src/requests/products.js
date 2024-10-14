@@ -10,13 +10,14 @@ export const getAllProducts = () => (dispatch) => {
     .catch(err => console.error('Error fetching products:', err));
 }
 
-export const getSingleProductPage =(product_id) =>  (dispatch) => {
+export const getSingleProduct =(product_id)=> {
+return dispatch  => {
     fetch(`http://localhost:3333/products/${product_id}`)
     .then(res => res.json())
     .then(json => dispatch(loadSingleProductAction(json)))
-    .catch(err => console.error("Error fetching product:", err))
+    .catch(err =>  console.error("Error fetching product:", err))
     }
-
+}
 
 
 
