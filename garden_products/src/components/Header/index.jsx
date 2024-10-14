@@ -109,7 +109,9 @@ export default function Header() {
           <p className={s.header_image_text}>
             Amazing Discounts <br /> on Garden Products!
           </p>
-          <button className={s.header_image_button}>Check out</button>
+          <Link to="/sales" className={s.header_image_button}>
+  Check out
+</Link>
         </div>
       )}
 
