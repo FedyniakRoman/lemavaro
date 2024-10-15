@@ -28,7 +28,12 @@ function CartPage() {
       </div>
       <div className={s.cart_container}>
         {cartState.length === 0 ? (
-          <p>Looks like you have no items in your basket currently.</p>
+          <div className={s.empty_container}>
+            <p className={s.empty_paragraph}>Looks like you have no items in your basket currently.</p>
+            <Link to="/" className={s.empty_button}>
+            Continue Shopping
+            </Link>
+            </div>
         ) : (
           <>
             <CartCortainer products={cartState} />

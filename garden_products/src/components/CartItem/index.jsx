@@ -15,7 +15,7 @@ function CartItem({ id, image, title, initialCount, price, discont_price }) {
  
   useEffect(() => {
     setSum(count * finalPrice);
-    setOldPrice(count * oldPrice)
+    setOldPrice(count * price)
   }, [count, finalPrice, price]);
   
   const increment = () => {
@@ -53,13 +53,13 @@ function CartItem({ id, image, title, initialCount, price, discont_price }) {
           {discont_price ? (
             <>
              {/* Новая цена отображается без зачеркнутого стиля */}
-             <p className={s.price_discounted}>{`$${sum}`}</p>
+             <p className={s.price_discounted}>{`$${sum.toFixed(1)}`}</p>
               {/* Старая цена отображается зачеркнутой */}
-              <p className={s.price_original}>{`$${oldPrice}`}</p>
+              <p className={s.price_original}>{`$${oldPrice.toFixed(1)}`}</p>
             </>
           ) : (
             // Если скидки нет, отображаем только обычную цену без зачёркивания
-            <p className={s.price_no_discounted}>{`$${sum}`}</p>
+            <p className={s.price_no_discounted}>{`$${sum.toFixed(1)}`}</p>
           )}
           </div>
         </div>
