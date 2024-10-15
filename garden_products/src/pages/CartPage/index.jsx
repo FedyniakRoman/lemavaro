@@ -3,15 +3,16 @@ import CartCortainer from "../../components/CartCortainer";
 import { useSelector } from "react-redux";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
+import OrderForm from "../../components/OrderForm";
 
 function CartPage() {
   const cartState = useSelector((store) => store.cart);
 
-  let totalSum = cartState.reduce((acc, elem) => {
-    return elem.discont_price !== null
-      ? acc + (elem.discont_price * elem.initialCount)
-      : acc + (elem.price * elem.initialCount);
-  }, 0);
+  // let totalSum = cartState.reduce((acc, elem) => {
+  //   return elem.discont_price !== null
+  //     ? acc + (elem.discont_price * elem.initialCount)
+  //     : acc + (elem.price * elem.initialCount);
+  // }, 0);
 
   return (
     <section className={s.container}>
@@ -37,20 +38,7 @@ function CartPage() {
         ) : (
           <>
             <CartCortainer products={cartState} />
-            <div className={s.order_container}>
-              <h3 className={s.order_title}>Order details</h3>
-              <p className={s.total_items}>{`${cartState.length} items`}</p>
-              <div className={s.total_price_box}>
-                <p className={s.total_title}>Total</p>
-                <p className={s.total_sum}>{`$${totalSum}`}</p>
-              </div>
-              <form className={s.order_form}>
-                <input type="text" placeholder="Name" name="name" className={s.input} />
-                <input type="tel" placeholder="Phone number" className={s.input} />
-                <input type="email" placeholder="Email" className={s.input} />
-                <button className={s.form_button}>Checkout</button>
-              </form>
-            </div>
+            <OrderForm />
           </>
         )}
       </div>

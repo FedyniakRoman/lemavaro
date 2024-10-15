@@ -67,74 +67,7 @@
     transform: translateY(-50%); 
 }
 
-.order_container{
-    background-color: #F2F6D3;
-    border-radius: 12px;
-    max-height: 582px;
-    padding: 32px 32px 0;
-    width: 548px;
-}
 
-.order_title{
-    color: #282828;
-    font-weight: 700; 
-    padding-bottom: 24px;
-    font-size: 40px;
-    line-height: 44px;
-}
-.total_items{
-    color: #8b8b8b;
-    font-weight: 500;
-    font-size: 40px;
-}
-.total_price_box{
-    align-items: baseline;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 32px;
-}
-.total_title{
-    color: #8b8b8b;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 52px;
-}
-.total_sum{
-    color: #282828;
-    font-weight: 700;
-    font-size: 64px;
-}
-.order_form{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 32px;
-    row-gap: 16px;
-    width: 100%;
-}
-.input{
-    background-color: #fcfeff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    color: #8B8B8B;
-    font-size: 20px;
-    line-height: 26px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-    outline: none;
-    width: 100%;
-    padding: 16px 32px;
-
-}
-.form_button{
-    background-color: #92A134;
-    color: #fff;
-    padding: 16px 32px;
-    border: 1px solid #92A134;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
-}
 .empty_container{
     display: flex;
     flex-direction: column;
