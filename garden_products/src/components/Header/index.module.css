@@ -59,10 +59,13 @@
   gap: 20px;
 }
 
-.tree_icon, .switch_icon, .heart_icon, .bag_icon {
+.switch_icon, .heart_icon, .bag_icon {
   max-width: 48px;
   width: 100%;
   height: auto;
+}
+.tree_icon {
+  max-width: 70px;
 }
 
 .header_container_top {
@@ -273,4 +276,34 @@
 
 .add_to_cart_button:active {
   transform: scale(0.98);
+}
+
+.discount_badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #FF5733; 
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.price_display {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.original_price {
+  font-size: 20px;
+  color: #8b8b8b;
+  text-decoration: line-through;
+}
+
+.discounted_price {
+  font-size: 30px;
+  font-weight: 600;
+  color: #424436;
 }
