@@ -20,7 +20,9 @@ function ProductsByCategoryPage() {
   // Фильтрация продуктов по цене и наличию скидки
   const filteredProducts = data.filter(product => {
     const price = product.discont_price || product.price;
-    const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
+    const matchesPrice = 
+    (!minPrice || price >= minPrice) && // Если minPrice не указан, то условие true. Если minPrice есть, проверяется, что цена больше или равна minPrice
+    (!maxPrice || price <= maxPrice);   // Если maxPrice не указан, то условие true. Если maxPrice есть, проверяется, что цена меньше или равна maxPrice
     const matchesDiscount = !isDiscountedOnly || product.discont_price != null; // Если выбран "Discounted items"
     return matchesPrice && matchesDiscount;
   });
