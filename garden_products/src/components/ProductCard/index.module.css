@@ -61,6 +61,13 @@
     vertical-align: middle;
     color: white;
 }
+.btn_icon_bag:hover, .btn_icon_heart:hover {
+    color: #424436;
+}
+.green{
+    color: #92A134;
+}
+
 .add_btn_container{
     bottom: 30px;
     left: 10px;
