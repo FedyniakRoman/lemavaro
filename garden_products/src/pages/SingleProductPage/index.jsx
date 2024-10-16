@@ -24,6 +24,28 @@ export default function SingleProductPage() {
 
   return (
     <div className={s.container_single_card}>
+
+       <nav className={s.nav}>
+      <ul className={s.nav_list}>
+        <li className={s.item}>
+          <Link to={"/"} className={s.link}>
+            Main page
+          </Link>
+        </li>
+        <li className={s.item}>
+          <Link to={"/categories"}>Categories</Link>
+        </li>
+        <li className={s.all_card}>
+          <Link to={"/products"}> All Products</Link>
+        </li>
+        {product &&
+        <li className={s.item}>
+         
+          <Link to={`/products/${id}`}>{product.title} className={s.card_name}</Link>
+        </li>}
+      </ul>
+    </nav>
+
       {/* Блок с изображением продукта */}
       <div className={s.image_section}>
         <img

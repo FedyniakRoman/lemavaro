@@ -9,6 +9,54 @@
   padding-bottom: 40px;
 }
 
+/* 
+.nav {
+  margin: 2.5rem 0;
+}
+
+.nav_list {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #DDDDDD;
+  border-radius: .375rem;
+} */
+
+/* .item, .link, .all_card {
+
+  padding: 0 20px;
+  color:#8B8B8B;
+  padding: .5rem 1rem;
+  font-family: Montserrat;
+font-size: 16px;
+font-weight: 500;
+line-height: 20.16px;
+text-align: center;
+
+} */
+
+/* .item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -18px;
+  width: 18px;
+  height: 1px;
+  background-color: #DDDDDD;
+  transform: translateY(-50%);
+}
+
+.item:last-child::after {
+  content: none;
+} */
+/* 
+.card_name {
+  color: #424436;
+  border: 1px solid #DDDDDD;
+  border-radius: .375rem;
+  
+} */
 
 .image {
   width: 760px;
