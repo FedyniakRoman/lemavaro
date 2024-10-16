@@ -19,7 +19,7 @@ export const singleProductReducer = (state = defaultStatus, action) => {
   if (action.type === LOAD_SINGLE_PRODUCT) {
     return{
         // ...state,
-        data: action.payload,
+        data: action.payload[0] || {},
         status: 'ready'
     } 
 }  else if (action.type === SET_LOADING_STATUS) {
