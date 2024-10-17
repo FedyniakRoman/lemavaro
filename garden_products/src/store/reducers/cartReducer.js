@@ -4,6 +4,7 @@ const DELETE_PRODUCT_FROM_CART = "DELETE_PRODUCT_FROM_CART";
 const DECREMENT_COUNT = 'DECREMENT_COUNT';
 const INCREMENT_COUNT = 'INCREMENT_COUNT';
 
+
 // Action для добавления продукта в корзину
 export const addProductToCartAction = (product) => ({
   type: ADD_PRODUCT_TO_CART,  // Тип действия
