@@ -7,7 +7,8 @@ import OrderForm from "../../components/OrderForm";
 
 function CartPage() {
   const cartState = useSelector((store) => store.cart);
-
+  console.log('cartState', cartState);
+  
   // let totalSum = cartState.reduce((acc, elem) => {
   //   return elem.discont_price !== null
   //     ? acc + (elem.discont_price * elem.initialCount)
