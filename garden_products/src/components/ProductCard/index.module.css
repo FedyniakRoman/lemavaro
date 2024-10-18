@@ -44,30 +44,30 @@
     top: 16px;
 }
 
-/* Standard styles für die Icons */
 .btn_icon_heart, .btn_icon_bag {
     cursor: pointer;
     width: 48px;
     height: auto;
     vertical-align: middle;
-    fill: white; /* Standard-Farbe */
-    stroke: black;
-    stroke-width: 0.5;
-    transition: fill 0.3s ease, stroke 0.3s ease; /* Smooth transition */
+    fill: white; 
+    stroke: #424436;
+    stroke-width: 0.7;
+    transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-/* Farbe ändert sich bei Hover */
 .btn_icon_bag:hover, .btn_icon_heart:hover {
-    fill: #92A134; /* Grün bei Hover */
-    stroke:  #92A134; 
+    fill: #424436; 
+    stroke:  #424436; 
 }
 
-/* Farbe ändert sich nach dem Klick */
 .green {
-    fill: #92A134; /* Grün nach dem Klick */
+    fill: #92A134; 
     stroke:  #92A134; 
 }
-
+.added_bag:hover{
+    fill: #92A134; 
+    stroke:  #92A134; 
+}
 .add_btn_container {
     bottom: 30px;
     left: 10px;
@@ -97,15 +97,11 @@
 }
 
 .add_btn:hover {
-    background-color: #424436; /* Hover für nicht hinzugefügte Produkte */
-}
-
-.added:hover {
-    background-color: #92A134; /* Hover für hinzugefügte Produkte bleibt die gleiche Farbe */
+    background-color: #424436; 
 }
 
 .add_btn.added {
-    background-color: #FFFFF1; /* Farbe, wenn es hinzugefügt wurde */
+    background-color: #FFFFF1; 
     color: #424436;
 }
 
