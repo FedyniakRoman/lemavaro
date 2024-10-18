@@ -1,20 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CartCortainer from "../../components/CartCortainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
 import OrderForm from "../../components/OrderForm";
+import { deleteAllAction } from "../../store/reducers/cartReducer";
+// import { ContextProvider } from '../../context';
 
 function CartPage() {
   const cartState = useSelector((store) => store.cart);
-  console.log('cartState', cartState);
-  
-  // let totalSum = cartState.reduce((acc, elem) => {
-  //   return elem.discont_price !== null
-  //     ? acc + (elem.discont_price * elem.initialCount)
-  //     : acc + (elem.price * elem.initialCount);
-  // }, 0);
+  const dispatch = useDispatch()
+  const addNewOrder = (newOrder) => {
+    fetch('http://localhost:3333/order/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
 
+  const clearCart = () => {
+    dispatch(deleteAllAction())
+  }
   return (
     <section className={s.container}>
       <div className={s.title_container}>
@@ -29,20 +39,21 @@ function CartPage() {
         </div>
       </div>
       <div className={s.cart_container}>
-        {cartState.length === 0 ? (
-          <div className={s.empty_container}>
-            <p className={s.empty_paragraph}>Looks like you have no items in your basket currently.</p>
-            <Link to="/" className={s.empty_button}>
-            Continue Shopping
-            </Link>
+        {/* <ContextProvider> */}
+          {cartState.length === 0 ? (
+            <div className={s.empty_container}>
+              <p className={s.empty_paragraph}>Looks like you have no items in your basket currently.</p>
+              <Link to="/" className={s.empty_button}>Continue Shopping</Link>
             </div>
-        ) : (
-          <>
-            <CartCortainer products={cartState} />
-            <OrderForm />
-          </>
-        )}
+          ) : (
+            <>
+              <CartCortainer products={cartState} />
+              <OrderForm addNewOrder={addNewOrder} clearCart={clearCart}/>
+            </>
+          )}
+        {/* </ContextProvider> */}
       </div>
+      
     </section>
   );
 }

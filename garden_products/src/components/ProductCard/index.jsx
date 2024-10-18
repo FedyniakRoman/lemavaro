@@ -63,7 +63,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <div className={s.icons_container}>
           <TiHeartFullOutline className={s.btn_icon_heart} />
           <BsHandbagFill
-            className={`${s.btn_icon_bag} ${isInCart ? s.green : ""}`}
+            className={`${s.btn_icon_bag} ${isInCart ? s.green : ""} ${isInCart ? s.added_bag : ""}`}
             onClick={handleBagClick}
           />
         </div>
