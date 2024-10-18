@@ -12,6 +12,9 @@
     transition: all .3s ease-in-out;
 }
 
+/* ----------------------------------- */
+
+/* Контейнер для изображения продукта */
 .img_container {
     position: relative;
 }
@@ -35,6 +38,9 @@
     opacity: 0.5;
 }
 
+/* --------------------- */
+
+/* Контейнер для иконок */
 .icons_container {
     display: flex;
     flex-direction: column;
@@ -43,31 +49,39 @@
     right: 16px;
     top: 16px;
 }
-
+/* Стиль иконок "сердце" и "сумка" */
 .btn_icon_heart, .btn_icon_bag {
     cursor: pointer;
     width: 48px;
     height: auto;
     vertical-align: middle;
-    fill: white; 
-    stroke: #424436;
+    fill: white; /* Начальный цвет заливки */
+    stroke: #424436; /* Цвет обводки */
     stroke-width: 0.7;
     transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
+/* Эффект наведения для иконок */
 .btn_icon_bag:hover, .btn_icon_heart:hover {
     fill: #424436; 
     stroke:  #424436; 
 }
 
+/* Зеленая заливка и обводка после клика */
 .green {
     fill: #92A134; 
     stroke:  #92A134; 
 }
+
+/* Зеленый цвет при наведении, если товар добавлен в корзину */
 .added_bag:hover{
     fill: #92A134; 
     stroke:  #92A134; 
 }
+
+/* --------------------------------------- */
+
+/* Контейнер для кнопки добавления товара */
 .add_btn_container {
     bottom: 30px;
     left: 10px;
@@ -79,6 +93,7 @@
     margin: 0 auto;
 }
 
+/* Отображение кнопки при наведении на карточку */
 .card:hover .add_btn_container {
     opacity: 1;
 }
@@ -96,15 +111,20 @@
     line-height: 130%;
 }
 
+/* Эффект наведения для кнопки */
 .add_btn:hover {
     background-color: #424436; 
 }
 
+/* Стиль кнопки, когда товар добавлен в корзину */
 .add_btn.added {
     background-color: #FFFFF1; 
     color: #424436;
 }
 
+/* ------------------------------------ */
+
+/* Контейнер для информации о продукте */
 .products_information {
     align-items: flex-start;
     display: flex;
@@ -135,6 +155,9 @@
     text-overflow: ellipsis;
 }
 
+/* ------------------- */
+
+/* Контейнер для цены */
 .price_container {
     align-items: center;
     display: flex; 
@@ -161,6 +184,9 @@
     color: #424436; 
 }
 
+/* --------------------------------------------- */
+
+/* Контейнер для отображения скидки в процентах */
 .sale_value_container {
     align-items: flex-start;
     display: flex;
