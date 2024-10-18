@@ -1,4 +1,4 @@
-.card {
+.card { 
     background-color: #FFFFFF;
     align-items: flex-start;
     border: 1px solid #ddd;
@@ -43,32 +43,32 @@
     right: 16px;
     top: 16px;
 }
-.btn_icon_heart {
+
+/* Standard styles für die Icons */
+.btn_icon_heart, .btn_icon_bag {
     cursor: pointer;
     width: 48px;
     height: auto;
     vertical-align: middle;
-    color: white;
+    fill: white; /* Standard-Farbe */
+    stroke: black;
+    stroke-width: 0.5;
+    transition: fill 0.3s ease, stroke 0.3s ease; /* Smooth transition */
 }
 
-.btn_icon_bag{
-    background-color: initial;
-    border: none;
-    cursor: pointer;
-    width: 48px;
-    height: auto;
-    max-width: 100%;
-    vertical-align: middle;
-    color: white;
-}
+/* Farbe ändert sich bei Hover */
 .btn_icon_bag:hover, .btn_icon_heart:hover {
-    color: #424436;
-}
-.green{
-    color: #92A134;
+    fill: #92A134; /* Grün bei Hover */
+    stroke:  #92A134; 
 }
 
-.add_btn_container{
+/* Farbe ändert sich nach dem Klick */
+.green {
+    fill: #92A134; /* Grün nach dem Klick */
+    stroke:  #92A134; 
+}
+
+.add_btn_container {
     bottom: 30px;
     left: 10px;
     opacity: 0;
@@ -97,7 +97,16 @@
 }
 
 .add_btn:hover {
-    background-color: #424436;
+    background-color: #424436; /* Hover für nicht hinzugefügte Produkte */
+}
+
+.added:hover {
+    background-color: #92A134; /* Hover für hinzugefügte Produkte bleibt die gleiche Farbe */
+}
+
+.add_btn.added {
+    background-color: #FFFFF1; /* Farbe, wenn es hinzugefügt wurde */
+    color: #424436;
 }
 
 .products_information {
@@ -130,12 +139,10 @@
     text-overflow: ellipsis;
 }
 
-
 .price_container {
     align-items: center;
     display: flex; 
 }
-
 
 .price_original {
     font-size: 20px;
@@ -144,7 +151,6 @@
     text-decoration: line-through; 
     padding-right: 16px;
 }
-
 
 .price_discounted {
     font-size: 30px;
@@ -159,7 +165,6 @@
     color: #424436; 
 }
 
-
 .sale_value_container {
     align-items: flex-start;
     display: flex;
@@ -168,7 +173,6 @@
     position: absolute;
     top: 16px;
 }
-
 
 .sale_value {
     background: #F26D22;
