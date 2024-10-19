@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import OrderModal from "../OrderModal";
+
 import { useSelector } from "react-redux";
 import s from "./index.module.css";
 
-function OrderForm({ addNewOrder, clearCart }) {
+function OrderForm({ addNewOrder, clearCart, setIsModalOpen }) {  
     const cartState = useSelector((store) => store.cart);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // Рассчитываем общую сумму заказа
     let totalSum = cartState.reduce((acc, elem) => {
         return elem.discont_price !== null
             ? acc + (elem.discont_price * elem.count)
             : acc + (elem.price * elem.count);
     }, 0);
 
+    // Обработчик отправки формы
     const submitOrder = (event) => {
-        event.preventDefault();
-        const { name, phone, email } = event.target;
-
+        event.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
+        const { name, phone, email } = event.target; // Получаем данные из формы
         const newOrder = {
-            id: Date.now(),
+            id: Date.now(), // Создаем уникальный ID заказа
             name: name.value,
             phone: phone.value,
             email: email.value
         };
-        addNewOrder(newOrder);
-        clearCart();
-        setIsModalOpen(true);
-        event.target.reset();
+        addNewOrder(newOrder); // Отправляем заказ
+        clearCart(); // Очищаем корзину после заказа
+        setIsModalOpen(true);  // Открываем модальное окно для подтверждения
+        event.target.reset(); // Очищаем форму
     };
 
     return (
@@ -43,7 +42,6 @@ function OrderForm({ addNewOrder, clearCart }) {
                 <input type="email" placeholder="Email" name="email" className={s.input} />
                 <button className={s.form_button}>Checkout</button>
             </form>
-            <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 }

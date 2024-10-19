@@ -3,13 +3,13 @@ import { IoIosClose } from "react-icons/io";
 import s from "./index.module.css";
 
 function OrderModal({ isOpen, onClose }) {
-    if (!isOpen) return null;
+    if (!isOpen) return null; // Если окно не открыто, ничего не отображаем
 
     return (
         <>
             {isOpen && (
                 <div className={s.modal_overlay}>
-                    <div className={s.modal_content}> {/* Hier das schließende > hinzugefügt */}
+                    <div className={s.modal_content}>
                         <h3 className={s.sub_title}>Congratulations!</h3>
                         <p className={s.content}>
                             Your order has been successfully placed on the website.

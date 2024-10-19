@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useState } from "react"; // useState hier importieren
 import CartCortainer from "../../components/CartCortainer";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
 import OrderForm from "../../components/OrderForm";
 import { deleteAllAction } from "../../store/reducers/cartReducer";
-// import { ContextProvider } from '../../context';
+import OrderModal from "../../components/OrderModal";
 
 function CartPage() {
   const cartState = useSelector((store) => store.cart);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна (открыто/закрыто)
+
+  // Функция для отправки нового заказа
   const addNewOrder = (newOrder) => {
-    fetch('http://localhost:3333/order/send', {
-      method: 'POST',
+    fetch("http://localhost:3333/order/send", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json;charset=utf-8',
+        "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(newOrder),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => console.log(json)); // Выводим ответ сервера в консоль
   };
 
   const clearCart = () => {
-    dispatch(deleteAllAction())
-  }
+    dispatch(deleteAllAction()); // Отправляем действие для удаления всех товаров из корзины
+  };
+
   return (
     <section className={s.container}>
       <div className={s.title_container}>
@@ -39,21 +43,30 @@ function CartPage() {
         </div>
       </div>
       <div className={s.cart_container}>
-        {/* <ContextProvider> */}
-          {cartState.length === 0 ? (
-            <div className={s.empty_container}>
-              <p className={s.empty_paragraph}>Looks like you have no items in your basket currently.</p>
-              <Link to="/" className={s.empty_button}>Continue Shopping</Link>
-            </div>
-          ) : (
-            <>
-              <CartCortainer products={cartState} />
-              <OrderForm addNewOrder={addNewOrder} clearCart={clearCart}/>
-            </>
-          )}
-        {/* </ContextProvider> */}
+        {cartState.length === 0 ? (
+          <div className={s.empty_container}>
+            <p className={s.empty_paragraph}>
+              Looks like you have no items in your basket currently.
+            </p>
+            <Link to="/" className={s.empty_button}>
+              Continue Shopping
+            </Link>
+          </div>
+        ) : (
+          <>
+            {/* Отображаем содержимое корзины */}
+            <CartCortainer products={cartState} />
+            {/* Передаем функции для оформления заказа и открытия модального окна */}
+            <OrderForm
+              addNewOrder={addNewOrder}
+              clearCart={clearCart}
+              setIsModalOpen={setIsModalOpen}
+            />
+          </>
+        )}
       </div>
-      
+      {/* Модальное окно для подтверждения заказа */}
+      <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

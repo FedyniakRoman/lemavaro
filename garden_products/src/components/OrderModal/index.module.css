@@ -9,30 +9,31 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    padding: 20px;
+    padding: 32px;
 }
 .modal_content {
-    background-color: #92A134;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 404px; 
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  background-color: #92A134;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 424px;
+  position: absolute; /* Ändern von relative zu absolute */
+  top: 260px; /* Abstand von oben */
+  left: 226px; /* Abstand von links */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+}
 
   .sub_title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 35px;
     line-height: 44px;
-    color: #ffffff;
+    /* color: #ffffff; */
     margin: 0;
-    max-width: 424px;
+    /* max-width: 424px; */
     
   }
   
