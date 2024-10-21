@@ -66,7 +66,12 @@ function CartPage() {
         )}
       </div>
       {/* Модальное окно для подтверждения заказа */}
-      <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <OrderModal 
+      isOpen={isModalOpen} 
+      onClose={() => {
+        setIsModalOpen(false)
+        clearCart()
+        }} />
     </section>
   );
 }

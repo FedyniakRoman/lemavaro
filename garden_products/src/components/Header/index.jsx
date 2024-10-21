@@ -7,6 +7,7 @@ import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
 import ProductCard from "../ProductCard";
 import ThemeToggle from "../ThemeToggle"; // Импорт компонента для переключения Темы Приложения
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const location = useLocation();
@@ -77,7 +78,7 @@ export default function Header() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
+  const cartState = useSelector(state => state.cart)
   return (
     <header className={s.nav_container}>
       <div className={s.header_container_top}>
@@ -114,11 +115,13 @@ export default function Header() {
         </nav>
 
         <div className={s.nav_icons_right}>
-          <Link to={"/favorites"}>
+          <Link to={"/favorites"} className={s.icon_box}>
             <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+            <span className={s.favorite_count}>0</span>
           </Link>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} className={s.icon_box}>
             <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+            <span className={s.cart_count}>{cartState.reduce((total, product) => total + product.count, 0)}</span>
           </Link>
         </div>
       </div>
