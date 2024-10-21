@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import s from "./index.module.css";
 
-function OrderForm({ addNewOrder, clearCart, setIsModalOpen }) {  
+function OrderForm({ addNewOrder, setIsModalOpen }) {  
     const cartState = useSelector((store) => store.cart);
 
     // Рассчитываем общую сумму заказа
@@ -23,7 +23,6 @@ function OrderForm({ addNewOrder, clearCart, setIsModalOpen }) {
             email: email.value
         };
         addNewOrder(newOrder); // Отправляем заказ
-        clearCart(); // Очищаем корзину после заказа
         setIsModalOpen(true);  // Открываем модальное окно для подтверждения
         event.target.reset(); // Очищаем форму
     };
@@ -34,7 +33,7 @@ function OrderForm({ addNewOrder, clearCart, setIsModalOpen }) {
             <p className={s.total_items}>{`${cartState.length} items`}</p>
             <div className={s.total_price_box}>
                 <p className={s.total_title}>Total</p>
-                <p className={s.total_sum}>{`$${totalSum}`}</p>
+                <p className={s.total_sum}>{`$${totalSum.toFixed(2)}`}</p>
             </div>
             <form onSubmit={submitOrder} className={s.order_form}>
                 <input type="text" placeholder="Name" name="name" className={s.input} />
