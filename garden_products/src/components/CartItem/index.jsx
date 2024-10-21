@@ -9,6 +9,8 @@ import {
   incrementCountAction,
 } from "../../store/reducers/cartReducer";
 
+import backendUrl from "../../config";
+
 // Компонент для отображения товара в корзине
 function CartItem({ id, image, title, count, price, discont_price }) {
   const dispatch = useDispatch(); // Инициализация функции dispatch для вызова действий в Redux
@@ -19,7 +21,7 @@ function CartItem({ id, image, title, count, price, discont_price }) {
   return (
     <div className={s.card}>
       <img
-        src={`http://localhost:3333${image}`} // Путь к изображению товара
+        src={`${backendUrl}${image}`} // Путь к изображению товара
         alt={title}
         className={s.img} // Применение стилей к изображению
       />

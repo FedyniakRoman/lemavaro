@@ -12,7 +12,7 @@ export const loadCategoriesAction = categories => ({
 })
 export const changeStatusAction = () => ({ type: CHANGE_STATUS_TO_LOADING });
 
-export const categoriesReducer = (state = defaultCategoriesState , action) => {
+export const categoriesReducer = (state = defaultCategoriesState, action) => {
     if(action.type === LOAD_CATEGORIES){
         return {
             data: action.payload,

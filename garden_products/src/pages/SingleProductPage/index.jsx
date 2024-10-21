@@ -5,6 +5,7 @@ import { getSingleProduct } from "../../requests/products";
 import s from "./index.module.css";
 import heartIcon from "../../assets/images/heartWhite.svg";
 import { setLoadingStatus } from "../../store/reducers/singleProductReducer";
+import backendUrl from "../../config";
 
 export default function SingleProductPage() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ export default function SingleProductPage() {
       {/* Блок с изображением продукта */}
       <div className={s.image_section}>
         <img
-          src={`http://localhost:3333${image}`}
+          src={`${backendUrl}${image}`} //Запрос картинки
           alt={title}
           className={s.image}
         />

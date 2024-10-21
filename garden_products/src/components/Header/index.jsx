@@ -8,6 +8,7 @@ import s from "./index.module.css";
 import ProductCard from "../ProductCard";
 import ThemeToggle from "../ThemeToggle"; // Импорт компонента для переключения Темы Приложения
 import { useSelector } from "react-redux";
+import backendUrl from "../../config";
 
 export default function Header() {
   const location = useLocation();
@@ -47,7 +48,7 @@ export default function Header() {
 
     // Если товара нет в localStorage или дата не совпадает — загружаем новый товар
     try {
-      const response = await fetch("http://localhost:3333/products/all");
+      const response = await fetch(`${backendUrl}/products/all`); //Путь к серверу, ко всем товарам.
       if (!response.ok) {
         throw new Error("Error fetching products");
       }
