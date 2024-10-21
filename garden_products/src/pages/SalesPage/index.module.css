@@ -13,7 +13,6 @@
     align-items: center;
     display: flex;
     gap: 1rem;
-    padding-left: 20px;
 }
 
 .item {
@@ -47,7 +46,6 @@
 
 .wrapper {
     margin-bottom: 5rem;
-    padding: 0 20px;
 }
 
 .title {
