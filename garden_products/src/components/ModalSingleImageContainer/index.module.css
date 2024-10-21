@@ -1,0 +1,21 @@
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1000; 
+}
+
+.modal_content {
+  position: relative;
+}
+
+.image {
+  width: Hug (900px)px;
+  height: Hug (610px)px;  
+}

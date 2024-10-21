@@ -1,26 +1,99 @@
 .container_single_card {
   max-width: 1360px;
-  padding: 20px;
+  margin: 0px auto;
+
+}
+
+.nav_container {
+  width: 603px;
+  height: auto; /* Уберите фиксированную высоту, если она не нужна */
+  margin-bottom: 30px;
+  padding-top: 30px;
+  position: relative;
+}
+
+.nav_list {
   display: flex;
   flex-direction: row;
-  margin: 0px auto;
-  margin-top: 50px;
-  gap: 32px;
-  padding-bottom: 40px;
+  list-style-type: none;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.item {
+  padding: .5rem 1rem;
+  border: 1px solid #DDDDDD;
+  border-radius: .375rem;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1;
+  position: relative; 
+  
+}
+
+.link {
+  color: #8B8B8B;
+  
+}
+
+.card_name {
+  color: #424436; 
+}
+
+.nav_list::after {
+  position: absolute;
+  top: 100%; /* Перемещаем линию вниз, чтобы она была под элементами */
+  left: 0; 
+  right: 0; 
+  height: 1px; 
+  background-color: #DDDDDD; 
+  z-index: 0; 
+}
+
+.item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -18px;
+  width: 18px;
+  height: 1px;
+  background-color: #DDDDDD;
+  transform: translateY(-50%);
+}
+
+.item:last-child::after {
+  content: none;
+}
+
+.product_details {
+  display: flex;
+  flex-direction: row;
+  gap: 30px; 
+}
+
+.image_container {
+  flex: 1;
 }
 
 
 .image {
-  width: 760px;
-  max-height: 572px;
+  
   border-radius: 10px;
-  margin-bottom: 30px;
-  flex-shrink: 0;
+  margin-bottom: 30px; 
+
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+    height:auto;
+    
+
 }
 
-.inform_section {
+
+.inform_container {
   max-width: 640px;
-  height: 572px;
+  height: auto;;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,14 +102,17 @@
 
 }
 
+.inform_container{
+display: flex;
+flex-direction: column;
+}
 
-.section_title_and_icons {
+.container_title_and_icons {
+  width:548px;
+height: 48px;
   gap: 16px;
-  opacity: 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 
+  display: flex;
 }
 
 
@@ -46,21 +122,20 @@
   font-size: 40px;
   font-weight: 700;
   line-height: 44px;
-  letter-spacing: 0.03em;
+ 
   text-align: left;
 }
 
-.icon_heart {
-  margin-left: auto;
-  cursor: pointer;
-  color: #424436;
-  width: 44px;
-  height: 38px;
 
+
+.icon_heart {
+  width: 58px;
+height: 48px;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
-
-.price_section {
+.price_container {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -90,74 +165,64 @@
   text-decoration: line-through;
 
 }
-
-
-.discount_badge {
-  color: #FFFFFF;
+.discount_badge{
   background-color: #F26D22;
-  width: 47px;
-  height: 26px;
+  color: #FFFFFF;
+  width: 55px;
+  height: 30px;
+  padding: 4px 8px 4px 8px;
+  gap: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -10px;
+}
+
+
+
+.count_container {
+  display:flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count_button_container{
+  width: 200px;
+  display: flex;
+}
+
+.count_button {
+  width: 48px;
+  height: 55px;
+  border: 1px solid #DDDDDD;
+  background-color: #fff;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-
-  position: relative;
-  top: -20px;
-  margin-bottom: 10px;
-
+ 
 }
 
-
-
-.add_to_cart_section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-top: 20px;
-  margin-bottom: 20px;
-  gap: 32px;
+.count_minus, .count_plus {
+  width: 20px;
+  height: 20px;
+  color: #8B8B8B;
 }
 
-.quantity_controls {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid #DDDDDD;
-  border-radius: 6px;
+.count_value {
+  width: 96px;
   height: 55px;
-  width: 210px;
-  overflow: hidden;
-}
-
-
-.quantity_btn {
-  width: 28%;
-  height: 55px;
-
-  border: 1px solid #DDDDDD;
-  background-color: #fff;
-  color: #DDDDDD;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.quantity_btn:hover {
-  background-color: #92A134;
-  cursor: pointer;
-}
-
-
-.quantity_value {
-  font-size: 20px;
-  width: 40px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  color: #424436;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .add_btn {
@@ -209,6 +274,4 @@
   text-align: left;
   color: #424436;
   text-decoration: underline;
-margin-bottom: 30px;
-
 }

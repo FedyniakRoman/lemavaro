@@ -15,6 +15,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ThemeToggle from './components/ThemeToggle/index.jsx';
+
 //---------------------------------------------------------------------
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path='/sales' element={<SalesPage />} /> 
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='*' element={<NotFoundPage />} />
+     
       </Routes>
 <Footer/>
 
