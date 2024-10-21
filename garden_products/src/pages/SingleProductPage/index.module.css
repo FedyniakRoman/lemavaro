@@ -72,10 +72,16 @@
   flex: 1;
 }
 .image {
-  width: 760px;
-  max-height: 572px;
+  /* width: 760px;
+  max-height: 572px;*/
   border-radius: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 30px; 
+
+    object-fit: cover;
+    position: relative;
+    width: 780px;
+    height: 572px;
+
 }
 
 .inform_container {
@@ -169,7 +175,7 @@ color: green;
   flex-direction: column;
   align-items: center;
   position: relative;
-  top: -20px;
+  top: -10px;
 }
 
 

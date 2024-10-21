@@ -24,7 +24,10 @@ export default function SingleProductPage() {
 
   const { status, data } = singleProductState || { status: "loading", data: [], };
 
-  const { title, price, discont_price, description, image, count } = data;
+  const { title, price, discont_price, description, image} = data;
+  
+    const cartState = useSelector(store => store.cart)
+  const productCart = cartState.find(item => item.id === parseInt(id));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -66,8 +69,8 @@ export default function SingleProductPage() {
           </li>
           {data && (
             <li className={s.item}>
-              <Link to={`/products/${id}`}>
-                {data.title} className={s.card_name}
+              <Link  className={s.card_name} to={`/products/${id}`}>
+                {data.title}
               </Link>
             </li>
           )}
@@ -124,28 +127,20 @@ export default function SingleProductPage() {
       <div className={s.count_container}>
         <div className={s.count_button_container}>
       <button  className={s.count_button}
-          onClick={() => dispatch(decrementCountAction(id))}><AiOutlineMinus className={s.count_minus}/></button>
+          onClick={() => dispatch(decrementCountAction(id))}>
+            <AiOutlineMinus className={s.count_minus}/></button>
 
-           <p className={s.count_value}>{count}</p> {/* Количество товаров */}
+           <p className={s.count_value}>{productCart?.count || 0}</p> {/* Количество товаров */}
 
             <button className={s.count_button}
-          onClick={() => dispatch(incrementCountAction(id))}> <AiOutlinePlus className={s.count_plus}/></button>
+          onClick={() =>   dispatch(incrementCountAction(id))}> 
+          <AiOutlinePlus className={s.count_plus}/> {productCart?.count}</button>
       
-        {/* <AiOutlineMinus
-          className={s.count_button}
-          onClick={() => dispatch(decrementCountAction(id))}
-          
-        /> */}
-        {/* <p className={s.count_value}>{count}</p> Количество товаров */}
-
-        {/* <AiOutlinePlus
-          className={`${s.count_button} ${s.count_plus}`}
-          onClick={() => dispatch(incrementCountAction(id))}
-        /> */}
      </div>
+  
         <button
           className={s.add_btn}
-          onClick={() => dispatch(addProductToCartAction(id))}
+          onClick={() => dispatch(addProductToCartAction({ id, title, price, discont_price, image} ))}
         >
           Add to cart
         </button>
