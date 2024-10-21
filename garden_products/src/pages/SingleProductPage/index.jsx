@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { getSingleProduct } from "../../requests/products";
 import { IoIosHeart,IoIosHeartEmpty  } from "react-icons/io";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import ModalImagePage from "../ModalImagePage/modalImage";
+import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
   decrementCountAction,
   incrementCountAction,
@@ -40,11 +40,11 @@ export default function SingleProductPage() {
   };
 
 
-  const [isFavorite, setIsFavorite] = useState(false) //Состояние для управления иконкой избранного
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);  // Переключаем состояние избранного
+  // const [isFavorite, setIsFavorite] = useState(false) //Состояние для управления иконкой избранного
+  // const handleFavoriteClick = () => {
+  //   setIsFavorite(!isFavorite);  // Переключаем состояние избранного
 
-  };
+  // };
 
   return (
     <div className={s.container_single_card}>
@@ -87,7 +87,7 @@ export default function SingleProductPage() {
           onClick={handleImageClick}
           style={{ cursor: "pointer" }}
         />
-        <ModalImagePage
+        <ModalSingelImageContainer
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           image={`http://localhost:3333${image}`}
@@ -101,11 +101,9 @@ export default function SingleProductPage() {
             <h3 className={s.title}>{`${title}`}</h3>
           </Link>
           <div className={s.icons_container}>
-          {isFavorite ? (
-        <IoIosHeart className={`${s.icon_heart} ${s.green}`} onClick={handleFavoriteClick} />
-      ) : (
-        <IoIosHeartEmpty className={`${s.icon_heart}`} onClick={handleFavoriteClick} />
-      )}
+          
+            <IoIosHeartEmpty className={s.icon_heart} />
+          
           </div>
         </div>
 
