@@ -42,14 +42,28 @@
     position: absolute;
     right: 16px;
     top: 16px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
 }
+
+.card:hover .icons_container {
+    opacity: 1;
+}
+
+
 .btn_icon_heart {
     cursor: pointer;
     width: 48px;
     height: auto;
     vertical-align: middle;
     color: white;
+    background-color: initial;
+    border: none;
+    transition: color .3s ease-in-out;
 }
+
+
+
 
 .btn_icon_bag{
     background-color: initial;
@@ -61,6 +75,7 @@
     vertical-align: middle;
     color: white;
 }
+
 .add_btn_container{
     bottom: 30px;
     left: 10px;
@@ -92,6 +107,7 @@
 .add_btn:hover {
     background-color: #424436;
 }
+
 
 .products_information {
     align-items: flex-start;
@@ -129,7 +145,6 @@
     display: flex; 
 }
 
-
 .price_original {
     font-size: 20px;
     color: #8b8b8b;
@@ -137,7 +152,6 @@
     text-decoration: line-through; 
     padding-right: 16px;
 }
-
 
 .price_discounted {
     font-size: 30px;
@@ -152,7 +166,7 @@
     color: #424436; 
 }
 
-
+/* Скидка */
 .sale_value_container {
     align-items: flex-start;
     display: flex;
@@ -161,7 +175,6 @@
     position: absolute;
     top: 16px;
 }
-
 
 .sale_value {
     background: #F26D22;

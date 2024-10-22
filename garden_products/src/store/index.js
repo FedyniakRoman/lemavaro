@@ -5,6 +5,7 @@ import { productsReducer } from './reducers/productsReducer';
 import themeReducer from './reducers/themeReducer';     //Импорт themeReducer. Автоматически импортировался без фигурных скобок. Пока что оставляю так... (Lev)
 import { cartReducer } from './reducers/cartReducer';
 import {singleProductReducer} from './reducers/singleProductReducer'
+import { favoritesReducer } from './reducers/favoritesReducer';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     theme: themeReducer,                     //Редьюсер для Смены Темы.
     cart: cartReducer,
     singleProduct:singleProductReducer,
+    favorites: favoritesReducer,
 
 
 })

@@ -92,12 +92,6 @@ export default function Header() {
 
           <ThemeToggle />
 
-          {/* <img
-            className={s.switch_icon}
-            src={switchIcon}
-            alt="Switch Icon"
-            style={{ cursor: "pointer" }}
-          /> */}
         </div>
 
         <nav className={s.nav_menu_container}>
@@ -122,12 +116,14 @@ export default function Header() {
           </Link>
         </div>
       </div>
+      <div className="header_bottom_container"></div>
 
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
-          <p className={s.header_image_text}>
+          <h1 className={s.header_image_text}>
             Amazing Discounts <br /> on Garden Products!
-          </p>
+          </h1>
+          
           <Link to="/sales" className={s.header_image_button}>
             Check out
           </Link>
