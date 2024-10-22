@@ -3,17 +3,20 @@ import s from "./index.module.css";
 import { Link } from "react-router-dom";
 import { BsHandbagFill } from "react-icons/bs";
 import { TiHeartFullOutline } from "react-icons/ti";
-import { addProductToFavoritesAction, deleteProductFromFavoritesAction } from "../../store/reducers/favoritesReducer"; // Убедитесь, что это импортировано
+import { addProductToFavoritesAction, deleteProductFromFavoritesAction } from "../../store/reducers/favoritesReducer"; // Импорт действий для избранного
+import { addProductToCartAction, deleteProductFromCartAction } from "../../store/reducers/cartReducer"; // Импорт действий для корзины
 import { useDispatch, useSelector } from "react-redux";
 
 function ProductCard({ id, title, image, price, discont_price }) {
   const dispatch = useDispatch();
 
-  // Получаем список избранных товаров из store
+  // Получаем список избранных товаров и товаров в корзине из store
   const favorites = useSelector((store) => store.favorites);
-  
-  // Ищем текущий товар в избранном
+  const cart = useSelector((store) => store.cart);
+
+  // Ищем текущий товар в избранном и корзине
   const favoriteProduct = favorites.find((product) => product.id === id);
+  const isInCart = cart.some((product) => product.id === id);
 
   // Функция добавления/удаления товара в избранное
   const handleToggleFavorite = () => {
@@ -24,6 +27,18 @@ function ProductCard({ id, title, image, price, discont_price }) {
     }
   };
 
+  // Функция для обработки клика на иконку корзины
+  const handleBagClick = () => {
+    const productInCart = cart.find((product) => product.id === id);
+
+    if (productInCart) {
+      dispatch(deleteProductFromCartAction(id)); // Удаляем товар из корзины
+    } else {
+      dispatch(addProductToCartAction({ id, title, image, price, discont_price })); // Добавляем товар в корзину
+    }
+  };
+
+  // Функция для вычисления скидки
   const calculateSaleValue = (price, discont_price) => {
     if (price > 0 && discont_price !== null) {
       const saleValue = ((price - discont_price) / price) * 100;
@@ -47,7 +62,10 @@ function ProductCard({ id, title, image, price, discont_price }) {
             onClick={handleToggleFavorite}
             style={{ color: favoriteProduct ? '#92A134' : 'white' }} // Закрашиваем иконку зелёным, если товар в избранном
           />
-          <BsHandbagFill className={s.btn_icon_bag} />
+          <BsHandbagFill
+            className={`${s.btn_icon_bag} ${isInCart ? s.green : ""} ${isInCart ? s.added_bag : ""}`}
+            onClick={handleBagClick}
+          />
         </div>
       </div>
       <div className={s.products_information}>

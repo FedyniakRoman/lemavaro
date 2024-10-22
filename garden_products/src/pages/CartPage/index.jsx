@@ -1,17 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react"; // useState hier importieren
 import CartCortainer from "../../components/CartCortainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./index.module.css";
 import { Link } from "react-router-dom";
+import OrderForm from "../../components/OrderForm";
+import {
+  deleteAllAction,
+} from "../../store/reducers/cartReducer";
+import OrderModal from "../../components/OrderModal";
 
 function CartPage() {
-  const cartState = useSelector((store) => store.cart);
+  const cartState = useSelector((store) => store.cart); // Получаем состояние корзины из хранилища Redux
+  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна (открыто/закрыто)
 
-  let totalSum = cartState.reduce((acc, elem) => {
-    return elem.discont_price !== null
-      ? acc + (elem.discont_price * elem.initialCount)
-      : acc + (elem.price * elem.initialCount);
-  }, 0);
+  // Сохраняем корзину в localStorage при изменении состояния корзины
+  useEffect(() => {
+    if (cartState.length > 0) {
+      // Сохраняем только, если корзина не пуста
+      localStorage.setItem("cart", JSON.stringify(cartState));
+    }
+  }, [cartState]); // Обновляем при изменении cartState
+
+  // Функция для отправки нового заказа
+  const addNewOrder = (newOrder) => {
+    fetch("http://localhost:3333/order/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json)); // Выводим ответ сервера в консоль
+  };
+
+  // Функция для очистки корзины
+  const clearCart = () => {
+    dispatch(deleteAllAction()); // Отправляем действие для удаления всех товаров из корзины
+  };
 
   return (
     <section className={s.container}>
@@ -27,28 +54,36 @@ function CartPage() {
         </div>
       </div>
       <div className={s.cart_container}>
-        {cartState.length === 0 ? (
-          <p>Looks like you have no items in your basket currently.</p>
+        {cartState.length === 0 ? ( // Проверяем, пустая ли корзина
+          <div className={s.empty_container}>
+            <p className={s.empty_paragraph}>
+              Looks like you have no items in your basket currently.
+            </p>
+            <Link to="/" className={s.empty_button}>
+              Continue Shopping
+            </Link>
+          </div>
         ) : (
           <>
+            {/* Отображаем содержимое корзины */}
             <CartCortainer products={cartState} />
-            <div className={s.order_container}>
-              <h3 className={s.order_title}>Order details</h3>
-              <p className={s.total_items}>{`${cartState.length} items`}</p>
-              <div className={s.total_price_box}>
-                <p className={s.total_title}>Total</p>
-                <p className={s.total_sum}>{`$${totalSum}`}</p>
-              </div>
-              <form className={s.order_form}>
-                <input type="text" placeholder="Name" name="name" className={s.input} />
-                <input type="tel" placeholder="Phone number" className={s.input} />
-                <input type="email" placeholder="Email" className={s.input} />
-                <button className={s.form_button}>Checkout</button>
-              </form>
-            </div>
+            {/* Передаем функции для оформления заказа и открытия модального окна */}
+            <OrderForm
+              addNewOrder={addNewOrder} // Функция для добавления нового заказа
+              clearCart={clearCart} // Функция для очистки корзины
+              setIsModalOpen={setIsModalOpen} // Устанавливаем состояние для открытия модального окна
+            />
           </>
         )}
       </div>
+      {/* Модальное окно для подтверждения заказа */}
+      <OrderModal
+        isOpen={isModalOpen} // Передаем состояние для отображения модального окна
+        onClose={() => {
+          setIsModalOpen(false); // Закрываем модальное окно
+          clearCart(); // Очищаем корзину после завершения заказа
+        }}
+      />
     </section>
   );
 }
