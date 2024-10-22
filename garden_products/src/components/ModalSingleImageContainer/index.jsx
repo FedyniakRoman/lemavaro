@@ -6,9 +6,11 @@ export default function ModalSingleImageContainer({ isOpen, onClose, image }) {
   return (
     <div className={s.modal_overlay} onClick={onClose}>
            <div className={s.modal_content} onClick={(el) => el.stopPropagation()}>
-            <img src={image} alt="" className={s.image} />
-        
+          
           </div>
+           <div>
+            <img src={image} alt="" className={s.image} />
+            </div> 
          </div>
   )
 }

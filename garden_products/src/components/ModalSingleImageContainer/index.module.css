@@ -9,13 +9,17 @@
   justify-content: center; 
   align-items: center; 
   z-index: 1000; 
+  padding: 20px;
 }
 
-.modal_content {
-  position: relative;
-}
+
 
 .image {
-  width: Hug (900px)px;
-  height: Hug (610px)px;  
+   width: Hug (900px)px;
+height: Hug (610px)px;
+top: 180px;
+left: 270px;
+gap: 0px;
+opacity: 0px;
+  
 }

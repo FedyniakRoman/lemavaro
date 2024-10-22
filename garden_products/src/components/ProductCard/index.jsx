@@ -28,7 +28,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
     } else {
       // Если товара нет в корзине, добавляем его
       dispatch(
-        addProductToCartAction({ id, title, image, price, discont_price })
+        addProductToCartAction({ id, title, image, price, discont_price, count:1 })
       );
     }
   };

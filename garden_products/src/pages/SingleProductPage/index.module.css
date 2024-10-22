@@ -74,6 +74,7 @@
 
 .image_container {
   flex: 1;
+  position: relative;
 }
 
 
@@ -165,7 +166,7 @@ height: 48px;
   text-decoration: line-through;
 
 }
-.discount_badge{
+.discount_price{
   background-color: #F26D22;
   color: #FFFFFF;
   width: 55px;

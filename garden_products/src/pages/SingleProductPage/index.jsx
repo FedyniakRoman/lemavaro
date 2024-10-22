@@ -7,10 +7,9 @@ import { IoIosHeart,IoIosHeartEmpty  } from "react-icons/io";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
-  decrementCountAction,
-  incrementCountAction,
   addProductToCartAction,
 } from "../../store/reducers/cartReducer";
+
 
 export default function SingleProductPage() {
 
@@ -24,10 +23,10 @@ export default function SingleProductPage() {
 
   const { status, data } = singleProductState || { status: "loading", data: [], };
 
-  const { title, price, discont_price, description, image} = data;
+  const {title, price, discont_price, description, image} = data;
   
-    const cartState = useSelector(store => store.cart)
-  const productCart = cartState.find(item => item.id === parseInt(id));
+  //   const cartState = useSelector(store => store.cart)
+  // const productCart = cartState.reduce((acc, el )=> acc + el.count, 0);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,6 +38,12 @@ export default function SingleProductPage() {
     setIsModalOpen(false);
   };
 
+  let [count, setCount] = useState(1)
+  const incrementCount = () => setCount(++count);
+  const decrementCount = () =>{
+    if(count > 1 ){
+    setCount(--count)}
+  };
 
   // const [isFavorite, setIsFavorite] = useState(false) //Состояние для управления иконкой избранного
   // const handleFavoriteClick = () => {
@@ -71,6 +76,7 @@ export default function SingleProductPage() {
             <li className={s.item}>
               <Link  className={s.card_name} to={`/products/${id}`}>
                 {data.title}
+
               </Link>
             </li>
           )}
@@ -108,37 +114,41 @@ export default function SingleProductPage() {
         </div>
 
         {
-          <div className={s.price_container}>
-            <span className={s.price_original}>${price}</span>
+        <div className={s.price_container}>
+        <span className={s.price_original}>${price}</span>
+
+        {discont_price && discont_price < price && (
+          <>
             <span className={s.price_discounted}>
-              ${discont_price || price}
-            </span >
-            {discont_price && (
-              <span className={s.discount_badge}>
-                -{Math.round(((price - discont_price) / price) * 100)}%
-              </span>
-            )}
-          </div>
+              ${discont_price}
+            </span>
+            <span className={s.discount_price}>
+              -{Math.round(((price - discont_price) / price) * 100)}%
+            </span>
+          </>
+        )}
+      </div>
+      
         }
       
 
       <div className={s.count_container}>
         <div className={s.count_button_container}>
-      <button  className={s.count_button}
-          onClick={() => dispatch(decrementCountAction(id))}>
-            <AiOutlineMinus className={s.count_minus}/></button>
+        <button className={s.count_button} onClick={decrementCount}>
+  <AiOutlineMinus className={s.count_minus} />
+</button>
 
-           <p className={s.count_value}>{productCart?.count || 0}</p> {/* Количество товаров */}
+            <p className={s.count_value}>{count}</p> 
+            {/* Количество товаров */}
 
-            <button className={s.count_button}
-          onClick={() =>   dispatch(incrementCountAction(id))}> 
-          <AiOutlinePlus className={s.count_plus}/> {productCart?.count}</button>
-      
+            <button className={s.count_button} onClick={incrementCount}>
+  <AiOutlinePlus className={s.count_plus} />
+</button>    
      </div>
   
         <button
           className={s.add_btn}
-          onClick={() => dispatch(addProductToCartAction({ id, title, price, discont_price, image} ))}
+          onClick={() => dispatch(addProductToCartAction({ id, title, price, discont_price, image, count} ))}
         >
           Add to cart
         </button>
