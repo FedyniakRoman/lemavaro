@@ -8,6 +8,7 @@ import {
   deleteProductFromCartAction,
 } from "../../store/reducers/cartReducer";
 import { useDispatch, useSelector } from "react-redux";
+import backendUrl from "../../config";  //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 function ProductCard({ id, title, image, price, discont_price }) {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
     <div className={s.card}>
       <div className={s.img_container}>
         <Link to={`/products/${id}`} className={s.img_link}>
-          <img src={`http://localhost:3333${image}`} alt={title} className={s.img} />
+          <img src={`${backendUrl}${image}`} alt={title} className={s.img} /> {/*Картинка продукта*/}
         </Link>
         <div className={s.add_btn_container}>
           <button
