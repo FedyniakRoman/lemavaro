@@ -7,6 +7,8 @@ import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import { getAllProducts } from "../../requests/products";
 import ProductsContainer from "../../components/ProductsContainer";
 import DiscountForm from "../../components/FormContainer";
+import SkeletonContainer from "../../components/SkeletonContainer";
+
 
 function MainPage() {
   const categorieState = useSelector((store) => store.categories);

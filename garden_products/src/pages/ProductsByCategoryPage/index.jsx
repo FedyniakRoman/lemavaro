@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductsContainer from '../../components/ProductsContainer';
 import { getProductsByCategory } from '../../requests/products'; 
 import s from './index.module.css';
+import SkeletonContainer from '../../components/SkeletonContainer';
 
 function ProductsByCategoryPage() {
   const { category_id } = useParams(); // Получаем category_id из URL
@@ -132,7 +133,7 @@ function ProductsByCategoryPage() {
       </form>
 
       {status === 'loading' ? (       
-        <p className={s.loading}>Loading products...</p>
+        <SkeletonContainer count={8}/>
       ) : (
         <ProductsContainer products={sortedProducts} />
       )}

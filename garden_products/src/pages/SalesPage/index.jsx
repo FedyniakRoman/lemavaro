@@ -5,6 +5,7 @@ import { getAllProducts } from '../../requests/products';
 import ProductsContainer from '../../components/ProductsContainer';
 import s from './index.module.css';
 import { Link } from 'react-router-dom';
+import SkeletonContainer from '../../components/SkeletonContainer';
 
 function SalesPage() {
   const productsState = useSelector((store) => store.products);
@@ -103,7 +104,7 @@ function SalesPage() {
         </form>
         <div className={s.container}>
           {statusProduct === 'loading' ? (
-            'Loading products...'
+            <SkeletonContainer count={11}/>
           ) : (
             <ProductsContainer products={sortedProducts} />
           )}
