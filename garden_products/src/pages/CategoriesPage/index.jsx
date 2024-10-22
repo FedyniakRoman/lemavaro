@@ -5,6 +5,7 @@ import CategoriesContainer from '../../components/CategoriesContainer'
 import { changeStatusAction } from '../../store/reducers/categoriesReducer'
 import s from './index.module.css'
 import { Link } from 'react-router-dom'
+import SkeletonContainer from '../../components/SkeletonContainer'
 
 function CategoriesPage() {
 
@@ -35,7 +36,7 @@ function CategoriesPage() {
       <h2 className={s.title}>Categories</h2>
     <div className={s.categories_container}>
       {status === 'loading' ? (
-        'Categories are loading...'
+        <SkeletonContainer count={11}/>
       ) : (
         <CategoriesContainer categories={data} />
       )}

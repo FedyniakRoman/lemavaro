@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
 import s from './index.module.css';
+import SkeletonContainer from "../../components/SkeletonContainer";
 
 function ProductsPage() {
   const productsState = useSelector((store) => store.products);
@@ -111,7 +112,7 @@ function ProductsPage() {
         </form>
         <div className={s.container}>
           {status === 'loading' ? (
-            'Loading products...'
+            <SkeletonContainer count={11}/>
           ) : (
             <ProductsContainer products={sortedProducts} />
           )}
