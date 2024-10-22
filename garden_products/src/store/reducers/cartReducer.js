@@ -8,19 +8,19 @@ const UPDATE_CART = "UPDATE_CART"
 
 // Action для добавления продукта в корзину
 export const addProductToCartAction = (product) => ({
-  type: ADD_PRODUCT_TO_CART, // Тип действия
-  payload: product, // Продукт, который будет добавлен в корзину
+  type: ADD_PRODUCT_TO_CART,
+  payload: product,
 });
 
 // Action для удаления продукта из корзины по его id
 export const deleteProductFromCartAction = (product_id) => ({
-  type: DELETE_PRODUCT_FROM_CART, // Тип действия
-  payload: product_id, // id продукта, который будет удалён из корзины
+  type: DELETE_PRODUCT_FROM_CART,
+  payload: product_id,
 });
 
 // Action для обновления состояния корзины
 export const updateCartAction = (newCart) => ({
-  type: "UPDATE_CART",
+  type: UPDATE_CART,
   payload: newCart,
 });
 
@@ -41,40 +41,51 @@ export const deleteAllAction = () => ({ type: DELETE_ALL });
 
 // Функция для проверки, есть ли продукт уже в корзине
 const checkProduct = (state, payload) => {
-  const product = state.find((el) => el.id === payload.id); // Поиск продукта по его id в состоянии корзины
+  const product = state.find((el) => el.id === payload.id);
   if (product) {
-    product.count++; // Если продукт найден, увеличиваем количество
-    return [...state]; // Возвращаем обновлённое состояние корзины
+    product.count++;
+    return [...state];
   } else {
-    return [...state, { ...payload, count: 1 }]; // Если продукт не найден, добавляем его в корзину с количеством 1
+    return [...state, { ...payload, count: 1 }];
   }
 };
 
 // Загрузка начального состояния корзины из localStorage
-const initialState = JSON.parse(localStorage.getItem("cart")) || []; // Проверяем, есть ли сохраненные данные в localStorage
+const initialState = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Функция для обновления localStorage
+const updateLocalStorage = (cartState) => {
+  localStorage.setItem("cart", JSON.stringify(cartState));
+};
 
 // Редьюсер для управления состоянием корзины
 export const cartReducer = (state = initialState, action) => {
+  let newState = state;
+
   if (action.type === ADD_PRODUCT_TO_CART) {
-    return checkProduct(state, action.payload); // Если действие — добавление продукта, вызываем функцию проверки
+    newState = checkProduct(state, action.payload);
   } else if (action.type === DELETE_PRODUCT_FROM_CART) {
-    return state.filter((el) => el.id !== action.payload); // Если действие — удаление продукта, фильтруем корзину по id
+    newState = state.filter((el) => el.id !== action.payload);
   } else if (action.type === INCREMENT_COUNT) {
-    state.find((el) => el.id === action.payload).count++;// Находим продукт по id
-    return [...state];
+    state.find((el) => el.id === action.payload).count++;
+    newState = [...state];
   } else if (action.type === DECREMENT_COUNT) {
     const target = state.find((el) => el.id === action.payload);
-
     if (target.count === 1) {
-      return state.filter((el) => el.id !== action.payload);// Если количество 1, удаляем продукт
+      newState = state.filter((el) => el.id !== action.payload);
     } else {
       target.count--;
-      return [...state];
+      newState = [...state];
     }
   } else if (action.type === DELETE_ALL) {
-    return []; // Очищаем корзину
+    newState = [];
   } else if (action.type === UPDATE_CART) {
-    return action.payload // Обновляем состояние корзины
+    newState = action.payload;
   }
-  return state; // Возвращаем текущее состояние, если тип действия не совпадает
+
+  // Обновляем localStorage при каждом изменении состояния корзины
+  updateLocalStorage(newState);
+
+  return newState;
 };
+

@@ -19,6 +19,8 @@ function CartPage() {
     if (cartState.length > 0) {
       // Сохраняем только, если корзина не пуста
       localStorage.setItem("cart", JSON.stringify(cartState));
+    } else {
+      localStorage.removeItem("cart"); // Удалить пустую корзину из localStorage
     }
   }, [cartState]); // Обновляем при изменении cartState
 

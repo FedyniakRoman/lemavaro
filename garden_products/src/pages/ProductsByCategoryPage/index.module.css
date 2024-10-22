@@ -11,7 +11,7 @@
   display: flex;
   list-style-type: none;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .item {
@@ -55,14 +55,21 @@
 .form {
   align-items: center;
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: 16px;
+  margin-bottom: 40px;
 }
 
-.label_price, .label_discount, .label_sort {
-  font-size: 1.25rem;
+.label_price{
+  font-size: 20px;
   font-weight: 600;
-  line-height: 130%;
+  line-height: 26px;
+} 
+
+.label_sort, .label_discount {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-left: 24px;
 }
 
 .input_price, .select_sort {
@@ -83,6 +90,7 @@
   border: .0625rem solid #ddd;
   border-radius: .375rem;
   transition: all .3s ease-in-out;
+  background-color: white;
 }
 
 .input_discount:checked {

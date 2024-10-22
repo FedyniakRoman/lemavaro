@@ -12,8 +12,7 @@
     display: flex;
     list-style-type: none;
     align-items: center;
-    display: flex;
-    gap: 1rem;
+    gap: 16px;
 }
 
 .item {
@@ -50,32 +49,31 @@
 }
 
 .title {
-    font-size: 4rem;
+    font-size: 64px;
     font-weight: 700;
     line-height: 110%;
-    margin-bottom: 2.5rem;
-    color: #282828;
+    margin-bottom: 40px;
+    color: #424436
 }
 
 .form {
     align-items: center;
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
+    gap: 16px;
+    margin-bottom: 40px;
 }
 
-.label_price {
-    font-size: 1.25rem;
+.label_price{
+    font-size: 20px;
     font-weight: 600;
-    line-height: 130%;
-}
+    line-height: 26px;
+} 
 
-.label_sort {
-    font-size: 1.25rem;
+.label_sort, .label_discount {
+    font-size: 20px;
     font-weight: 600;
-    gap: 1rem;
-    line-height: 130%;
-    margin-left: 35px;
+    line-height: 26px;
+    margin-left: 24px;
 }
 
 .input_price {
@@ -88,17 +86,17 @@
 }
 
 .select_sort {
-    font-size: .9375rem;
     font-weight: 500;
-    line-height: 126%;
-    width: 12.5rem;
-    border: .0625rem solid #ddd;
-    border-radius: .375rem;
-    font-size: .9375rem;
-    height: 2.25rem;
-    padding: .5rem 1rem;
+    line-height: 20,16px;
+    min-width: 148px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 8px 16px;
     margin-left: 16px;
+    color: #424436;
 }
+
 .input_discount {
     position: relative;
     width: 2.25rem;
