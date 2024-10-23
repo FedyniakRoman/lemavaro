@@ -130,7 +130,6 @@ export default function SingleProductPage() {
       </div>
       
         }
-      
 
       <div className={s.count_container}>
         <div className={s.count_button_container}>
@@ -159,9 +158,9 @@ export default function SingleProductPage() {
         <h3 className={s.description}>Description</h3>
         <p className={s.description_text}>{description}</p>
       </div>
-      <div className="s.read_more">
+      {/* <div className="s.read_more">
         <h4 className={s.read}> Read more</h4>
-      </div>
+      </div> */}
     </div>
     </div>
     </div>

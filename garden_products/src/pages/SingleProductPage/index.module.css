@@ -67,6 +67,10 @@
 }
 
 .product_details {
+  width: Fixed (548px)px;
+height: Hug (578px)px;
+
+
   display: flex;
   flex-direction: row;
   gap: 30px; 
@@ -114,6 +118,8 @@ height: 48px;
   gap: 16px;
 
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 
@@ -264,6 +270,8 @@ height: 48px;
   line-height: 20.8px;
   text-align: left;
   padding-top: 10px;
+  color: #424436;
+  
 
 }
 
