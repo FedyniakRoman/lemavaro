@@ -70,7 +70,6 @@
   width: Fixed (548px)px;
 height: Hug (578px)px;
 
-
   display: flex;
   flex-direction: row;
   gap: 30px; 
@@ -85,7 +84,7 @@ height: Hug (578px)px;
 .image {
   
   border-radius: 10px;
-  margin-bottom: 30px; 
+  /* margin-bottom: 30px;  */
 
     object-fit: cover;
     position: relative;
@@ -126,7 +125,7 @@ height: 48px;
 .title {
   color: #424436;
 
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
   line-height: 44px;
  
