@@ -101,20 +101,24 @@
   background-image: url('../../assets/images/header.svg');
   background-size: cover;
   background-position: center;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100vw; /* Используем 100vw для того, чтобы контейнер всегда занимал всю ширину экрана */
+  max-width: 100%; 
+
+  margin: 0 auto; 
   display: flex;
   flex-direction: column;
   position: relative;
   color: white;
+  overflow: hidden; 
+
 }
 
 .header_image_text {
   font-size: 96px;
-  font-weight: bold;
+  font-weight: 700px;
   margin: 80px 40px 40px 40px;
   line-height: 110%;
+  color: #FFFFFF;
 }
 
 
