@@ -48,15 +48,14 @@
     position: absolute;
     right: 16px;
     top: 16px;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
 }
 
 .card:hover .icons_container {
     opacity: 1;
 }
 
-.btn_icon_heart, .btn_icon_bag {
+/* Стиль иконок "сердце" и "сумка" */
+.btn_icon_heart{
     cursor: pointer;
     width: 48px;
     height: auto;
@@ -67,18 +66,14 @@
     transition: color .3s ease-in-out;
 }
 
-.btn_icon_bag{
-    background-color: initial;
-    border: none;
+.btn_icon_bag {
     cursor: pointer;
     width: 48px;
     height: auto;
-    max-width: 100%;
     vertical-align: middle;
     color: white;
-}
-
-.add_btn_container {
+    background-color: initial;
+    border: none;
     fill: white; /* Начальный цвет заливки */
     stroke: #424436; /* Цвет обводки */
     stroke-width: 0.7;
@@ -97,11 +92,15 @@
     stroke:  #92A134; 
 }
 
+/* Зеленый цвет при наведении, если товар добавлен в корзину */
 .added_bag:hover{
     fill: #92A134; 
     stroke:  #92A134; 
 }
 
+/* --------------------------------------- */
+
+/* Контейнер для кнопки добавления товара */
 .add_btn_container {
     bottom: 30px;
     left: 10px;
@@ -136,11 +135,15 @@
     background-color: #424436; 
 }
 
+/* Стиль кнопки, когда товар добавлен в корзину */
 .add_btn.added {
     background-color: #FFFFF1; 
     color: #424436;
 }
 
+/* ------------------------------------ */
+
+/* Контейнер для информации о продукте */
 .products_information {
     align-items: flex-start;
     display: flex;
@@ -171,6 +174,9 @@
     text-overflow: ellipsis;
 }
 
+/* ------------------- */
+
+/* Контейнер для цены */
 .price_container {
     align-items: center;
     display: flex; 
@@ -197,7 +203,9 @@
     color: #424436; 
 }
 
+/* --------------------------------------------- */
 
+/* Контейнер для отображения скидки в процентах */
 .sale_value_container {
     align-items: flex-start;
     display: flex;
