@@ -19,6 +19,10 @@ export default function Header() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Получаем состояние корзины и избранных товаров из Redux
+  const cartState = useSelector((state) => state.cart);
+  const favoritesState = useSelector((state) => state.favorites);
+
   // Функция для перехода на главную страницу
   const handleTreeIconClick = () => {
     navigate("/");
@@ -79,7 +83,7 @@ export default function Header() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const cartState = useSelector(state => state.cart)
+
   return (
     <header className={s.nav_container}>
       <div className={s.header_container_top}>
@@ -91,15 +95,7 @@ export default function Header() {
             onClick={handleTreeIconClick}
             style={{ cursor: "pointer" }}
           />
-
           <ThemeToggle />
-
-          {/* <img
-            className={s.switch_icon}
-            src={switchIcon}
-            alt="Switch Icon"
-            style={{ cursor: "pointer" }}
-          /> */}
         </div>
 
         <nav className={s.nav_menu_container}>
@@ -118,20 +114,23 @@ export default function Header() {
         <div className={s.nav_icons_right}>
           <Link to={"/favorites"} className={s.icon_box}>
             <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
-            <span className={s.favorite_count}>0</span>
+            <span className={s.favorite_count}>{favoritesState.length}</span> {/* Количество товаров в избранном */}
           </Link>
           <Link to={"/cart"} className={s.icon_box}>
             <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
-            <span className={s.cart_count}>{cartState.reduce((total, product) => total + product.count, 0)}</span>
+            <span className={s.cart_count}>
+              {cartState.reduce((total, product) => total + product.count, 0)}
+            </span>
           </Link>
         </div>
       </div>
 
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
-          <p className={s.header_image_text}>
+          <h1 className={s.header_image_text}>
             Amazing Discounts <br /> on Garden Products!
-          </p>
+          </h1>
+
           <Link to="/sales" className={s.header_image_button}>
             Check out
           </Link>
@@ -158,13 +157,12 @@ export default function Header() {
 
             {productOfTheDay && (
               <div className={s.modal_product_card_container}>
-                
                 <ProductCard
                   id={productOfTheDay.id}
                   title={productOfTheDay.title}
                   image={productOfTheDay.image}
-                  price={productOfTheDay.price} 
-                  discont_price={productOfTheDay.discont_price.toFixed(2)} // Округляем цену с 50% скидкой 
+                  price={productOfTheDay.price}
+                  discont_price={productOfTheDay.discont_price.toFixed(2)} // Округляем цену с 50% скидкой
                 />
 
                 <div className={s.add_to_cart_container}>
