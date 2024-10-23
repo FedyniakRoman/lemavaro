@@ -3,29 +3,37 @@ import s from "./index.module.css";
 import { Link } from "react-router-dom";
 import { BsHandbagFill } from "react-icons/bs";
 import { TiHeartFullOutline } from "react-icons/ti";
-import {
-  addProductToCartAction,
-  deleteProductFromCartAction,
-} from "../../store/reducers/cartReducer";
+import { addProductToFavoritesAction, deleteProductFromFavoritesAction } from "../../store/reducers/favoritesReducer"; // Импорт действий для избранного
+import { addProductToCartAction, deleteProductFromCartAction } from "../../store/reducers/cartReducer"; // Импорт действий для корзины
 import { useDispatch, useSelector } from "react-redux";
 import backendUrl from "../../config";  //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 function ProductCard({ id, title, image, price, discont_price }) {
   const dispatch = useDispatch();
 
-  // Доступ к состоянию корзины из Redux
-  const cart = useSelector((state) => state.cart);
+  // Получаем список избранных товаров и товаров в корзине из store
+  const favorites = useSelector((store) => store.favorites);
+  const cart = useSelector((store) => store.cart);
 
-  // Проверяем, находится ли товар в корзине
+  // Ищем текущий товар в избранном и корзине
+  const favoriteProduct = favorites.find((product) => product.id === id);
   const isInCart = cart.some((product) => product.id === id);
 
-  // Функция для обработки клика на иконку сумки
+  // Функция добавления/удаления товара в избранное
+  const handleToggleFavorite = () => {
+    if (favoriteProduct) {
+      dispatch(deleteProductFromFavoritesAction(id)); // Удаляем товар из избранного
+    } else {
+      dispatch(addProductToFavoritesAction({ id, title, image, price, discont_price })); // Добавляем товар в избранное
+    }
+  };
+
+  // Функция для обработки клика на иконку корзины
   const handleBagClick = () => {
     const productInCart = cart.find((product) => product.id === id);
 
     if (productInCart) {
-      // Если товар в корзине, удаляем его
-      dispatch(deleteProductFromCartAction(id));
+      dispatch(deleteProductFromCartAction(id)); // Удаляем товар из корзины
     } else {
       // Если товара нет в корзине, добавляем его
       dispatch(
@@ -51,18 +59,13 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <Link to={`/products/${id}`} className={s.img_link}>
           <img src={`${backendUrl}${image}`} alt={title} className={s.img} /> {/*Картинка продукта*/}
         </Link>
-        <div className={s.add_btn_container}>
-          <button
-            className={`${s.add_btn} ${isInCart ? s.white : ""} ${
-              isInCart ? s.added : ""
-            }`}
-            onClick={handleBagClick}
-          >
-            {isInCart ? "Added" : "Add to cart"}
-          </button>
-        </div>
         <div className={s.icons_container}>
-          <TiHeartFullOutline className={s.btn_icon_heart} />
+          {/* Иконка сердца с динамическим изменением цвета */}
+          <TiHeartFullOutline
+            className={s.btn_icon_heart}
+            onClick={handleToggleFavorite}
+            style={{ color: favoriteProduct ? '#92A134' : 'white' }} // Закрашиваем иконку зелёным, если товар в избранном
+          />
           <BsHandbagFill
             className={`${s.btn_icon_bag} ${isInCart ? s.green : ""} ${isInCart ? s.added_bag : ""}`}
             onClick={handleBagClick}
@@ -76,7 +79,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <div className={s.price_container}>
           {discont_price ? (
             <>
-              <p className={s.price_original}>{`$${price}`}</p>
+              <p className={s.price_original} style={{ textDecoration: 'line-through' }}>{`$${price}`}</p>
               <p className={s.price_discounted}>{`$${discont_price}`}</p>
             </>
           ) : (
