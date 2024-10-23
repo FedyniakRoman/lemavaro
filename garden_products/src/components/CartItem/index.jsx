@@ -8,6 +8,7 @@ import {
   deleteProductFromCartAction,
   incrementCountAction,
 } from "../../store/reducers/cartReducer";
+import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 // Компонент для отображения товара в корзине
 function CartItem({ id, image, title, count, price, discont_price }) {
@@ -19,7 +20,7 @@ function CartItem({ id, image, title, count, price, discont_price }) {
   return (
     <div className={s.card}>
       <img
-        src={`http://localhost:3333${image}`} // Путь к изображению товара
+        src={`${backendUrl}${image}`} // Путь к изображению товара
         alt={title}
         className={s.img} // Применение стилей к изображению
       />

@@ -8,6 +8,7 @@ import {
   deleteAllAction,
 } from "../../store/reducers/cartReducer";
 import OrderModal from "../../components/OrderModal";
+import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 function CartPage() {
   const cartState = useSelector((store) => store.cart); // Получаем состояние корзины из хранилища Redux
@@ -26,7 +27,8 @@ function CartPage() {
 
   // Функция для отправки нового заказа
   const addNewOrder = (newOrder) => {
-    fetch("http://localhost:3333/order/send", {
+    // fetch("http://localhost:3333/order/send", {
+    fetch(`${backendUrl}/order/send`, {       //Запрос заказа
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -59,7 +61,7 @@ function CartPage() {
         {cartState.length === 0 ? ( // Проверяем, пустая ли корзина
           <div className={s.empty_container}>
             <p className={s.empty_paragraph}>
-              Looks like you have no items in your basket currently.
+              Looks like you have no items in your cart currently.
             </p>
             <Link to="/" className={s.empty_button}>
               Continue Shopping
