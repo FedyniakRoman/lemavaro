@@ -35,7 +35,10 @@ function ProductCard({ id, title, image, price, discont_price }) {
     if (productInCart) {
       dispatch(deleteProductFromCartAction(id)); // Удаляем товар из корзины
     } else {
-      dispatch(addProductToCartAction({ id, title, image, price, discont_price })); // Добавляем товар в корзину
+      // Если товара нет в корзине, добавляем его
+      dispatch(
+        addProductToCartAction({ id, title, image, price, discont_price, count:1 })
+      );
     }
   };
 
