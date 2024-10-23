@@ -41,12 +41,18 @@ export const deleteAllAction = () => ({ type: DELETE_ALL });
 
 // Функция для проверки, есть ли продукт уже в корзине
 const checkProduct = (state, payload) => {
-  const product = state.find((el) => el.id === payload.id);
-  if (product) {
+  const product = state.find((el) => el.id === payload.id); // Поиск продукта по его id в состоянии корзины
+  if (product) 
+    if(payload.count > 1 ){
+      product.count += payload.count
+      // product.count++; // Если продукт найден, увеличиваем количество
+     return [...state] // Возвращаем обновлённое состояние корзины
+  } else{
     product.count++;
-    return [...state];
-  } else {
-    return [...state, { ...payload, count: 1 }];
+    return [...state]
+  }
+  else {
+    return [...state, { ...payload }]; // Если продукт не найден, добавляем его в корзину с количеством 1
   }
 };
 
@@ -71,6 +77,8 @@ export const cartReducer = (state = initialState, action) => {
     newState = [...state];
   } else if (action.type === DECREMENT_COUNT) {
     const target = state.find((el) => el.id === action.payload);
+
+    
     if (target.count === 1) {
       newState = state.filter((el) => el.id !== action.payload);
     } else {
