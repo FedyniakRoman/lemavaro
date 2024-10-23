@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../actions/themeActions";
-import imageLight from '../../assets/images/mode=light.svg'; //Импорт картинок.
+import imageLight from '../../assets/images/mode=light.svg'; //Импорт картинок
 import imageDark from '../../assets/images/mode=dark.svg';
 
 import s from '../ThemeToggle/index.module.css';
@@ -9,7 +9,7 @@ import s from '../ThemeToggle/index.module.css';
 
 function ThemeToggle() {
 
-    const dispatch = useDispatch();     //Создание Диспетчера (Lev)
+    const dispatch = useDispatch();     //Создание Диспетчера
     const theme = useSelector((state) => state.theme.mode);
 
     const handleToggle = () => {
