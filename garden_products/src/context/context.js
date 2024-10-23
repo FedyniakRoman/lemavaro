@@ -1,10 +1,11 @@
 // import { createContext } from 'react';
+// import backendUrl from '../config'; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 // export const Context = createContext();
 
 // export const ContextProvider = ({ children }) => {
 //   const addNewOrder = (newOrder) => {
-//     fetch('http://localhost:3333/order/send', {
+//     fetch(`${backendUrl}/order/send`, {         //Запрос
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8',

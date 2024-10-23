@@ -3,7 +3,7 @@ import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getSingleProduct } from "../../requests/products";
-import { IoIosHeart,IoIosHeartEmpty  } from "react-icons/io";
+import { IoIosHeart, IoIosHeartEmpty  } from "react-icons/io"; //Внимание! Импортированная, но, не используемая иконка - IoIosHeart
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
@@ -11,6 +11,7 @@ import {
   incrementCountAction,
   addProductToCartAction,
 } from "../../store/reducers/cartReducer";
+import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 export default function SingleProductPage() {
 
@@ -81,7 +82,7 @@ export default function SingleProductPage() {
       <div className={s.product_details}>
       <div className={s.image_container}>
         <img
-          src={`http://localhost:3333${image}`}
+          src={`${backendUrl}${image}`} //Получение картинки
           alt={title}
           className={s.image}
           onClick={handleImageClick}
@@ -90,7 +91,7 @@ export default function SingleProductPage() {
         <ModalSingelImageContainer
           isOpen={isModalOpen}
           onClose={handleCloseModal}
-          image={`http://localhost:3333${image}`}
+          image={`${backendUrl}${image}`} //Получение картинки
         />
       </div>
 

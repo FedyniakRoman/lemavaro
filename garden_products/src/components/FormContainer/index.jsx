@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "./index.module.css";
 import arms from "../../assets/images/arms.svg";
+import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
 function DiscountForm() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function DiscountForm() {
     e.preventDefault();
   
     // Отправка данных на сервер с помощью fetch
-    fetch('http://localhost:3333/sale/send', { 
+    fetch(`${backendUrl}/sale/send`, { 
       method: 'POST', // тут нам нужно еще над ссылкой прорабоать и разобраться
       headers: {
         'Content-Type': 'application/json', // Указываем, что данные в формате JSON
