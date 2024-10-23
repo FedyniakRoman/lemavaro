@@ -32,7 +32,7 @@ function SalesPage() {
     const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
     return matchesPrice;
   }) : [];
-  console.log('saaaaales',filteredProducts)
+
   // Сортировка продуктов
   const sortedProducts = filteredProducts.sort((a, b) => {
     const priceA = a.discont_price || a.price;

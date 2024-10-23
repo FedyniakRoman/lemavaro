@@ -5,13 +5,34 @@ import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
 import s from './index.module.css';
 import SkeletonContainer from "../../components/SkeletonContainer";
+import { getDiscountProductsAction, sortAllProductsAction } from "../../store/reducers/productsReducer";
 
 function ProductsPage() {
+
   const productsState = useSelector((store) => store.products);
+  console.log('productsPage', productsState);
+  
   const dispatch = useDispatch();
 
   const { products: data = [], status } = productsState;
+  useEffect(() => {
+    dispatch(getAllProducts);
+  }, []);
 
+  const handleSort = (e) => dispatch(sortAllProductsAction(e.target.value));
+
+  const [checked, setChecked] = useState(false);
+    const handleCheck = () => setChecked(!checked);
+
+    const filteredProducts = checked
+    ? data.filter((product) => product.discont_price !== null)
+    : data;
+
+    const handleClick = (e) => {
+      setChecked(e.target.checked);
+      dispatch(getDiscountProductsAction(e.target.checked));}
+    console.log('checked', checked);
+    
   // const [minPrice, setMinPrice] = useState('');
   // const [maxPrice, setMaxPrice] = useState('');
   // const [sortOption, setSortOption] = useState('default');
@@ -36,10 +57,6 @@ function ProductsPage() {
   //   if (sortOption === 'nameZa') return b.title.localeCompare(a.title);
   //   return 0;
   // });
-
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
 
   // const handlePriceChange = (e) => {
   //   const { name, value } = e.target;
@@ -131,13 +148,16 @@ function ProductsPage() {
             type="checkbox"
             name="discount"
             className={s.input_discount}
+            checked={checked} 
+            onChange={handleCheck} 
+            onClick={handleClick}
           />
           <label htmlFor="sort" className={s.label_sort}>
             Sorted
-            <select name="sort" className={s.select_sort}>
+            <select name="sort" className={s.select_sort} onChange={handleSort}>
               <option value="default">by default</option>
-              <option value="asc">Price: Low to High</option>
-              <option value="desc">Price: High to Low</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
               <option value="nameAz">Name: A to Z</option>
               <option value="nameZa">Name: Z to A</option>
             </select>
@@ -147,7 +167,7 @@ function ProductsPage() {
           {status === 'loading' ? (
             <SkeletonContainer count={11}/>
           ) : (
-            <ProductsContainer products={data} />
+            <ProductsContainer products={filteredProducts} />
           )}
         </div>
       </div>
