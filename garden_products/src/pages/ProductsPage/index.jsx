@@ -5,14 +5,14 @@ import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
 import s from './index.module.css';
 import SkeletonContainer from "../../components/SkeletonContainer";
-import { getDiscountProductsAction, sortAllProductsAction } from "../../store/reducers/productsReducer";
+import { filterByPriceAction, getDiscountProductsAction, sortAllProductsAction } from "../../store/reducers/productsReducer";
 
 function ProductsPage() {
 
+  const dispatch = useDispatch();
+
   const productsState = useSelector((store) => store.products);
   console.log('productsPage', productsState);
-  
-  const dispatch = useDispatch();
 
   const { products: data = [], status } = productsState;
   useEffect(() => {
@@ -23,54 +23,32 @@ function ProductsPage() {
 
   const [checked, setChecked] = useState(false);
     const handleCheck = () => setChecked(!checked);
-
-    const filteredProducts = checked
-    ? data.filter((product) => product.discont_price !== null)
-    : data;
-
+  
     const handleClick = (e) => {
       setChecked(e.target.checked);
       dispatch(getDiscountProductsAction(e.target.checked));}
-    console.log('checked', checked);
-    
-  // const [minPrice, setMinPrice] = useState('');
-  // const [maxPrice, setMaxPrice] = useState('');
-  // const [sortOption, setSortOption] = useState('default');
-  // const [isDiscountedOnly, setIsDiscountedOnly] = useState(false);
 
-  // Фильтрация продуктов по цене и скидке
-  // const filteredProducts = data.filter(product => {
-  //   const price = product.discont_price || product.price;
-  //   const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
-  //   const matchesDiscount = !isDiscountedOnly || product.discont_price != null;
-  //   return matchesPrice && matchesDiscount;
-  // });
+    const [ minValue, setMinValue ] = useState(0);
+    const [ maxValue, setMaxValue ] = useState(Infinity);
 
-  // Сортировка продуктов
-  // const sortedProducts = filteredProducts.sort((a, b) => {
-  //   const priceA = a.discont_price || a.price;
-  //   const priceB = b.discont_price || b.price;
+    const handleMinValue = e => setMinValue(e.target.value || 0);
+    const handleMaxValue = e => setMaxValue(e.target.value || Infinity);
 
-  //   if (sortOption === 'asc') return priceA - priceB;
-  //   if (sortOption === 'desc') return priceB - priceA;
-  //   if (sortOption === 'nameAz') return a.title.localeCompare(b.title);
-  //   if (sortOption === 'nameZa') return b.title.localeCompare(a.title);
-  //   return 0;
-  // });
+    useEffect(() => {
+      dispatch(filterByPriceAction({
+        min: minValue,
+        max: maxValue
+      }))
+    }, [minValue, maxValue]);
 
-  // const handlePriceChange = (e) => {
-  //   const { name, value } = e.target;
-  //   if (name === 'minPrice') setMinPrice(value);
-  //   if (name === 'maxPrice') setMaxPrice(value);
-  // };
-
-  // const handleSortChange = (e) => {
-  //   setSortOption(e.target.value);
-  // };
-
-  // const handleDiscountChange = () => {
-  //   setIsDiscountedOnly(!isDiscountedOnly);
-  // };
+    const filteredProducts = data
+    .filter(product => product.visible) // Zuerst filtern wir nur sichtbare Produkte
+    .filter(product => {
+      const price = product.discont_price || product.price; // Verwende den Rabattpreis, falls vorhanden, sonst normalen Preis
+      const isWithinPriceRange = price >= minValue && price <= maxValue;
+      const isDiscounted = checked ? product.discont_price !== null : true;
+      return isWithinPriceRange && isDiscounted; // Produkte müssen beide Bedingungen erfüllen
+    });
 
   return (
     <section className={s.container}>
@@ -88,45 +66,6 @@ function ProductsPage() {
       </nav>
       <div className={s.wrapper}>
         <h2 className={s.title}>All Products</h2>
-        {/* <form action="" className={s.form}>
-          <label htmlFor="price" className={s.label_price}>
-            Price
-          </label>
-          <input
-            type="number"
-            name="minPrice"
-            placeholder="from"
-            className={s.input_price}
-            value={minPrice}
-            onChange={handlePriceChange}
-          />
-          <input
-            type="number"
-            name="maxPrice"
-            placeholder="to"
-            className={s.input_price}
-            value={maxPrice}
-            onChange={handlePriceChange}
-          />
-          <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
-          <input
-            type="checkbox"
-            name="discount"
-            className={s.input_discount}
-            checked={isDiscountedOnly}
-            onChange={handleDiscountChange}
-          />
-          <label htmlFor="sort" className={s.label_sort}>
-            Sorted
-            <select name="sort" className={s.select_sort} value={sortOption} onChange={handleSortChange}>
-              <option value="default">by default</option>
-              <option value="asc">Price: Low to High</option>
-              <option value="desc">Price: High to Low</option>
-              <option value="nameAz">Name: A to Z</option>
-              <option value="nameZa">Name: Z to A</option>
-            </select>
-          </label>
-        </form> */}
         <form action="" className={s.form}>
           <label htmlFor="price" className={s.label_price}>
             Price
@@ -136,12 +75,14 @@ function ProductsPage() {
             name="minPrice"
             placeholder="from"
             className={s.input_price}
+            onChange={handleMinValue}
           />
           <input
             type="number"
             name="maxPrice"
             placeholder="to"
             className={s.input_price}
+            onChange={handleMaxValue} 
           />
           <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
           <input

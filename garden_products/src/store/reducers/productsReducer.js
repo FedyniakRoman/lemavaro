@@ -59,14 +59,24 @@ export const productsReducer = (state = defaultProductsState, action) => {
   } else if (action.type === GET_DISCOUNT_PRODUCTS) {
     const filteredProducts = state.products.map(el => ({
       ...el,
-      visible: action.payload ? el.price_discont !== null : true, // Устанавливаем видимость для скидочных товаров
+      visible: action.payload ? el.price_discont : true, // Устанавливаем видимость для скидочных товаров
     }));
 
     return {
       ...state,
       products: filteredProducts, // Обновляем видимость продуктов
     };
+  } else if(action.type === FILTER_BY_PRICE){
+    const { min, max } = action.payload;
+    const filteredProducts = state.products.map(product => ({
+      ...product,
+      visible: product.price >= min && product.price <= max, // Setze Sichtbarkeit basierend auf dem Preis
+    }));
+    
+    return {
+      ...state, // Behalte den Rest des state unverändert
+      products: filteredProducts, // Aktualisiere nur die Produkte
+    };
   }
-
   return state; // Возвращаем текущее состояние, если действие не распознано
 };

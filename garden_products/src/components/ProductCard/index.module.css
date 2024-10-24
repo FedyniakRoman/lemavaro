@@ -63,7 +63,10 @@
     color: white;
     background-color: initial;
     border: none;
-    transition: color .3s ease-in-out;
+    fill: white; /* Начальный цвет заливки */
+    stroke: #424436; /* Цвет обводки */
+    stroke-width: 0.7;
+    transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 .btn_icon_bag {
@@ -93,7 +96,7 @@
 }
 
 /* Зеленый цвет при наведении, если товар добавлен в корзину */
-.added_bag:hover{
+.added_icon:hover{
     fill: #92A134; 
     stroke:  #92A134; 
 }
@@ -180,6 +183,7 @@
 .price_container {
     align-items: center;
     display: flex; 
+    width: 100%;
 }
 
 .price_original {
@@ -187,20 +191,20 @@
     color: #8b8b8b;
     font-weight: 500;
     text-decoration: line-through; 
-    padding-right: 16px;
+    padding: 16px 0 0 16px;
 }
 
 .price_discounted {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
-    color: #424436; 
+    color: #000000; 
     padding-top: 8px;
 }
 
 .price_no_discount {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
-    color: #424436; 
+    color: #000000; 
 }
 
 /* --------------------------------------------- */
