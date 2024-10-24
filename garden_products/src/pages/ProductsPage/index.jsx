@@ -1,59 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../requests/products"; 
+import { getAllProducts } from "../../requests/products";
 import { useDispatch, useSelector } from "react-redux";
 import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
-import s from './index.module.css';
+import s from "./index.module.css";
 import SkeletonContainer from "../../components/SkeletonContainer";
 
+import FilterBar from "../../components/FilterBar";
+import { filterByPriceAction } from "../../store/reducers/productsReducer";
+
 function ProductsPage() {
-  const productsState = useSelector((store) => store.products);
   const dispatch = useDispatch();
 
+  const productsState = useSelector((store) => store.products);
+
+  // Извлекаем данные продуктов и статус из состояния
   const { products: data = [], status } = productsState;
 
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [sortOption, setSortOption] = useState('default');
-  const [isDiscountedOnly, setIsDiscountedOnly] = useState(false);
-
-  // Фильтрация продуктов по цене и скидке
-  const filteredProducts = data.filter(product => {
-    const price = product.discont_price || product.price;
-    const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
-    const matchesDiscount = !isDiscountedOnly || product.discont_price != null;
-    return matchesPrice && matchesDiscount;
-  });
-
-  // Сортировка продуктов
-  const sortedProducts = filteredProducts.sort((a, b) => {
-    const priceA = a.discont_price || a.price;
-    const priceB = b.discont_price || b.price;
-
-    if (sortOption === 'asc') return priceA - priceB;
-    if (sortOption === 'desc') return priceB - priceA;
-    if (sortOption === 'nameAz') return a.title.localeCompare(b.title);
-    if (sortOption === 'nameZa') return b.title.localeCompare(a.title);
-    return 0;
-  });
-
+  // При первом рендере компонента загружаем все продукты
   useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+    dispatch(getAllProducts);
+  }, []);
 
-  const handlePriceChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'minPrice') setMinPrice(value);
-    if (name === 'maxPrice') setMaxPrice(value);
-  };
+  // Локальные состояния для фильтров минимальной и максимальной цены
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(Infinity);
 
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-  };
+  // Локальное состояние для фильтра по скидке (checked для чекбокса)
+  const [checked, setChecked] = useState(false);
 
-  const handleDiscountChange = () => {
-    setIsDiscountedOnly(!isDiscountedOnly);
-  };
+  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  useEffect(() => {
+    dispatch(
+      filterByPriceAction({
+        min: minValue,
+        max: maxValue,
+      })
+    );
+  }, [minValue, maxValue]);
+
+  // Фильтрация продуктов по видимости, цене и наличию скидки
+  const filteredProducts = data
+    .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+    .filter((product) => {
+      const price = product.discont_price || product.price; // Используем цену со скидкой, если она есть, иначе обычную цену
+      const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+      const isDiscounted = checked ? product.discont_price !== null : true; // Если чекбокс активирован, проверяем наличие скидки
+      return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
+    });
 
   return (
     <section className={s.container}>
@@ -71,50 +65,19 @@ function ProductsPage() {
       </nav>
       <div className={s.wrapper}>
         <h2 className={s.title}>All Products</h2>
-        <form action="" className={s.form}>
-          <label htmlFor="price" className={s.label_price}>
-            Price
-          </label>
-          <input
-            type="number"
-            name="minPrice"
-            placeholder="from"
-            className={s.input_price}
-            value={minPrice}
-            onChange={handlePriceChange}
-          />
-          <input
-            type="number"
-            name="maxPrice"
-            placeholder="to"
-            className={s.input_price}
-            value={maxPrice}
-            onChange={handlePriceChange}
-          />
-          <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
-          <input
-            type="checkbox"
-            name="discount"
-            className={s.input_discount}
-            checked={isDiscountedOnly}
-            onChange={handleDiscountChange}
-          />
-          <label htmlFor="sort" className={s.label_sort}>
-            Sorted
-            <select name="sort" className={s.select_sort} value={sortOption} onChange={handleSortChange}>
-              <option value="default">by default</option>
-              <option value="asc">Price: Low to High</option>
-              <option value="desc">Price: High to Low</option>
-              <option value="nameAz">Name: A to Z</option>
-              <option value="nameZa">Name: Z to A</option>
-            </select>
-          </label>
-        </form>
+        {/* Фильтры: сортировка, диапазон цен и скидки */}
+        <FilterBar
+          setMinValue={setMinValue}
+          setMaxValue={setMaxValue}
+          setChecked={setChecked}
+          checked={checked}
+        />
         <div className={s.container}>
-          {status === 'loading' ? (
-            <SkeletonContainer count={11}/>
+          {/* Если статус "loading", отображаем скелетон, иначе контейнер с продуктами */}
+          {status === "loading" ? (
+            <SkeletonContainer count={11} />
           ) : (
-            <ProductsContainer products={sortedProducts} />
+            <ProductsContainer products={filteredProducts} />
           )}
         </div>
       </div>

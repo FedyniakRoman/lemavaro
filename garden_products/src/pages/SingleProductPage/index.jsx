@@ -45,7 +45,6 @@ export default function SingleProductPage() {
   };
 
   const favorit = useSelector((store) => store.favorites);
-  console.log(favorit (useSelector));
   
     // Ищем текущий товар в избранном 
     const favoritProduct = favorit.find((product) => product.id === id);
