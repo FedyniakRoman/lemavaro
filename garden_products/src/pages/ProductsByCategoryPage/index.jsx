@@ -7,12 +7,21 @@ import s from './index.module.css';
 import SkeletonContainer from '../../components/SkeletonContainer';
 
 function ProductsByCategoryPage() {
-  const { category_id } = useParams(); // Получаем category_id из URL
+  const { category_id } = useParams();
   const dispatch = useDispatch();
-  const productsState = useSelector((store) => store.products);
 
-  const { products: { data = [], category } = {}, status } = productsState; // Деструктуризация состояния с проверкой
+  useEffect(() => {
+    dispatch(getProductsByCategory(category_id));
+  }, []);
 
+  const productsByCategoryState = useSelector(
+    (store) => store.productsByCategory
+  );
+  console.log("ProductsByCategoriePage", productsByCategoryState);
+  
+  const { data = [], category = {}, status } = productsByCategoryState || {}; // Деструктуризация состояния с проверкой
+  console.log('Destrukturisierung', data, category, status);
+  
   const [minPrice, setMinPrice] = useState(''); // Для хранения минимальной цены
   const [maxPrice, setMaxPrice] = useState(''); // Для хранения максимальной цены
   const [sortOption, setSortOption] = useState('default'); // Опция сортировки
@@ -44,6 +53,7 @@ function ProductsByCategoryPage() {
     dispatch(getProductsByCategory(category_id)); // Запрос продуктов по категории с сервера
   }, [category_id, dispatch]);
 
+  
   useEffect(() => {
     if (category && category.title) {
       document.title = `${category.title}`; // Изменяем заголовок страницы

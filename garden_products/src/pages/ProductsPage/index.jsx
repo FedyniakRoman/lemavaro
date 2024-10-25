@@ -13,7 +13,7 @@ function ProductsPage() {
   const dispatch = useDispatch();
 
   const productsState = useSelector((store) => store.products);
-
+  
   // Извлекаем данные продуктов и статус из состояния
   const { products: data = [], status } = productsState;
 

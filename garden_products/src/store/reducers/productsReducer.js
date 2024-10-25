@@ -29,6 +29,7 @@ export const filterByPriceAction = values => ({ type: FILTER_BY_PRICE, payload: 
 
 export const productsReducer = (state = defaultProductsState, action) => {
   if (action.type === LOAD_PRODUCTS) {
+    console.log("Action Payload productsReducer:", action.payload);
     return {
       products: action.payload.map(el => ({...el, visible: true })), // Загружаем новые продукты
       status: 'ready', // Статус готовности

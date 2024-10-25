@@ -14,6 +14,8 @@ export const changeStatusAction = () => ({ type: CHANGE_STATUS_TO_LOADING });
 
 export const categoriesReducer = (state = defaultCategoriesState , action) => {
     if(action.type === LOAD_CATEGORIES){
+        console.log('categoriesReducer', action.payload);
+        
         return {
             data: action.payload,
             status: 'ready'
