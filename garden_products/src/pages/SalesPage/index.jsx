@@ -15,12 +15,23 @@ function SalesPage() {
   const [maxPrice, setMaxPrice] = useState('');
   const [sortOption, setSortOption] = useState('default');
 
+  // const [showSkeleton, setShowSkeleton] = useState(true)
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowSkeleton(false)
+  //   }, 2000) 
+  //   console.log(timer);
+    
+  //   return () => clearTimeout(timer)
+  // }, []) 
+
   useEffect(() => {
     dispatch(changeStatusAction());
     dispatch(getAllProducts());
-  }, [dispatch]);
+  }, []);
 
-  const { products = [], statusProduct } = productsState; 
+  const { products = [], status } = productsState; 
   
   let discountedProducts = Array.isArray(products)
   ? products.filter((product) => product.discont_price !== null)
@@ -103,8 +114,8 @@ function SalesPage() {
           </label>
         </form>
         <div className={s.container}>
-          {statusProduct === 'loading' ? (
-            <SkeletonContainer count={11}/>
+          {status === 'loading' ? (
+            <SkeletonContainer count={11} />
           ) : (
             <ProductsContainer products={sortedProducts} />
           )}

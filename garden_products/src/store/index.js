@@ -6,11 +6,13 @@ import themeReducer from './reducers/themeReducer';     //Импорт themeRedu
 import { cartReducer } from './reducers/cartReducer';
 import {singleProductReducer} from './reducers/singleProductReducer'
 import { favoritesReducer } from './reducers/favoritesReducer';
+import { productsByCategoryReducer } from './reducers/productsByCategoryReducer';
 
 
 const rootReducer = combineReducers({
     categories: categoriesReducer,
     products: productsReducer,
+    productsByCategory: productsByCategoryReducer,
     theme: themeReducer,                     //Редьюсер для Смены Темы.
     cart: cartReducer,
     singleProduct:singleProductReducer,

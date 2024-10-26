@@ -23,14 +23,21 @@ export const sortAllProductsAction = (option_value) => ({
   payload: option_value, // Опция сортировки
 });
 
-export const getDiscountProductsAction = value => ({ type: GET_DISCOUNT_PRODUCTS, payload: value })
+export const getDiscountProductsAction = (value) => ({
+  type: GET_DISCOUNT_PRODUCTS,
+  payload: value,
+});
 
-export const filterByPriceAction = values => ({ type: FILTER_BY_PRICE, payload: values })
+export const filterByPriceAction = (values) => ({
+  type: FILTER_BY_PRICE,
+  payload: values,
+});
 
 export const productsReducer = (state = defaultProductsState, action) => {
   if (action.type === LOAD_PRODUCTS) {
+    console.log("Action Payload productsReducer:", action.payload);
     return {
-      products: action.payload.map(el => ({...el, visible: true })), // Загружаем новые продукты
+      products: action.payload.map((el) => ({ ...el, visible: true })), // Загружаем новые продукты
       status: 'ready', // Статус готовности
     };
   } else if (action.type === CHANGE_STATUS_TO_LOADING) {
@@ -57,22 +64,21 @@ export const productsReducer = (state = defaultProductsState, action) => {
       products: sortedProducts, // Обновляем продукты после сортировки
     };
   } else if (action.type === GET_DISCOUNT_PRODUCTS) {
-    const filteredProducts = state.products.map(el => ({
+    const filteredProducts = state.products.map((el) => ({
       ...el,
-      visible: action.payload ? el.price_discont : true, // Устанавливаем видимость для скидочных товаров
+      visible: action.payload ? el.discont_price : true, // Устанавливаем видимость для скидочных товаров
     }));
-
     return {
       ...state,
       products: filteredProducts, // Обновляем видимость продуктов
     };
-  } else if(action.type === FILTER_BY_PRICE){
+  } else if (action.type === FILTER_BY_PRICE) {
     const { min, max } = action.payload;
-    const filteredProducts = state.products.map(product => ({
+    const filteredProducts = state.products.map((product) => ({
       ...product,
       visible: product.price >= min && product.price <= max, // Setze Sichtbarkeit basierend auf dem Preis
     }));
-    
+
     return {
       ...state, // Behalte den Rest des state unverändert
       products: filteredProducts, // Aktualisiere nur die Produkte

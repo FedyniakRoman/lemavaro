@@ -1,4 +1,5 @@
 import backendUrl from "../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
+import { loadProductsByCategoryAction } from "../store/reducers/productsByCategoryReducer";
 import { loadProductsAction } from "../store/reducers/productsReducer";
 import { loadSingleProductAction } from "../store/reducers/singleProductReducer";
 
@@ -25,7 +26,8 @@ return dispatch  => {
 export const getProductsByCategory = (category_id) => (dispatch) => {
   fetch(`${backendUrl}/categories/${category_id}`) // Запрос продуктов по категории
       .then(res => res.json())
-      .then(json => dispatch(loadProductsAction(json))) // Сохраняем продукты в Redux
+      .then(json => dispatch(loadProductsByCategoryAction(json))) // Сохраняем продукты в Redux
       .catch(err => console.error('Error fetching products by category:', err));
   };
+
 

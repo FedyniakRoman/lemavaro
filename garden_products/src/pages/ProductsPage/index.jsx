@@ -5,22 +5,24 @@ import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
 import s from "./index.module.css";
 import SkeletonContainer from "../../components/SkeletonContainer";
-
 import FilterBar from "../../components/FilterBar";
-import { filterByPriceAction } from "../../store/reducers/productsReducer";
+import {
+  changeStatusAction,
+  filterByPriceAction,
+} from "../../store/reducers/productsReducer";
 
 function ProductsPage() {
-  const dispatch = useDispatch();
-
   const productsState = useSelector((store) => store.products);
-
-  // Извлекаем данные продуктов и статус из состояния
-  const { products: data = [], status } = productsState;
+  const dispatch = useDispatch();
 
   // При первом рендере компонента загружаем все продукты
   useEffect(() => {
-    dispatch(getAllProducts);
+    dispatch(changeStatusAction());
+    dispatch(getAllProducts());
   }, []);
+
+  // Извлекаем данные продуктов и статус из состояния
+  const { products = [], status } = productsState;
 
   // Локальные состояния для фильтров минимальной и максимальной цены
   const [minValue, setMinValue] = useState(0);
@@ -28,7 +30,8 @@ function ProductsPage() {
 
   // Локальное состояние для фильтра по скидке (checked для чекбокса)
   const [checked, setChecked] = useState(false);
-
+  console.log('checked ProductsPage', checked);
+  
   // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
   useEffect(() => {
     dispatch(
@@ -40,14 +43,16 @@ function ProductsPage() {
   }, [minValue, maxValue]);
 
   // Фильтрация продуктов по видимости, цене и наличию скидки
-  const filteredProducts = data
-    .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
-    .filter((product) => {
-      const price = product.discont_price || product.price; // Используем цену со скидкой, если она есть, иначе обычную цену
-      const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
-      const isDiscounted = checked ? product.discont_price !== null : true; // Если чекбокс активирован, проверяем наличие скидки
-      return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
-    });
+  const filteredProducts = Array.isArray(products)
+    ? products
+        .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+        .filter((product) => {
+          const price = product.discont_price || product.price; // Используем цену со скидкой, если она есть, иначе обычную цену
+          const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+          const isDiscounted = checked ? product.discont_price !== null : true; // Если чекбокс активирован, проверяем наличие скидки
+          return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
+        })
+    : [];
 
   return (
     <section className={s.container}>

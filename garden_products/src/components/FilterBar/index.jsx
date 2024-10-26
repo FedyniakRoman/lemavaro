@@ -53,7 +53,7 @@ function FilterBar({ setMinValue, setMaxValue, checked, setChecked }) {
         name="discount"
         className={s.input_discount}
         checked={checked}
-        onClick={handleClick}
+        onChange={handleClick}
       />
       {/* Селект для сортировки продуктов по разным критериям */}
       <label htmlFor="sort" className={s.label_sort}>
