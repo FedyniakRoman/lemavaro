@@ -3,11 +3,13 @@ import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getSingleProduct } from "../../requests/products";
-import { IoIosHeartEmpty  } from "react-icons/io"; 
+import { IoIosHeartEmpty,IoIosHeart } from "react-icons/io"; 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
   addProductToCartAction,
+  updateCartAction,
+  incrementCountAction
 } from "../../store/reducers/cartReducer";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 import {addProductToFavoritesAction, deleteProductFromFavoritesAction} from "../../store/reducers/favoritesReducer"
@@ -23,7 +25,7 @@ export default function SingleProductPage() {
 
   const singleProductState = useSelector((store) => store.singleProduct);
   
-  const { status, data } = singleProductState || { status: "loading", data: [], };
+  const { data } = singleProductState || { status: "loading", data: [], };
 
   const {title, price, discont_price, description, image} = data;
 
@@ -44,8 +46,22 @@ export default function SingleProductPage() {
     setCount(--count)}
   };
 
+  const cart = useSelector((store) => store.cart);
+  const handleAddToCart = () => {
+    const product = cart.find((e) => e.id === id); 
+    if (product) {
+      dispatch(incrementCountAction(id, count)); 
+    } else {
+      dispatch(addProductToCartAction({ id, title, price, discont_price, image, count }));
+    }
+  };
+  
+
+  
+
+
   const favorit = useSelector((store) => store.favorites);
-  console.log(favorit (useSelector));
+ 
   
     // Ищем текущий товар в избранном 
     const favoritProduct = favorit.find((product) => product.id === id);
@@ -114,11 +130,20 @@ export default function SingleProductPage() {
             <h3 className={s.title}>{`${title}`}</h3>
           </Link>
           <div className={s.icons_container} >
-          
-          <IoIosHeartEmpty className={s.icon_heart }
-          onClick={handleToggleFavorite}
-          style={{ color: favoritProduct ? '#92A134' : 'white' }}
-             />
+        
+  {favoritProduct ? (
+    <IoIosHeart
+      className={s.icon_heart}
+      onClick={handleToggleFavorite}
+      style={{ color: '#92A134' }} // Зелёное сердечко при добавлении в избранное
+    />
+  ) : (
+    <IoIosHeartEmpty
+      className={s.icon_heart}
+      onClick={handleToggleFavorite}
+      style={{ color: 'black' }} // Чёрное пустое сердечко
+    />
+  )}
           
           </div>
         </div>
@@ -157,8 +182,8 @@ export default function SingleProductPage() {
   
         <button
           className={s.add_btn}
-          onClick={() => dispatch(addProductToCartAction({ id, title, price, discont_price, image, count} ))}
-        >
+          onClick={handleAddToCart}
+                >
           Add to cart
         </button>
       </div>
