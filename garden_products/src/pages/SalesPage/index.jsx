@@ -32,8 +32,6 @@ function SalesPage() {
   }, []);
 
   const { products = [], status } = productsState; 
-  console.log('products', products, 'statusProduct', status);
-  
   
   let discountedProducts = Array.isArray(products)
   ? products.filter((product) => product.discont_price !== null)

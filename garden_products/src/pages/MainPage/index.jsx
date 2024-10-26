@@ -7,7 +7,7 @@ import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import { getAllProducts } from "../../requests/products";
 import ProductsContainer from "../../components/ProductsContainer";
 import DiscountForm from "../../components/FormContainer";
-import SkeletonContainer from "../../components/SkeletonContainer";
+
 
 
 function MainPage() {
@@ -18,7 +18,7 @@ function MainPage() {
   useEffect(() => {
     dispatch(changeStatusAction());
     dispatch(getAllCategories);
-    dispatch(getAllProducts);
+    dispatch(getAllProducts());
   }, []);
 
   const { data, statusCategorie } = categorieState;

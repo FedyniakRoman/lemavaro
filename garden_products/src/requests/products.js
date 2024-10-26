@@ -30,3 +30,4 @@ export const getProductsByCategory = (category_id) => (dispatch) => {
       .catch(err => console.error('Error fetching products by category:', err));
   };
 
+
