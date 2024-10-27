@@ -1,69 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeStatusAction } from '../../store/reducers/categoriesReducer';
-import { getAllProducts } from '../../requests/products';
-import ProductsContainer from '../../components/ProductsContainer';
-import s from './index.module.css';
-import { Link } from 'react-router-dom';
-import SkeletonContainer from '../../components/SkeletonContainer';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeStatusAction } from "../../store/reducers/categoriesReducer";
+import { getAllProducts } from "../../requests/products";
+import ProductsContainer from "../../components/ProductsContainer";
+import s from "./index.module.css";
+import { Link } from "react-router-dom";
+import SkeletonContainer from "../../components/SkeletonContainer";
+import FilterBar from "../../components/FilterBar";
+import { filterByPriceAction } from "../../store/reducers/productsReducer";
 
 function SalesPage() {
   const productsState = useSelector((store) => store.products);
   const dispatch = useDispatch();
 
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [sortOption, setSortOption] = useState('default');
-
-  // const [showSkeleton, setShowSkeleton] = useState(true)
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setShowSkeleton(false)
-  //   }, 2000) 
-  //   console.log(timer);
-    
-  //   return () => clearTimeout(timer)
-  // }, []) 
-
+  // При первом рендере компонента загружаем все продукты
   useEffect(() => {
     dispatch(changeStatusAction());
     dispatch(getAllProducts());
   }, []);
 
-  const { products = [], status } = productsState; 
-  
-  let discountedProducts = Array.isArray(products)
-  ? products.filter((product) => product.discont_price !== null)
-  : [];
+  // Извлекаем данные продуктов и статус из состояния
+  const { products = [], status } = productsState;
 
   // Фильтрация продуктов по цене
-  const filteredProducts = Array.isArray(products) ? discountedProducts.filter((product) => {
-    const price = product.discont_price;
-    const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
-    return matchesPrice;
-  }) : [];
+  let discountedProducts = Array.isArray(products)
+    ? products.filter((product) => product.discont_price !== null)
+    : [];
 
-  // Сортировка продуктов
-  const sortedProducts = filteredProducts.sort((a, b) => {
-    const priceA = a.discont_price || a.price;
-    const priceB = b.discont_price || b.price;
+  // Локальные состояния для фильтров минимальной и максимальной цены
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(Infinity);
 
-    if (sortOption === 'asc') return priceA - priceB;
-    if (sortOption === 'desc') return priceB - priceA;
-    if (sortOption === 'nameAz') return a.title.localeCompare(b.title);
-    if (sortOption === 'nameZa') return b.title.localeCompare(a.title);
-    return 0;
-  });
+  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  useEffect(() => {
+    dispatch(
+      filterByPriceAction({
+        min: minValue,
+        max: maxValue,
+      })
+    );
+  }, [minValue, maxValue]);
 
-  const handlePriceChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'minPrice') setMinPrice(value);
-    if (name === 'maxPrice') setMaxPrice(value);
-  };
+  // Фильтрация продуктов по видимости, цене и наличию скидки
+  const filteredProducts = Array.isArray(discountedProducts)
+    ? discountedProducts
+        .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+        .filter((product) => {
+          const price = product.discont_price; // Используем цену со скидкой
+          const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+          return isWithinPriceRange;
+        })
+    : [];
 
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
+  // Функция для сброса фильтров
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
   };
 
   return (
@@ -76,48 +68,24 @@ function SalesPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/sales">All sales</Link>
+            <Link to="/sales" onClick={resetFilters}>
+              All sales
+            </Link>
           </li>
         </ul>
       </nav>
       <div className={s.wrapper}>
         <h2 className={s.title}>Discounted items</h2>
-        <form action="" className={s.form}>
-          <label htmlFor="price" className={s.label_price}>
-            Price
-          </label>
-          <input
-            type="number"
-            name="minPrice"
-            placeholder="from"
-            className={s.input_price}
-            value={minPrice}
-            onChange={handlePriceChange}
-          />
-          <input
-            type="number"
-            name="maxPrice"
-            placeholder="to"
-            className={s.input_price}
-            value={maxPrice}
-            onChange={handlePriceChange}
-          />
-          <label htmlFor="sort" className={s.label_sort}>
-            Sorted
-            <select name="sort" className={s.select_sort} value={sortOption} onChange={handleSortChange}>
-              <option value="default">by default</option>
-              <option value="asc">Price: Low to High</option>
-              <option value="desc">Price: High to Low</option>
-              <option value="nameAz">Name: A to Z</option>
-              <option value="nameZa">Name: Z to A</option>
-            </select>
-          </label>
-        </form>
+        <FilterBar
+          setMinValue={setMinValue}
+          setMaxValue={setMaxValue}
+          showCheckbox={false} // Скрыть чекбокс на странице SalesPage
+        />
         <div className={s.container}>
-          {status === 'loading' ? (
+          {status === "loading" ? (
             <SkeletonContainer count={11} />
           ) : (
-            <ProductsContainer products={sortedProducts} />
+            <ProductsContainer products={filteredProducts} />
           )}
         </div>
       </div>

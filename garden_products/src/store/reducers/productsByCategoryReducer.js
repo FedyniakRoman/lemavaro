@@ -1,3 +1,8 @@
+const defaultCategoriesState  = {
+  data: {},
+  status: 'loading'
+}
+
 const LOAD_PRODUCTS_BY_CATEGORY = 'LOAD_PRODUCTS_BY_CATEGORY';
 
 export const loadProductsByCategoryAction = productsByCategory => ({
