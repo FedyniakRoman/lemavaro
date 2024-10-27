@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { getAllCategories } from '../../requests/categories'
 import { useDispatch, useSelector } from 'react-redux'
 import CategoriesContainer from '../../components/CategoriesContainer'
-import { changeStatusAction } from '../../store/reducers/categoriesReducer'
 import s from './index.module.css'
 import { Link } from 'react-router-dom'
 import SkeletonContainer from '../../components/SkeletonContainer'
+import { changeStatusAction } from '../../store/reducers/productsByCategoryReducer'
 
 function CategoriesPage() {
 

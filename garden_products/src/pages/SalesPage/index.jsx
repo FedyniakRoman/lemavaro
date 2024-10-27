@@ -79,6 +79,8 @@ function SalesPage() {
         <FilterBar
           setMinValue={setMinValue}
           setMaxValue={setMaxValue}
+          minValue={minValue}
+          maxValue={maxValue}
           showCheckbox={false} // Скрыть чекбокс на странице SalesPage
         />
         <div className={s.container}>
