@@ -88,7 +88,7 @@ function ProductsPage() {
           setChecked={setChecked}
           checked={checked}
         />
-        <div className={s.container}>
+        <div className={s.products_container}>
           {/* Если статус "loading", отображаем скелетон, иначе контейнер с продуктами */}
           {status === "loading" ? (
             <SkeletonContainer count={11} />

@@ -85,7 +85,8 @@ export default function Header() {
   };
 
   return (
-    <header className={s.nav_container}>
+    <header className={s.header_wrapper}>
+    <div className={s.nav_container}>
       <div className={s.header_container_top}>
         <div className={s.nav_icons_left}>
           <img
@@ -124,7 +125,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
           <h1 className={s.header_image_text}>
@@ -148,7 +148,6 @@ export default function Header() {
                 className={s.modal_close_button}
                 onClick={handleCloseModal}
               >
-                X
               </button>
             </div>
 
@@ -173,6 +172,8 @@ export default function Header() {
           </div>
         </div>
       )}
+    </div>
+    <div className={s.linie}></div>
     </header>
   );
 }

@@ -1,7 +1,6 @@
 .container {
-    margin: 0 auto;
-    max-width: 1400px;
-    padding: 0 20px;
+    margin: 0 auto 80px;
+    max-width: 1360px;
 }
 
 .nav {
