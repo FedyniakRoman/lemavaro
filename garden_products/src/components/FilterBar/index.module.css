@@ -20,12 +20,12 @@
 }
 
 .input_price {
-    border: .0625rem solid #ddd;
-    border-radius: .375rem;
-    font-size: .9375rem;
-    height: 2.25rem;
-    padding: .5rem 1rem;
-    width: 7rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    height: 36px;
+    padding: 8px 16px;
+    width: 112px;
 }
 
 .select_sort {
@@ -42,12 +42,12 @@
 
 .input_discount {
     position: relative;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     appearance: none;
-    border: .0625rem solid #ddd;
-    border-radius: .375rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     transition: all .3s ease-in-out;
     background-color: white;
 }
@@ -60,7 +60,7 @@
 .input_discount:checked::after {
     content: "✓";
     color: white;
-    font-size: 1.25rem;
+    font-size: 16px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -78,4 +78,24 @@
 
 .input_discount:checked::after {
     transform: translate(-50%, -50%) scale(1); /* Zeigt das Häkchen an */
+}
+@media(max-width: 768px){
+    .form {
+        flex-wrap: wrap;
+    }
+    .label_sort{
+        margin-left:0;
+    }
+}
+@media(max-width: 480px){
+    .label_discount{
+        margin-left:0;
+        font-size: 18px;
+    }
+    .label_price, .label_sort{
+        font-size: 18px;
+    }
+    .input_price, .select_sort{
+        font-size: 14px;
+    }
 }

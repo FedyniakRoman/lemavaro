@@ -3,12 +3,9 @@
     align-items: flex-start;
     border: 1px solid #ddd;
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    min-height: 422px;
+    max-height: 422px;
     overflow: hidden;
     position: relative;
-    row-gap: 20px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -17,6 +14,7 @@
 /* Контейнер для изображения продукта */
 .img_container {
     position: relative;
+    margin-bottom: 20px;
 }
 
 .img_link {
@@ -28,7 +26,7 @@
     border-bottom: 1px solid #ddd;
     flex-shrink: 1;
     width: 100%;
-    height: 320px;
+    height: 284px;
     object-fit: cover;
     overflow: hidden;
     position: relative;
@@ -153,8 +151,8 @@
     flex: 1 0;
     flex-direction: column;
     gap: 16px;
-    padding: 0 32px 32px;
-    width: 316px;
+    margin: 0 32px 32px;
+    max-width: 252px;
 }
 
 .img_link {
@@ -227,4 +225,67 @@
     font-weight: 600;
     gap: 10px;
     padding: 4px 8px;
+}
+
+@media(max-width: 1000px){
+    .card { 
+        max-height: 398px;
+        max-width: 225px;
+    }
+    .img {
+        height: 250px;
+        object-fit: cover;
+        overflow: hidden;
+        position: relative;
+    }
+    .products_information {
+        gap: 38px;
+        margin: 0 20px 20px;
+        max-width: 225px;
+        height: 128px;
+    }
+  
+}
+@media(max-width: 768px){
+    .card { 
+        max-height: 372px;
+        max-width: 354px;
+    }
+    .img {
+        height: 250px;
+    }
+    .products_information {
+        gap: 12px;
+        margin: 0 20px 20px;
+        max-width: 354px;
+        height: 102px;
+    }
+  
+}
+@media(max-width: 480px){
+    .card { 
+        max-height: 358px;
+        max-width: 210px;
+    }
+    .img {
+        height: 220px;
+    }
+    .title{
+        font-size: 18px;
+    }
+    .price_discounted, .price_no_discount{
+        font-size: 36px;
+    }
+    .btn_icon_heart, .btn_icon_bag{
+        width: 40px;
+    }
+    .sale_value{
+        font-size: 18px;
+    }
+}
+@media(max-width: 360px){
+    .card { 
+        max-height: 335px;
+        max-width: 320px;
+    }
 }
