@@ -9,6 +9,7 @@ import {
   incrementCountAction,
 } from "../../store/reducers/cartReducer";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
+import { Link } from "react-router-dom";
 
 // Компонент для отображения товара в корзине
 function CartItem({ id, image, title, count, price, discont_price }) {
@@ -19,11 +20,13 @@ function CartItem({ id, image, title, count, price, discont_price }) {
 
   return (
     <div className={s.card}>
-      <img
-        src={`${backendUrl}${image}`} // Путь к изображению товара
-        alt={title}
-        className={s.img} // Применение стилей к изображению
-      />
+      <Link to={`/products/${id}`} className={s.img_link}>
+        <img
+          src={`${backendUrl}${image}`} // Путь к изображению товара
+          alt={title}
+          className={s.img}
+        />
+      </Link>
       <div className={s.info_block}>
         <div className={s.top_section}>
           <p className={s.product_title}>{title}</p> {/* Название товара */}
@@ -37,12 +40,12 @@ function CartItem({ id, image, title, count, price, discont_price }) {
           <div className={s.count_container}>
             <AiOutlineMinus
               className={s.count_button}
-              onClick={() => dispatch(decrementCountAction(id))}
+              onClick={() => dispatch(decrementCountAction(id))} // Уменьшение количества товара
             />
             <p className={s.count_value}>{count}</p> {/* Количество товаров */}
             <AiOutlinePlus
               className={s.count_button}
-              onClick={() => dispatch(incrementCountAction(id))}
+              onClick={() => dispatch(incrementCountAction(id))} // Увеличение количества товара
             />
           </div>
           <div className={s.price_container}>

@@ -30,17 +30,17 @@ function ProductsPage() {
 
   // Локальное состояние для фильтра по скидке (checked для чекбокса)
   const [checked, setChecked] = useState(false);
-  console.log('checked ProductsPage', checked);
-  
+
   // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
   useEffect(() => {
     dispatch(
       filterByPriceAction({
         min: minValue,
         max: maxValue,
+        checked,
       })
     );
-  }, [minValue, maxValue]);
+  }, [minValue, maxValue, checked]);
 
   // Фильтрация продуктов по видимости, цене и наличию скидки
   const filteredProducts = Array.isArray(products)
@@ -54,6 +54,13 @@ function ProductsPage() {
         })
     : [];
 
+  // Функция для сброса фильтров
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
+    setChecked(false);
+  };
+
   return (
     <section className={s.container}>
       <nav className={s.nav}>
@@ -64,7 +71,9 @@ function ProductsPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/products">All Products</Link>
+            <Link to="/products" onClick={resetFilters}>
+              All Products
+            </Link>
           </li>
         </ul>
       </nav>
@@ -74,6 +83,8 @@ function ProductsPage() {
         <FilterBar
           setMinValue={setMinValue}
           setMaxValue={setMaxValue}
+          minValue={minValue}
+          maxValue={maxValue}
           setChecked={setChecked}
           checked={checked}
         />
