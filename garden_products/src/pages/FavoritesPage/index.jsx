@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../../components/ProductCard"; // Компонент для отображения товаров
 import s from "./index.module.css";
-import { deleteProductFromFavoritesAction, filterByPriceAction } from "../../store/reducers/favoritesReducer";
+import {
+  deleteProductFromFavoritesAction,
+  filterByPriceAction,
+} from "../../store/reducers/favoritesReducer";
 import FavoritesContainer from "../../components/FavoritesContainer";
 import FilterBar from "../../components/FilterBar";
+import { Link } from "react-router-dom";
 
 function FavoritesPage() {
   const favorites = useSelector((store) => store.favorites); // Получаем список избранных товаров
@@ -21,49 +25,49 @@ function FavoritesPage() {
     }
   }, [favorites]); // Обновляем при изменении cartState
 
-    // Локальные состояния для фильтров минимальной и максимальной цены
-    const [minValue, setMinValue] = useState(0);
-    const [maxValue, setMaxValue] = useState(Infinity);
-  
-    // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
-    useEffect(() => {
-      dispatch(
-        filterByPriceAction({
-          min: minValue,
-          max: maxValue,
+  // Локальные состояния для фильтров минимальной и максимальной цены
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(Infinity);
+
+  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  useEffect(() => {
+    dispatch(
+      filterByPriceAction({
+        min: minValue,
+        max: maxValue,
+      })
+    );
+  }, [minValue, maxValue]);
+
+  // Фильтрация продуктов по видимости, цене и наличию скидки
+  const filteredProducts = Array.isArray(favorites)
+    ? favorites
+        .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+        .filter((product) => {
+          const price = product.discont_price; // Используем цену со скидкой
+          const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+          return isWithinPriceRange;
         })
-      );
-    }, [minValue, maxValue]);
-  
-    // Фильтрация продуктов по видимости, цене и наличию скидки
-    const filteredProducts = Array.isArray(favorites)
-      ? favorites
-          .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
-          .filter((product) => {
-            const price = product.discont_price; // Используем цену со скидкой
-            const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
-            return isWithinPriceRange;
-          })
-      : [];
-  
-    // Функция для сброса фильтров
-    const resetFilters = () => {
-      setMinValue(0);
-      setMaxValue(Infinity);
-    };
+    : [];
+
+  // Функция для сброса фильтров
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
+  };
   return (
     <section className={s.container}>
       <nav className={s.nav}>
         <ul className={s.nav_list}>
           <li className={s.item}>
-            <a href="/" className={s.link}>
+            <Link to="/" className={s.link}>
               Main page
-            </a>
+            </Link>
           </li>
           <li className={s.item}>
-            <a href="/favorites" className={s.link}>
-              Favorites
-            </a>
+            <Link to="/favorites" onClick={resetFilters}>
+              Liked products
+            </Link>
           </li>
         </ul>
       </nav>
@@ -72,11 +76,11 @@ function FavoritesPage() {
 
       {/* Форма фильтрации и сортировки */}
       <FilterBar
-      setMinValue={setMinValue}
-      setMaxValue={setMaxValue}
-      minValue={minValue}
-      maxValue={maxValue}
-      showCheckbox={false} // Скрыть чекбокс на странице
+        setMinValue={setMinValue}
+        setMaxValue={setMaxValue}
+        minValue={minValue}
+        maxValue={maxValue}
+        showCheckbox={false} // Скрыть чекбокс на странице
       />
       {/* Отображение избранных товаров */}
       <div className={s.favorites_container}>
