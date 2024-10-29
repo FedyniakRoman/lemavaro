@@ -3,7 +3,7 @@ import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getSingleProduct } from "../../requests/products";
-import { IoIosHeartEmpty  } from "react-icons/io"; 
+import { IoIosHeartEmpty, IoIosHeart  } from "react-icons/io"; 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
@@ -125,13 +125,22 @@ export default function SingleProductPage() {
             <h3 className={s.title}>{`${title}`}</h3>
           </Link>
           <div className={s.icons_container} >
-          
-          <IoIosHeartEmpty className={s.icon_heart }
-          onClick={handleToggleFavorite}
-          style={{ color: favoritProduct ? '#92A134' : 'white' }}
-             />
-          
-          </div>
+        
+        {favoritProduct ? (
+          <IoIosHeart
+            className={s.icon_heart}
+            onClick={handleToggleFavorite}
+            style={{ color: '#92A134' }} 
+          />
+        ) : (
+          <IoIosHeartEmpty
+            className={s.icon_heart}
+            onClick={handleToggleFavorite}
+            style={{ color: 'black' }} 
+          />
+        )}
+                
+                </div>
         </div>
 
         {
@@ -148,6 +157,8 @@ export default function SingleProductPage() {
             </span>
           </>
         )}
+        
+     
       </div>
       
         }

@@ -16,8 +16,12 @@ export default function Footer() {
         <div className={s.colum}>
           <span className={s.socials}>Socials</span>
           <div className={s.icons}>  
-            <RiInstagramFill size={44} color="black" />
-            <IoLogoWhatsapp size={44} color="black" />
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <RiInstagramFill size={44} color="black" style={{ cursor: 'pointer' }} />
+      </a>
+      <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+        <IoLogoWhatsapp size={44} color="black" style={{ cursor: 'pointer' }} />
+      </a>
           </div>
         </div>
         <div className={s.colum}>
