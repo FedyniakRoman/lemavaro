@@ -22,7 +22,10 @@ function ProductCard({ id, title, image, price, discont_price }) {
   const cart = useSelector((store) => store.cart);
 
   // Ищем текущий товар в избранном и корзине
-  const favoriteProduct = favorites.find((product) => product.id === id);
+  const favoriteProduct = Array.isArray(favorites) 
+  ? favorites.find((product) => product.id === id)
+  : [];
+  
   const isInCart = cart.some((product) => product.id === id);
 
   // Функция добавления/удаления товара в избранное

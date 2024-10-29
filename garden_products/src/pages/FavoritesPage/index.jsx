@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../../components/ProductCard'; // Компонент для отображения товаров
 import s from './index.module.css';
 import { deleteProductFromFavoritesAction } from '../../store/reducers/favoritesReducer';
+import FavoritesContainer from '../../components/FavoritesContainer';
 
 function FavoritesPage() {
   const favorites = useSelector((store) => store.favorites); // Получаем список избранных товаров
   const dispatch = useDispatch();
+
+  // Функция для обновления localStorage
 
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
@@ -14,12 +17,14 @@ function FavoritesPage() {
   const [isDiscountedOnly, setIsDiscountedOnly] = useState(false);
 
   // Фильтрация избранных товаров
-  const filteredFavorites = favorites.filter(product => {
+  const filteredFavorites = Array.isArray(favorites)
+  ? favorites.filter(product => {
     const price = product.discont_price || product.price;
     const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
     const matchesDiscount = !isDiscountedOnly || product.discont_price != null;
     return matchesPrice && matchesDiscount;
-  });
+  })
+  : [];
 
   // Сортировка товаров
   const sortedFavorites = filteredFavorites.sort((a, b) => {
@@ -107,13 +112,11 @@ function FavoritesPage() {
 
       {/* Отображение избранных товаров */}
       <div className={s.favorites_container}>
-  {sortedFavorites.length === 0 ? (
-    <p>You have no favorite items matching your filters.</p>
-  ) : (
-    sortedFavorites.map((product) => (
-      <ProductCard key={product.id} {...product} /> // Отображение только ProductCard
-    ))
-  )}
+      {sortedFavorites.length === 0 ? (
+        <p>You have no favorite items matching your filters.</p>
+      ) : (
+        <FavoritesContainer favorites={sortedFavorites} />
+      )}
 </div>
     </section>
   );
