@@ -48,7 +48,7 @@ export default function SingleProductPage() {
 
   const cart = useSelector((store) => store.cart);
   const handleAddToCart = () => {
-    const product = cart.find((e) => e.id === id); 
+    const product = cart.find((e) => e.id === +id); 
     if (product) {
       dispatch(incrementCountAction(id, count)); 
     } else {
@@ -72,6 +72,9 @@ export default function SingleProductPage() {
         dispatch(addProductToFavoritesAction({ id, title, image, price, discont_price })); 
       }
     };
+
+
+    
   
   return (
     <div className={s.container_single_card}>
