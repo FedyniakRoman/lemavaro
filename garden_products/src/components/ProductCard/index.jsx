@@ -59,15 +59,24 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <Link to={`/products/${id}`} className={s.img_link}>
           <img src={`${backendUrl}${image}`} alt={title} className={s.img} /> {/*Картинка продукта*/}
         </Link>
+        <div className={s.add_btn_container}>
+          <button
+            className={`${s.add_btn} ${isInCart ? s.white : ""} ${
+              isInCart ? s.added : ""
+            }`}
+            onClick={handleBagClick}
+          >
+            {isInCart ? "Added" : "Add to cart"}
+          </button>
+        </div>
         <div className={s.icons_container}>
           {/* Иконка сердца с динамическим изменением цвета */}
           <TiHeartFullOutline
-            className={s.btn_icon_heart}
+            className={`${s.btn_icon_heart} ${favoriteProduct ? s.green : ""} ${favoriteProduct ? s.added_icon : ""}`}
             onClick={handleToggleFavorite}
-            style={{ color: favoriteProduct ? '#92A134' : 'white' }} // Закрашиваем иконку зелёным, если товар в избранном
           />
           <BsHandbagFill
-            className={`${s.btn_icon_bag} ${isInCart ? s.green : ""} ${isInCart ? s.added_bag : ""}`}
+            className={`${s.btn_icon_bag} ${isInCart ? s.green : ""} ${isInCart ? s.added_icon : ""}`}
             onClick={handleBagClick}
           />
         </div>
@@ -79,10 +88,14 @@ function ProductCard({ id, title, image, price, discont_price }) {
         <div className={s.price_container}>
           {discont_price ? (
             <>
-              <p className={s.price_original} style={{ textDecoration: 'line-through' }}>{`$${price}`}</p>
-              <p className={s.price_discounted}>{`$${discont_price}`}</p>
+               {/* Новая цена отображается без зачеркнутого стиля */}
+               <p className={s.price_discounted}>{`$${discont_price}`}</p>
+              {/* Старая цена отображается зачеркнутой */}
+              <p className={s.price_original}>{`$${price}`}</p>
+             
             </>
           ) : (
+            // Если скидки нет, отображаем только обычную цену без зачёркивания
             <p className={s.price_no_discount}>{`$${price}`}</p>
           )}
         </div>

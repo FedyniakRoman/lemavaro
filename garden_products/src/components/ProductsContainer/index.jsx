@@ -3,7 +3,7 @@ import s from './index.module.css';
 import ProductCard from '../ProductCard';
 
 function ProductsContainer({ products }) {
-  console.log('Полученные продукты:', products); // Проверка, что продукты приходят
+
   return (
     <div className={s.container}>
       {Array.isArray(products) && products.length > 0 ? (

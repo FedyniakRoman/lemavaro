@@ -15,8 +15,6 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     singleProduct:singleProductReducer,
     favorites: favoritesReducer,
-
-
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
