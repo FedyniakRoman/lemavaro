@@ -5,49 +5,54 @@ import ProductsContainer from "../../components/ProductsContainer";
 import { Link } from "react-router-dom";
 import s from "./index.module.css";
 import SkeletonContainer from "../../components/SkeletonContainer";
-
 import FilterBar from "../../components/FilterBar";
-import { filterByPriceAction } from "../../store/reducers/productsReducer";
+import {
+  changeStatusAction,
+  filterByPriceAction,
+} from "../../store/reducers/productsReducer";
 
 function ProductsPage() {
   const dispatch = useDispatch();
+  const { products = [], status } = useSelector((store) => store.products);
 
-  const productsState = useSelector((store) => store.products);
-
-  // Извлекаем данные продуктов и статус из состояния
-  const { products: data = [], status } = productsState;
-
-  // При первом рендере компонента загружаем все продукты
-  useEffect(() => {
-    dispatch(getAllProducts);
-  }, []);
-
-  // Локальные состояния для фильтров минимальной и максимальной цены
+  // Локальні стани для фільтрів
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(Infinity);
-
-  // Локальное состояние для фильтра по скидке (checked для чекбокса)
   const [checked, setChecked] = useState(false);
 
-  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  // Завантаження продуктів при першому рендері
+  useEffect(() => {
+    dispatch(changeStatusAction());
+    dispatch(getAllProducts());
+  }, [dispatch]);
+
+  // Фільтрація по ціні та наявності знижки
   useEffect(() => {
     dispatch(
       filterByPriceAction({
         min: minValue,
         max: maxValue,
+        checked,
       })
     );
-  }, [minValue, maxValue]);
+  }, [minValue, maxValue, checked, dispatch]);
 
-  // Фильтрация продуктов по видимости, цене и наличию скидки
-  const filteredProducts = data
-    .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
-    .filter((product) => {
-      const price = product.discont_price || product.price; // Используем цену со скидкой, если она есть, иначе обычную цену
-      const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
-      const isDiscounted = checked ? product.discont_price !== null : true; // Если чекбокс активирован, проверяем наличие скидки
-      return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
-    });
+  // Фільтровані продукти
+  const filteredProducts = Array.isArray(products)
+    ? products.filter((product) => {
+        const price = product.discont_price || product.price;
+        const isWithinPriceRange = price >= minValue && price <= maxValue;
+        const isDiscounted = checked ? product.discont_price !== null : true;
+        return product.visible && isWithinPriceRange && isDiscounted;
+      })
+    : [];
+
+  // Функція для скидання фільтрів
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
+    setChecked(false);
+  };
 
   return (
     <section className={s.container}>
@@ -59,21 +64,27 @@ function ProductsPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/products">All Products</Link>
+            <Link to="/products" onClick={resetFilters} className={s.link}>
+              All Products
+            </Link>
           </li>
         </ul>
       </nav>
+
       <div className={s.wrapper}>
         <h2 className={s.title}>All Products</h2>
-        {/* Фильтры: сортировка, диапазон цен и скидки */}
+        {/* Фільтри: сортування, діапазон цін та знижки */}
         <FilterBar
           setMinValue={setMinValue}
           setMaxValue={setMaxValue}
+          minValue={minValue}
+          maxValue={maxValue}
           setChecked={setChecked}
           checked={checked}
         />
-        <div className={s.container}>
-          {/* Если статус "loading", отображаем скелетон, иначе контейнер с продуктами */}
+
+        <div className={s.products_container}>
+          {/* Показуємо Skeleton, якщо статус завантаження */}
           {status === "loading" ? (
             <SkeletonContainer count={11} />
           ) : (

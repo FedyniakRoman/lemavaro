@@ -7,7 +7,8 @@ import { IoIosHeartEmpty  } from "react-icons/io";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
-  addProductToCartAction,
+  updateCartAction,
+  addProductToCartAction
 } from "../../store/reducers/cartReducer";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 import {addProductToFavoritesAction, deleteProductFromFavoritesAction} from "../../store/reducers/favoritesReducer"
@@ -45,7 +46,7 @@ export default function SingleProductPage() {
   };
 
   const favorit = useSelector((store) => store.favorites);
-  console.log(favorit (useSelector));
+
   
     // Ищем текущий товар в избранном 
     const favoritProduct = favorit.find((product) => product.id === id);
@@ -58,6 +59,16 @@ export default function SingleProductPage() {
       }
     };
   
+    const cart = useSelector((state) => state.cart);
+    const handleAddToCart = () => {
+      const newProduct = cart.find((e) => e.id === +id);
+  if(newProduct){
+    dispatch(updateCartAction({ id, count: newProduct.count + count }))
+  }else{
+    dispatch(addProductToCartAction({ id, title, price, discont_price, image, count} ))
+  }
+    }
+
   return (
     <div className={s.container_single_card}>
 
@@ -157,7 +168,7 @@ export default function SingleProductPage() {
   
         <button
           className={s.add_btn}
-          onClick={() => dispatch(addProductToCartAction({ id, title, price, discont_price, image, count} ))}
+       onClick={handleAddToCart}
         >
           Add to cart
         </button>
