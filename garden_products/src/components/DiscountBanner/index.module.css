@@ -1,0 +1,60 @@
+/* Hauptcontainer */
+.container {
+    position: relative;
+    width: 100%; /* Volle Breite */
+    height: 600px; /* Fixierte Höhe */
+  }
+  
+  /* Das Bild */
+  .img {
+    width: 100%; /* Volle Breite des Bildes */
+    height: 100%; /* Füllt den Container aus */
+    object-fit: cover; /* Das Bild wird auf den Container skaliert und bleibt proportional */
+  }
+  
+  /* Box für Text und Button */
+  .content_box {
+    max-width: 1400px; /* Maximalbreite für den Inhalt */
+    position: absolute; /* Platziert über dem Bild */
+    top: 80px; /* Vertikale Zentrierung */
+    left: 40px;
+    right: 40px;
+    bottom: 210px;
+    /* transform: translate(-50%, -50%);  */
+    /* width: 100%; */
+    margin: 0 auto;
+    
+  }
+  
+  /* Styling für den Text */
+  .content {
+    font-size: 64px; /* Angepasste Schriftgröße */
+    font-weight: bold; /* Fettgedruckt */
+    margin-bottom: 20px; /* Abstand unter dem Text */
+    line-height: 1.2;
+  }
+  
+  /* Styling für den Button */
+  .button {
+    background-color: #92A134;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 16px 36px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none; /* Entfernt den Unterstrich vom Link */
+    display: inline-block;
+    transition: transform 0.3s ease;
+    background:  #92A134;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top:40px;
+  }
+  
+  /* Hover-Effekt für den Button */
+  .button:hover {
+    transform: scale(1.05);
+    background-position: 100% 50%;
+  }
+  

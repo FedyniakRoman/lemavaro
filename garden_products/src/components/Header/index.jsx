@@ -10,6 +10,7 @@ import ThemeToggle from "../ThemeToggle"; // Импорт компонента �
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
+
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -125,18 +126,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-      {location.pathname === "/" && (
-        <div className={s.header_image_container}>
-          <h1 className={s.header_image_text}>
-            Amazing Discounts <br /> on Garden Products!
-          </h1>
-
-          <Link to="/sales" className={s.header_image_button}>
-            Check out
-          </Link>
-        </div>
-      )}
-
       {isModalOpen && (
         <div className={s.modal_overlay} onClick={handleCloseModal}>
           <div className={s.modal_content} onClick={(e) => e.stopPropagation()}>

@@ -7,6 +7,7 @@ import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import { getAllProducts } from "../../requests/products";
 import ProductsContainer from "../../components/ProductsContainer";
 import DiscountForm from "../../components/DiscountForm";
+import DiscountBanner from "../../components/DiscountBanner";
 
 
 
@@ -44,6 +45,7 @@ function MainPage() {
 
   return (
     <div className={s.main_page}>
+      <DiscountBanner />
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Categories</h1>
