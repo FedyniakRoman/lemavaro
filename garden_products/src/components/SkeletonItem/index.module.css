@@ -5,37 +5,33 @@
     background-color: #F2F6D3;
     border-radius: 12px;
 
-    /* Анимация скелетона */
-
-    display: inline-block;
-    background: linear-gradient(90deg, #e0e0e0 25%, #f3f3f3 50%, #e0e0e0 75%);
-    background-size: 400% 100%;
-    border-radius: 8px;
-    animation: shimmer 1.8s infinite ease-in-out, resize 1.5s infinite ease-in-out alternate;
-    width: 100%;
-    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    /* Размеры по умолчанию */
+    width: 316px;
+    height: 422px;
 
 }
 
-/* Анимация для бегущей полосы */
-@keyframes shimmer {
-    0% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: -100% 0;
-    }
+.skeleton::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
   }
-  
-  /* Анимация для изменения размеров */
-  @keyframes resize {
-    0% {
-      height: 20px;
-    }
-    50% {
-      height: 25px;
-    }
-    100% {
-      height: 20px;
-    }
+  100% {
+    left: 100%;
   }
+}

@@ -18,7 +18,8 @@ import ThemeToggle from "../ThemeToggle"; // Импорт компонента �
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 import { CiHeart } from "react-icons/ci";
-import { PiHandbagFill } from "react-icons/pi";
+import { PiHandbag, PiHandbagFill } from "react-icons/pi";
+import { IoIosHeartEmpty } from "react-icons/io";
 
 export default function Header() {
   const location = useLocation();
@@ -122,26 +123,68 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className={s.nav_icons_right}>
+{/* =================================================================================== */}
+        {/* <div className={s.nav_icons_right}>
           <Link to={"/favorites"} className={s.icon_box}>
           {/* Меняю иконки для проверки */}
             {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={heartIcon} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
             {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={FaHeart} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
            {/* <FaHeart className={s.heart_icon} /> */}
             {/* <CiHeart className={s.heart_icon}/> Незакрашенное сердечко */}
-           <FaHeart className={s.heart_icon}/> {/* Закрашенное сердечко */}
+           {/* <FaHeart className={s.heart_icon}/> Закрашенное сердечко */}
+            {/* <span className={s.favorite_count}>{favoritesState.length}</span> Количество товаров в избранном */}
+          {/* </Link> */}
+          {/* <Link to={"/cart"} className={s.icon_box}> */}
+          {/* Меняю иконки для проверки */}
+            {/* <img className={`${s.bag_icon} ${s.header_icon}`} src={bagIcon} alt="Bag Icon" /> */}
+            {/* <PiHandbagFill className={s.bag_icon}/> */}
+            {/* <span className={s.cart_count}> */}
+              {/* {cartState.reduce((total, product) => total + product.count, 0)} */}
+            {/* </span> */}
+          {/* </Link> */}
+        {/* </div> */}
+      {/* </div> */}
+
+
+{/* =================================================================================== */}
+    {/* ДРУГИЕ ИКОНКИ */}
+
+
+      <div className={s.nav_icons_right}>
+          <Link to={"/favorites"} className={s.icon_box}>
+          {/* Меняю иконки для проверки */}
+            {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={heartIcon} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
+            {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={FaHeart} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
+           {/* <FaHeart className={s.heart_icon} /> */}
+            {/* <CiHeart className={s.heart_icon}/> Незакрашенное сердечко */}
+           <IoIosHeartEmpty className={s.heart_icon}/> {/* Закрашенное сердечко */}
             <span className={s.favorite_count}>{favoritesState.length}</span> {/* Количество товаров в избранном */}
           </Link>
           <Link to={"/cart"} className={s.icon_box}>
           {/* Меняю иконки для проверки */}
             {/* <img className={`${s.bag_icon} ${s.header_icon}`} src={bagIcon} alt="Bag Icon" /> */}
-            <PiHandbagFill className={s.bag_icon}/>
+            {/* <PiHandbagFill className={s.bag_icon}/> */}
+            <PiHandbag className={s.bag_icon}/>
+
             <span className={s.cart_count}>
               {cartState.reduce((total, product) => total + product.count, 0)}
             </span>
           </Link>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+{/* =================================================================================== */}
+
+
       {location.pathname === "/" && (
         <div className={s.header_image_container}>
           <h1 className={s.header_image_text}>

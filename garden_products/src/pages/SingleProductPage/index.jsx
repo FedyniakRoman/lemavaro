@@ -56,10 +56,6 @@ export default function SingleProductPage() {
     }
   };
   
-
-  
-
-
   const favorit = useSelector((store) => store.favorites);
   
     // Ищем текущий товар в избранном 
