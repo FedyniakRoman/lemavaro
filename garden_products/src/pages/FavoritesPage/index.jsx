@@ -1,120 +1,95 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import ProductCard from '../../components/ProductCard'; // Компонент для отображения товаров
-import s from './index.module.css';
-import { deleteProductFromFavoritesAction } from '../../store/reducers/favoritesReducer';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ProductCard from "../../components/ProductCard"; // Компонент для отображения товаров
+import s from "./index.module.css";
+import {
+  deleteProductFromFavoritesAction,
+  filterByPriceAction,
+} from "../../store/reducers/favoritesReducer";
+import FavoritesContainer from "../../components/FavoritesContainer";
+import FilterBar from "../../components/FilterBar";
+import { Link } from "react-router-dom";
 
 function FavoritesPage() {
   const favorites = useSelector((store) => store.favorites); // Получаем список избранных товаров
   const dispatch = useDispatch();
+  console.log("FavoritesPage", favorites);
 
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [sortOption, setSortOption] = useState('default');
-  const [isDiscountedOnly, setIsDiscountedOnly] = useState(false);
+  // Сохраняем корзину в localStorage при изменении состояния корзины
+  useEffect(() => {
+    if (favorites.length > 0) {
+      // Сохраняем только, если корзина не пуста
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    } else {
+      localStorage.removeItem("favorites"); // Удалить пустую корзину из localStorage
+    }
+  }, [favorites]); // Обновляем при изменении cartState
 
-  // Фильтрация избранных товаров
-  const filteredFavorites = favorites.filter(product => {
-    const price = product.discont_price || product.price;
-    const matchesPrice = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
-    const matchesDiscount = !isDiscountedOnly || product.discont_price != null;
-    return matchesPrice && matchesDiscount;
-  });
+  // Локальные состояния для фильтров минимальной и максимальной цены
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(Infinity);
 
-  // Сортировка товаров
-  const sortedFavorites = filteredFavorites.sort((a, b) => {
-    const priceA = a.discont_price || a.price;
-    const priceB = b.discont_price || b.price;
+  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  useEffect(() => {
+    dispatch(
+      filterByPriceAction({
+        min: minValue,
+        max: maxValue,
+      })
+    );
+  }, [minValue, maxValue]);
 
-    if (sortOption === 'asc') return priceA - priceB;
-    if (sortOption === 'desc') return priceB - priceA;
-    if (sortOption === 'nameAz') return a.title.localeCompare(b.title);
-    if (sortOption === 'nameZa') return b.title.localeCompare(a.title);
-    return 0;
-  });
+  // Фильтрация продуктов по видимости, цене и наличию скидки
+  const filteredProducts = Array.isArray(favorites)
+    ? favorites
+        .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+        .filter((product) => {
+          const price = product.discont_price; // Используем цену со скидкой
+          const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+          return isWithinPriceRange;
+        })
+    : [];
 
-  const handlePriceChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'minPrice') setMinPrice(value);
-    if (name === 'maxPrice') setMaxPrice(value);
+  // Функция для сброса фильтров
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
   };
-
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-  };
-
-  const handleDiscountChange = () => {
-    setIsDiscountedOnly(!isDiscountedOnly);
-  };
-
   return (
     <section className={s.container}>
       <nav className={s.nav}>
         <ul className={s.nav_list}>
           <li className={s.item}>
-            <a href="/" className={s.link}>Main page</a>
+            <Link to="/" className={s.link}>
+              Main page
+            </Link>
           </li>
           <li className={s.item}>
-            <a href="/favorites" className={s.link}>Favorites</a>
+            <Link to="/favorites" onClick={resetFilters}>
+              Liked products
+            </Link>
           </li>
         </ul>
       </nav>
 
-      <h2 className={s.title}>Favorites</h2>
+      <h2 className={s.title}>Liked products</h2>
 
       {/* Форма фильтрации и сортировки */}
-      <form action="" className={s.form}>
-        <label htmlFor="price" className={s.label_price}>
-          Price
-        </label>
-        <input
-          type="number"
-          name="minPrice"
-          placeholder="from"
-          className={s.input_price}
-          value={minPrice}
-          onChange={handlePriceChange}
-        />
-        <input
-          type="number"
-          name="maxPrice"
-          placeholder="to"
-          className={s.input_price}
-          value={maxPrice}
-          onChange={handlePriceChange}
-        />
-        
-        <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
-        <input
-          type="checkbox"
-          name="discount"
-          className={s.input_discount}
-          checked={isDiscountedOnly}
-          onChange={handleDiscountChange}
-        />
-
-        <label htmlFor="sort" className={s.label_sort}>
-          Sorted
-          <select name="sort" className={s.select_sort} value={sortOption} onChange={handleSortChange}>
-            <option value="default">by default</option>
-            <option value="asc">Price: Low to High</option>
-            <option value="desc">Price: High to Low</option>
-            <option value="nameAz">Name: A to Z</option>
-            <option value="nameZa">Name: Z to A</option>
-          </select>
-        </label>
-      </form>
-
+      <FilterBar
+        setMinValue={setMinValue}
+        setMaxValue={setMaxValue}
+        minValue={minValue}
+        maxValue={maxValue}
+        showCheckbox={false} // Скрыть чекбокс на странице
+      />
       {/* Отображение избранных товаров */}
       <div className={s.favorites_container}>
-  {sortedFavorites.length === 0 ? (
-    <p>You have no favorite items matching your filters.</p>
-  ) : (
-    sortedFavorites.map((product) => (
-      <ProductCard key={product.id} {...product} /> // Отображение только ProductCard
-    ))
-  )}
-</div>
+        {favorites.length === 0 ? (
+          <p>You have no favorite items matching your filters.</p>
+        ) : (
+          <FavoritesContainer favorites={filteredProducts} />
+        )}
+      </div>
     </section>
   );
 }
