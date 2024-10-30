@@ -20,6 +20,7 @@ function OrderForm({ addNewOrder, setIsModalOpen }) {
 
   const order = (data) => {
     console.log({
+      id: Date.now(),
       ...data,
       cart: cartState,
       sum: totalSum.toFixed(2),

@@ -5,6 +5,8 @@ import backendUrl from "../../config"; //Переменная для удобн�
 import { useForm } from "react-hook-form";
 
 function DiscountForm() {
+  const [isSend, setIsSend] = useState(false); // Состояние для отслеживания отправки формы
+
   const {
     register,
     handleSubmit,
@@ -12,108 +14,83 @@ function DiscountForm() {
     formState: { errors },
   } = useForm();
 
-  const 
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   phone: "",
-  //   email: "",
-  // });
+  const userData = (data) => {
+    console.log({
+      id: Date.now(), // Генерация уникального ID
+      ...data,
+    });
+    // Отправка данных на сервер с помощью fetch
+    fetch(`${backendUrl}/sale/send`, {
+      method: "POST", // Метод отправки данных
+      headers: {
+        "Content-Type": "application/json", // Указываем, что данные в формате JSON
+      },
+      body: JSON.stringify(userData), // Преобразуем объект userData в JSON-строку
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Ошибка при отправке формы");
+        }
+        return response.json(); // Парсим ответ от сервера
+      })
+      .then((data) => {
+        console.log("Ответ сервера:", data); // Обрабатываем данные, полученные от сервера
+      })
+      .catch((error) => {
+        console.error("Ошибка:", error); // Обрабатываем ошибки
+      });
+    setIsSend(true); // Устанавливаем состояние отправки
+    reset(); // Сбрасываем форму
+  };
 
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  const registerName = register("name", {
+    required: '*The field "Name" is required', // Сообщение об ошибке
+  });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  const registerPhone = register("phone", {
+    required: '*The field "Phone" is required',
+    pattern: {
+      value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/, // Регулярное выражение для проверки телефона
+      message: "You entered the wrong phone.",
+    },
+  });
 
-  //   // Отправка данных на сервер с помощью fetch
-  //   fetch(`${backendUrl}/sale/send`, {
-  //     method: 'POST', // тут нам нужно еще над ссылкой прорабоать и разобраться
-  //     headers: {
-  //       'Content-Type': 'application/json', // Указываем, что данные в формате JSON
-  //     },
-  //     body: JSON.stringify(formData), // Преобразуем объект formData в JSON-строку
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error('Ошибка при отправке формы');
-  //       }
-  //       return response.json(); // Парсим ответ от сервера
-  //     })
-  //     .then((data) => {
-  //       console.log('Ответ сервера:', data); // Обрабатываем данные, полученные от сервера
-
-  //     })
-  //     .catch((error) => {
-  //       console.error('Ошибка:', error); // Обрабатываем ошибки
-
-  //     });
-  // };
+  const registerEmail = register("email", {
+    required: '*The field "Email" is required',
+    pattern: {
+      value: /^\S+@\S+\.\S+$/,
+      message: "You entered the wrong e-mail.",
+    },
+  });
 
   return (
     <div className={s.form_container}>
       <h1 className={s.form_title}>5% off on the first order</h1>
       <div className={s.form_and_image_container}>
         <img className={s.form_image} src={arms} alt="Arms with tools" />
-        {/* <form className={s.main_form} onSubmit={handleSubmit}>
+        <form className={s.main_form} onSubmit={handleSubmit(userData)}>
           <input
             type="text"
-            name="name"
             placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
             className={s.input_field}
+            {...registerName}
           />
+          {errors.name && <p>{errors.name?.message}</p>}
           <input
             type="tel"
-            name="phone"
             placeholder="Phone number"
-            value={formData.phone}
-            onChange={handleChange}
             className={s.input_field}
+            {...registerPhone}
           />
+          {errors.phone && <p>{errors.phone?.message}</p>}
           <input
             type="email"
-            name="email"
             placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
             className={s.input_field}
+            {...registerEmail}
           />
           <button type="submit" className={s.submit_button}>
-            Get a discount
-          </button>
-        </form> */}
-        <form className={s.main_form} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            className={s.input_field}
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone number"
-            value={formData.phone}
-            onChange={handleChange}
-            className={s.input_field}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className={s.input_field}
-          />
-          <button type="submit" className={s.submit_button}>
-            Get a discount
+            {isSend ? "Apply Discount" : "Get a Discount"}
           </button>
         </form>
       </div>
