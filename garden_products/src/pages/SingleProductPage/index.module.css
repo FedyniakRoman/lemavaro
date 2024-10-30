@@ -6,7 +6,7 @@
 
 .nav_container {
   width: 603px;
-  height: auto; /* Уберите фиксированную высоту, если она не нужна */
+  height: auto; 
   margin-bottom: 30px;
   padding-top: 30px;
   position: relative;
@@ -72,13 +72,13 @@
   flex-direction: row;
   gap: 30px; 
   margin-bottom: 30px;
+  
 }
 
 .image_container {
   flex: 1;
   position: relative;
 }
-
 
 .image {
   
@@ -90,7 +90,6 @@
     
 
 }
-
 
 .inform_container {
   max-width: 640px;
@@ -148,18 +147,29 @@ height: 48px;
   font-weight: 700;
   line-height: 70.4px;
   text-align: left;
+ 
+}
+.price_original_discounted {
+  color: #8B8B8B;
+  text-decoration: line-through;
+font-size: 40px;
+font-weight: 500;
+line-height: 52px;
+text-align: left;
+
 }
 
 .price_discounted {
-  color: #8B8B8B;
+   color:  #424436;
   font-family: Montserrat;
-  font-size: 40px;
-  font-weight: 500;
-  line-height: 52px;
+  font-size: 64px; 
+  font-weight: 700;
+  line-height: 70.4px;
   text-align: left;
-  text-decoration: line-through;
+
 
 }
+
 .discount_price{
   background-color: #F26D22;
   color: #FFFFFF;
@@ -172,7 +182,7 @@ height: 48px;
   flex-direction: column;
   align-items: center;
   position: relative;
-  top: -10px;
+  top: -20px;
 }
 
 
@@ -271,4 +281,99 @@ height: 48px;
   text-align: left;
   color: #424436;
   text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .product_details {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; 
+    margin: 0 15px;
+  }
+
+  .image_container {
+    flex: 1; 
+    min-width: 50%;
+    max-width: 50%;
+  }
+
+  .inform_container {
+    flex: 1; 
+    min-width: 50%; 
+    max-width: 50%; 
+  }
+
+  .image {
+    border-radius: 10px; 
+    object-fit: cover; 
+    width: 100%;
+    height: auto; 
+  }
+}
+
+@media (max-width: 768px) {
+  .product_details {
+    display: flex;
+    
+  }
+  .inform_container {
+    flex: 1; 
+    min-width: 50%; 
+    max-width: 50%; 
+   
+  }
+  
+  .image {
+      width: 354px;
+      height:303px;
+  }
+  
+  .title {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 34px;
+  }
+
+  .price_container {
+
+    width: 290px;
+    height: 42px;
+    gap: 16px;
+   
+  }
+ 
+  .count_container {
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  .add_btn{
+ width: 354px;
+height: 58px;
+  }
+
+  .description_container {
+    width: 748px;
+align-self: flex-end;  
+  }
+
+  .read_more{
+    position: absolute;
+  }
+ 
+}
+
+@media (max-width: 480px){
+  .product_details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    order: 1;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 34px;
+  }
+
 }
