@@ -5,9 +5,9 @@
 }
 body{
 
-  transition: background-color 0.3s, color 0.3s; /*Плавное переключение Темы (Lev)*/
+  transition: background-color 0.3s, color 0.3s; /* Плавное переключение Темы */
 
-  color: #282828;
+  /* color: #282828; */
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -20,13 +20,22 @@ body{
 /* Светлая тема */
 body.light {
   background-color: #FFFFF1;
-  color: #282828;
+  /* color: #282828; */
+  color: #424436;
+  --color: #424436;
+  --card-color: #F2F6D3;
+  --card-in-color: #FFFFFF;
+  --icon-color: #424436; /* Цвет иконок для светлой темы */
+  
 }
 
 /* Тёмная тема */
 body.dark {
-  background-color: #121212;
-  color: #ffffff;
+  /* background-color: #121212; */
+  background-color: #424436;
+  --color: #FFFFF1;
+  --card-color: #424436;
+  --icon-color: #FFFFF1; /* Цвет иконок для темной темы */
 }
 
 a:hover{

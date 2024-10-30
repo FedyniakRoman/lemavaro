@@ -20,7 +20,8 @@
 }
 
 .nav_menu a {
-  color: #424436;
+  /* color: #424436; */
+  color: var(--color);
   text-decoration: none;
 }
 
@@ -73,8 +74,7 @@
   position: relative;
 }
 
-.cart_count,
-.favorite_count {
+.cart_count, .favorite_count{
   align-items: center;
   background-color: #92A134;
   width: 24px;
@@ -96,7 +96,48 @@
   max-width: 48px;
   width: 100%;
   height: auto;
+  font-size: 100px;
+  /* stroke: var(--color); */
+  /* fill: var(--color); */
+  /* fill: var(--color); */
 }
+
+.heart_icon, .bag_icon {
+  max-width: 48px;
+  width: 100%;
+  height: auto;
+  font-size: 95px;
+  stroke: var(--icon-color);;
+  /* fill: var(--icon-color); */
+  fill: none;
+
+  /* stroke-linejoin: round; */
+  /* stroke-linecap: round; */
+  stroke-width: 13;
+
+}
+
+
+
+.heart_icon:hover, .bag_icon:hover {
+  fill: var(--color);
+}
+
+
+/*------------------------------------------------------------------------*/
+
+/* <svg className="your-class" fill="currentColor" /> */
+
+/* .heart_icon .bag_icon{ */
+  /* color: var(--icon-color);Используем переменную для цвета иконок */
+  /* background-color: var(--icon-color); */
+  /* stroke: var(--icon-color); */
+  /* fill: var(--icon-color); */
+  /* stroke: white; */
+  /* color: var(--icon-color); */
+
+/* } */
+/*------------------------------------------------------------------------*/
 
 .tree_icon {
   max-width: 70px;
@@ -125,7 +166,6 @@
   position: relative;
   color: white;
   overflow: hidden;
-
 }
 
 .header_image_text {
@@ -135,7 +175,6 @@
   line-height: 110%;
   color: #FFFFFF;
 }
-
 
 .header_image_button {
   background-color: #92A134;
@@ -164,7 +203,6 @@
   transform: scale(1.05);
   background-position: 100% 50%;
 }
-
 
 .modal_overlay {
   position: fixed;
@@ -245,8 +283,8 @@
 
 
 .card {
-  background-color: #fff;
-  /* Белый фон карточки товара */
+  /* background-color: #fff; Белый фон карточки товара */
+  /* background-color: var(--card-color); Белый фон карточки товара */
   display: flex;
   flex-direction: column;
   align-items: center;

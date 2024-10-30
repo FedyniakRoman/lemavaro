@@ -1,5 +1,5 @@
 .card { 
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
     align-items: flex-start;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -7,6 +7,8 @@
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease-in-out;
+    background-color: var(--card-in-color); /*24.10.2024*/
+    /* color: red; */
 }
 
 /* ----------------------------------- */
@@ -30,6 +32,7 @@
     object-fit: cover;
     overflow: hidden;
     position: relative;
+    /* color: red; */
 }
 
 .img:hover {
@@ -58,7 +61,7 @@
     width: 48px;
     height: auto;
     vertical-align: middle;
-    color: white;
+    /* color: white; */
     background-color: initial;
     border: none;
     fill: white; /* Начальный цвет заливки */
@@ -166,7 +169,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     align-self: stretch;
-    color: #424436;
+    /* color: #424436; */
+    color: var(--color);
     display: -webkit-box;
     font-size: 20px;
     font-weight: 500;
@@ -195,7 +199,7 @@
 .price_discounted {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    color: var(--color); 
     padding-top: 8px;
 }
 

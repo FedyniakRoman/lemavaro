@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import treeIcon from "../../assets/images/tree.svg";
-import switchIcon from "../../assets/images/switch.svg";
+// import switchIcon from "../../assets/images/switch.svg";
 import heartIcon from "../../assets/images/heart.svg";
 import bagIcon from "../../assets/images/bag.svg";
+
+
+
+import { FaHeart } from "react-icons/fa";
+
+/////////////////////////////////////////////////////////
+
+
 import s from "./index.module.css";
 import ProductCard from "../ProductCard";
 import ThemeToggle from "../ThemeToggle"; // Импорт компонента для переключения Темы Приложения
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
+import { CiHeart } from "react-icons/ci";
+import { PiHandbagFill } from "react-icons/pi";
 
 export default function Header() {
   const location = useLocation();
@@ -114,11 +124,18 @@ export default function Header() {
 
         <div className={s.nav_icons_right}>
           <Link to={"/favorites"} className={s.icon_box}>
-            <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+          {/* Меняю иконки для проверки */}
+            {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={heartIcon} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
+            {/* <img className={`${s.heart_icon} ${s.header_icon}`} src={FaHeart} alt="Heart Icon" /> Второй класс добавлен для изменения цвета при изменении темы */}
+           {/* <FaHeart className={s.heart_icon} /> */}
+            {/* <CiHeart className={s.heart_icon}/> Незакрашенное сердечко */}
+           <FaHeart className={s.heart_icon}/> {/* Закрашенное сердечко */}
             <span className={s.favorite_count}>{favoritesState.length}</span> {/* Количество товаров в избранном */}
           </Link>
           <Link to={"/cart"} className={s.icon_box}>
-            <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+          {/* Меняю иконки для проверки */}
+            {/* <img className={`${s.bag_icon} ${s.header_icon}`} src={bagIcon} alt="Bag Icon" /> */}
+            <PiHandbagFill className={s.bag_icon}/>
             <span className={s.cart_count}>
               {cartState.reduce((total, product) => total + product.count, 0)}
             </span>

@@ -21,8 +21,6 @@ return dispatch  => {
     }
 }
 
-
-
 export const getProductsByCategory = (category_id) => (dispatch) => {
   fetch(`${backendUrl}/categories/${category_id}`) // Запрос продуктов по категории
       .then(res => res.json())
