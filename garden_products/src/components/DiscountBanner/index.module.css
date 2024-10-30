@@ -1,30 +1,29 @@
-/* Hauptcontainer */
 .container {
     position: relative;
-    width: 100%; /* Volle Breite */
-    height: 600px; /* Fixierte Höhe */
+    width: 100%;
+    height: 600px;
   }
   
   /* Das Bild */
   .img {
-    width: 100%; /* Volle Breite des Bildes */
-    height: 100%; /* Füllt den Container aus */
-    object-fit: cover; /* Das Bild wird auf den Container skaliert und bleibt proportional */
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
   }
   
-  /* Box für Text und Button */
+
   .content_box {
-    max-width: 1400px; /* Maximalbreite für den Inhalt */
-    position: absolute; /* Platziert über dem Bild */
-    top: 80px; /* Vertikale Zentrierung */
+    max-width: 1440px; 
+    position: absolute;
+    top: 80px;
     left: 40px;
     right: 40px;
     bottom: 210px;
     margin: 0 auto;
+    padding: 0 40px;
     
   }
-  
-  /* Styling für den Text */
+
   .content {
     font-size: 96px;
     font-weight: bold;
@@ -33,7 +32,6 @@
     color: #FFFFFF;
   }
   
-  /* Styling für den Button */
   .button {
     background-color: #92A134;
     color: white;
@@ -51,10 +49,10 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin-top:40px;
   }
-  
-  /* Hover-Effekt für den Button */
+
   .button:hover {
     transform: scale(1.05);
-    background-position: 100% 50%;
+    background-color: rgba(146, 161, 52, 0.5);
+    
   }
   

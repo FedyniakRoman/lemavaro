@@ -19,9 +19,6 @@
     flex-direction: column;
     margin: auto;
     margin-left: 32px;
-    
-    
-    
 }
 
 .form_title {
@@ -72,4 +69,13 @@
 .submit_button:hover {
     background-color: #424436; 
     transition: background-color 0.3s ease;
+    border: 1px solid #424436;
+    color: white;
+}
+.error_content{
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 130%;
+    color: white;
 }

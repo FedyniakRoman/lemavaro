@@ -75,21 +75,21 @@ function OrderForm({ setIsModalOpen }) {
           className={s.input}
           {...registerName}
         />
-        {errors.name && <p>{errors.name?.message}</p>}
+        {errors.name && <p className={s.error_content}>{errors.name?.message}</p>}
         <input
           type="tel"
           placeholder="Phone number"
           className={s.input}
           {...registerPhone}
         />
-        {errors.phone && <p>{errors.phone?.message}</p>}
+        {errors.phone && <p className={s.error_content}>{errors.phone?.message}</p>}
         <input
           type="email"
           placeholder="Email"
           className={s.input}
           {...registerEmail}
         />
-        {errors.email && <p>{errors.email?.message}</p>}
+        {errors.email && <p className={s.error_content}>{errors.email?.message}</p>}
         <button className={s.form_button}>Checkout</button>
       </form>
     </div>

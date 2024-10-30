@@ -75,20 +75,21 @@ function DiscountForm() {
             className={s.input_field}
             {...registerName}
           />
-          {errors.name && <p>{errors.name?.message}</p>}
+          {errors.name && <p className={s.error_content}>{errors.name?.message}</p>}
           <input
             type="tel"
             placeholder="Phone number"
             className={s.input_field}
             {...registerPhone}
           />
-          {errors.phone && <p>{errors.phone?.message}</p>}
+          {errors.phone && <p className={s.error_content}>{errors.phone?.message}</p>}
           <input
             type="email"
             placeholder="Email"
             className={s.input_field}
             {...registerEmail}
           />
+            {errors.email && <p className={s.error_content}>{errors.email?.message}</p>}
           <button type="submit" className={s.submit_button}>
             {isSend ? "Apply Discount" : "Get a Discount"}
           </button>
