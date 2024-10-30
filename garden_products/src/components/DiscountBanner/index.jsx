@@ -9,10 +9,10 @@ function DiscountBanner() {
       <img src={bannerImage} alt="bunner_with_discount" className={s.img}/>
       <div className={s.content_box}>
         <h1 className={s.content}>
-          Amazing Discounts <br />on Garden Products!HUHU
+          Amazing Discounts <br />on Garden Products!
         </h1>
         <Link to="/sales" className={s.button}>
-          Check out HUHU
+          Check out
         </Link>
       </div>
     </div>

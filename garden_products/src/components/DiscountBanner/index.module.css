@@ -20,18 +20,17 @@
     left: 40px;
     right: 40px;
     bottom: 210px;
-    /* transform: translate(-50%, -50%);  */
-    /* width: 100%; */
     margin: 0 auto;
     
   }
   
   /* Styling für den Text */
   .content {
-    font-size: 64px; /* Angepasste Schriftgröße */
-    font-weight: bold; /* Fettgedruckt */
-    margin-bottom: 20px; /* Abstand unter dem Text */
+    font-size: 96px;
+    font-weight: bold;
+    margin-bottom: 20px;
     line-height: 1.2;
+    color: #FFFFFF;
   }
   
   /* Styling für den Button */
@@ -40,10 +39,11 @@
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    padding: 16px 36px;
+    padding: 16px 56px;
+    width: 218px;
     font-size: 20px;
     border-radius: 5px;
-    text-decoration: none; /* Entfernt den Unterstrich vom Link */
+    text-decoration: none;
     display: inline-block;
     transition: transform 0.3s ease;
     background:  #92A134;
