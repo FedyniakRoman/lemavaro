@@ -1,5 +1,5 @@
 .container {
-  max-width: 1400px;
+  max-width: 1360px;
   margin: 0 auto; 
 }
 
@@ -14,6 +14,9 @@
   gap: 16px;
 }
 
+.current_category{
+  cursor: pointer;
+}
 .item {
   position: relative;
   padding: 0 20px;

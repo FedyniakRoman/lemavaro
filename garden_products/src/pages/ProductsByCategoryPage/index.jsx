@@ -1,71 +1,73 @@
-import React, { useEffect, useState } from 'react';  
-import { useParams, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import ProductsContainer from '../../components/ProductsContainer';
-import { getProductsByCategory } from '../../requests/products'; 
-import s from './index.module.css';
-import SkeletonContainer from '../../components/SkeletonContainer';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import ProductsContainer from "../../components/ProductsContainer";
+import { getProductsByCategory } from "../../requests/products";
+import s from "./index.module.css";
+import SkeletonContainer from "../../components/SkeletonContainer";
+import { changeStatusAction } from "../../store/reducers/productsByCategoryReducer";
+import FilterBar from "../../components/FilterBar";
+import { filterByPriceAction } from "../../store/reducers/productsReducer";
 
 function ProductsByCategoryPage() {
-  const { category_id } = useParams(); // Получаем category_id из URL
+  const { category_id } = useParams();
   const dispatch = useDispatch();
-  const productsState = useSelector((store) => store.products);
-
-  const { products: { data = [], category } = {}, status } = productsState; // Деструктуризация состояния с проверкой
-
-  const [minPrice, setMinPrice] = useState(''); // Для хранения минимальной цены
-  const [maxPrice, setMaxPrice] = useState(''); // Для хранения максимальной цены
-  const [sortOption, setSortOption] = useState('default'); // Опция сортировки
-  const [isDiscountedOnly, setIsDiscountedOnly] = useState(false); // Состояние для скидок
-  
-  // Фильтрация продуктов по цене и наличию скидки
-  const filteredProducts = data.filter(product => {
-    const price = product.discont_price || product.price;
-    const matchesPrice = 
-    (!minPrice || price >= minPrice) && // Если minPrice не указан, то условие true. Если minPrice есть, проверяется, что цена больше или равна minPrice
-    (!maxPrice || price <= maxPrice);   // Если maxPrice не указан, то условие true. Если maxPrice есть, проверяется, что цена меньше или равна maxPrice
-    const matchesDiscount = !isDiscountedOnly || product.discont_price != null; // Если выбран "Discounted items"
-    return matchesPrice && matchesDiscount;
-  });
-
-  // Сортировка продуктов
-  const sortedProducts = filteredProducts.sort((a, b) => { 
-    const priceA = a.discont_price || a.price;
-    const priceB = b.discont_price || b.price;  //Использование оператора || (логическое "ИЛИ") означает, что вы сначала проверяете наличие   discont_price, и если она есть, вы берете её для сравнения. Если скидочная цена отсутствует (null или undefined), тогда  используете обычную цену товара.
-
-    if (sortOption === 'asc') return priceA - priceB; // здесь мы сравниваем состояние созданное выше с заданными значениями которые мы описали
-    if (sortOption === 'desc') return priceB - priceA;
-    if (sortOption === 'nameAz') return a.title.localeCompare(b.title); 
-    if (sortOption === 'nameZa') return b.title.localeCompare(a.title); // Метод localeCompare используется для сравнения двух строк в алфавитном порядке.
-    return 0;
-  });
 
   useEffect(() => {
+    dispatch(changeStatusAction());
     dispatch(getProductsByCategory(category_id)); // Запрос продуктов по категории с сервера
-  }, [category_id, dispatch]);
+  }, []);
+
+  const productsByCategoryState = useSelector(
+    (store) => store.productsByCategory
+  );
+  console.log("ProductsByCategoriePage", productsByCategoryState);
+  // Извлекаем данные продуктов и статус из состояния
+  const { data = [], category = {}, status } = productsByCategoryState || {}; // Деструктуризация состояния с проверкой
 
   useEffect(() => {
     if (category && category.title) {
       document.title = `${category.title}`; // Изменяем заголовок страницы
     } else {
-      document.title = 'Loading...'; // Заголовок при загрузке
+      document.title = "Loading..."; // Заголовок при загрузке
     }
   }, [category]);
 
-  const handlePriceChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'minPrice') setMinPrice(value);
-    if (name === 'maxPrice') setMaxPrice(value);
-  };
+  // Локальные состояния для фильтров минимальной и максимальной цены
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(Infinity);
 
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-  };
+  // Локальное состояние для фильтра по скидке (checked для чекбокса)
+  const [checked, setChecked] = useState(false);
 
-  const handleDiscountChange = () => {
-    setIsDiscountedOnly(!isDiscountedOnly); // Переключаем состояние скидочных товаров
-  };
+  // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
+  useEffect(() => {
+    dispatch(
+      filterByPriceAction({
+        min: minValue,
+        max: maxValue,
+        checked,
+      })
+    );
+  }, [minValue, maxValue, checked]);
 
+  // Фильтрация продуктов по видимости, цене и наличию скидки
+  const filteredProducts = Array.isArray(data)
+    ? data
+        .filter((product) => product.visible) // Сначала фильтруем только видимые продукты
+        .filter((product) => {
+          const price = product.discont_price || product.price; // Используем цену со скидкой, если она есть, иначе обычную цену
+          const isWithinPriceRange = price >= minValue && price <= maxValue; // Проверяем попадание цены в диапазон
+          const isDiscounted = checked ? product.discont_price !== null : true; // Если чекбокс активирован, проверяем наличие скидки
+          return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
+        })
+    : [];
+
+  const resetFilters = () => {
+    setMinValue(0);
+    setMaxValue(Infinity);
+    setChecked(false);
+  };
   return (
     <section className={s.container}>
       <nav className={s.nav}>
@@ -82,60 +84,31 @@ function ProductsByCategoryPage() {
           </li>
           <li className={s.item}>
             {/* Отображаем текущую категорию */}
-            {category && <span className={s.current_category}>{category.title}</span>}
+            {category && (
+              <span className={s.current_category} onClick={resetFilters}>
+                {category.title}
+              </span>
+            )}
           </li>
         </ul>
       </nav>
 
       <h2 className={s.title}>{category ? category.title : "Category"}</h2>
 
-      {/* Форма для фильтрации и сортировки */}
-      <form action="" className={s.form}>
-        <label htmlFor="price" className={s.label_price}>
-          Price
-        </label>
-        <input
-          type="number"
-          name="minPrice"
-          placeholder="from"
-          className={s.input_price}
-          value={minPrice}
-          onChange={handlePriceChange}
-        />
-        <input
-          type="number"
-          name="maxPrice"
-          placeholder="to"
-          className={s.input_price}
-          value={maxPrice}
-          onChange={handlePriceChange}
-        />
-        
-        <label htmlFor="discount" className={s.label_discount}>Discounted items</label>
-        <input
-          type="checkbox"
-          name="discount"
-          className={s.input_discount}
-          checked={isDiscountedOnly}
-          onChange={handleDiscountChange}
-        />
+      {/* Фильтры: сортировка, диапазон цен и скидки */}
+      <FilterBar
+        setMinValue={setMinValue}
+        setMaxValue={setMaxValue}
+        minValue={minValue}
+        maxValue={maxValue}
+        setChecked={setChecked}
+        checked={checked}
+      />
 
-        <label htmlFor="sort" className={s.label_sort}>
-          Sorted
-          <select name="sort" className={s.select_sort} value={sortOption} onChange={handleSortChange}>
-            <option value="default">by default</option>
-            <option value="asc">Price: Low to High</option>
-            <option value="desc">Price: High to Low</option>
-            <option value="nameAz">Name: A to Z</option>
-            <option value="nameZa">Name: Z to A</option>
-          </select>
-        </label>
-      </form>
-
-      {status === 'loading' ? (       
-        <SkeletonContainer count={8}/>
+      {status === "loading" ? (
+        <SkeletonContainer count={8} />
       ) : (
-        <ProductsContainer products={sortedProducts} />
+        <ProductsContainer products={filteredProducts} />
       )}
     </section>
   );

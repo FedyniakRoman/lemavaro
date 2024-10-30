@@ -116,7 +116,6 @@ flex-direction: column;
   justify-content: space-between;
 }
 
-
 .title {
   color: #424436;
 
@@ -126,8 +125,6 @@ flex-direction: column;
  
   text-align: left;
 }
-
-
 
 .icon_heart {
   width: 58px;

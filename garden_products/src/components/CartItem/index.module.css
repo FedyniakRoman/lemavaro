@@ -9,7 +9,8 @@
     border-radius: 12px 0 0 12px;
     border-right: 1px solid #ddd;
     height: auto;
-    width: 200px;
+    max-width: 200px;
+    display: block;
 }
 
 .info_block{

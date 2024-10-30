@@ -22,6 +22,7 @@ export default function Footer() {
       <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
         <IoLogoWhatsapp size={44} color="black" style={{ cursor: 'pointer' }} />
       </a>
+         
           </div>
         </div>
         <div className={s.colum}>

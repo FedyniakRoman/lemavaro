@@ -5,7 +5,7 @@ import {
   sortAllProductsAction,
 } from "../../store/reducers/productsReducer";
 
-function FilterBar({ setMinValue, setMaxValue, checked, setChecked }) {
+function FilterBar({ minValue, maxValue, setMinValue, setMaxValue, checked, setChecked, showCheckbox = true }) {
   const dispatch = useDispatch();
 
   // Обработчик для сортировки продуктов. При изменении значения в селекте,
@@ -36,6 +36,7 @@ function FilterBar({ setMinValue, setMaxValue, checked, setChecked }) {
         placeholder="from"
         className={s.input_price}
         onChange={handleMinValue}
+        value={minValue > 0 ? minValue : ""}
       />
       <input
         type="number"
@@ -43,18 +44,24 @@ function FilterBar({ setMinValue, setMaxValue, checked, setChecked }) {
         placeholder="to"
         className={s.input_price}
         onChange={handleMaxValue}
+        value={maxValue < Infinity ? maxValue : ""}
       />
+      {/* Показывать чекбокс для скидки только если showCheckbox установлен в true */}
       {/* Чекбокс для фильтрации по наличию скидки */}
-      <label htmlFor="discount" className={s.label_discount}>
-        Discounted items
-      </label>
-      <input
-        type="checkbox"
-        name="discount"
-        className={s.input_discount}
-        checked={checked}
-        onClick={handleClick}
-      />
+      {showCheckbox && (
+        <>
+          <label htmlFor="discount" className={s.label_discount}>
+            Discounted items
+          </label>
+          <input
+            type="checkbox"
+            name="discount"
+            className={s.input_discount}
+            checked={checked}
+            onChange={handleClick}
+          />
+        </>
+      )}
       {/* Селект для сортировки продуктов по разным критериям */}
       <label htmlFor="sort" className={s.label_sort}>
         Sorted

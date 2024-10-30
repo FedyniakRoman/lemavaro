@@ -1,22 +1,20 @@
-const defaultProductsState = {
-  products: [], // Изначальный массив продуктов
-  status: 'loading', // Статус загрузки
+const defaultProductsByCategoryState = {
+  category: {}, // Категория
+  data: [],
+  status: "loading",
 };
 
-const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
-const CHANGE_STATUS_TO_LOADING = 'CHANGE_STATUS_TO_LOADING';
+const LOAD_PRODUCTS_BY_CATEGORY = "LOAD_PRODUCTS_BY_CATEGORY";
+const CHANGE_STATUS_TO_LOADING = "CHANGE_STATUS_TO_LOADING";
 const SORT_ALL_PRODUCTS = 'SORT_ALL_PRODUCTS';
 const GET_DISCOUNT_PRODUCTS = 'GET_DISCOUNT_PRODUCTS';
 const FILTER_BY_PRICE = 'FILTER_BY_PRICE';
 
-export const loadProductsAction = (products) => ({
-  type: LOAD_PRODUCTS,
-  payload: products, // Загружаем продукты
+export const loadProductsByCategoryAction = (productsByCategory) => ({
+  type: LOAD_PRODUCTS_BY_CATEGORY,
+  payload: productsByCategory,
 });
-
-export const changeStatusAction = () => ({
-  type: CHANGE_STATUS_TO_LOADING, // Изменяем статус на загрузку
-});
+export const changeStatusAction = () => ({ type: CHANGE_STATUS_TO_LOADING });
 
 export const sortAllProductsAction = (option_value) => ({
   type: SORT_ALL_PRODUCTS,
@@ -33,21 +31,28 @@ export const filterByPriceAction = (values) => ({
   payload: values,
 });
 
-export const productsReducer = (state = defaultProductsState, action) => {
-  if (action.type === LOAD_PRODUCTS) {
-    console.log("Action Payload productsReducer:", action.payload);
-    return {
-      products: action.payload.map((el) => ({ ...el, visible: true })), // Загружаем новые продукты
-      status: 'ready', // Статус готовности
-    };
-  } else if (action.type === CHANGE_STATUS_TO_LOADING) {
+export const productsByCategoryReducer = (
+  state = defaultProductsByCategoryState,
+  action
+) => {
+  if (action.type === LOAD_PRODUCTS_BY_CATEGORY) {
+    console.log('productsByCategoryReducer',action.payload);
+    
     return {
       ...state,
-      status: 'loading', // Устанавливаем статус загрузки
-    };
-  } else if (action.type === SORT_ALL_PRODUCTS) {
-    const sortedProducts = [...state.products]; // Копируем продукты для сортировки
-
+      category: action.payload.category, // Сохраняем информацию о категории
+      data: action.payload.data.map((el) => ({ ...el, visible: true })), // Обновляем продукты
+      status: "ready",
+    }
+  } else if (action.type === CHANGE_STATUS_TO_LOADING) {
+    return {
+        ...state,
+        status: 'loading'
+    }
+  }else if (action.type === SORT_ALL_PRODUCTS) {
+    const sortedProducts = [...state.data]; // Копируем продукты для сортировки
+    console.log('sortedProducts', sortedProducts);
+    
     // Проверяем опцию сортировки
     if (action.payload === 'price_asc') {
       sortedProducts.sort((a, b) => a.price - b.price); // Сортировка по возрастанию цены
@@ -61,28 +66,28 @@ export const productsReducer = (state = defaultProductsState, action) => {
     // Если опция "default", возвращаем исходные продукты без изменений
     return {
       ...state,
-      products: sortedProducts, // Обновляем продукты после сортировки
+      data: sortedProducts, // Обновляем продукты после сортировки
     };
   } else if (action.type === GET_DISCOUNT_PRODUCTS) {
-    const filteredProducts = state.products.map((el) => ({
+    const filteredProducts = state.data.map((el) => ({
       ...el,
       visible: action.payload ? el.discont_price : true, // Устанавливаем видимость для скидочных товаров
     }));
     return {
       ...state,
-      products: filteredProducts, // Обновляем видимость продуктов
+      data: filteredProducts, // Обновляем видимость продуктов
     };
   } else if (action.type === FILTER_BY_PRICE) {
     const { min, max } = action.payload;
-    const filteredProducts = state.products.map((product) => ({
+    const filteredProducts = state.data.map((product) => ({
       ...product,
-      visible: product.price >= min && product.price <= max, // Setze Sichtbarkeit basierend auf dem Preis
+      visible: product.price >= min && product.price <= max, // Устанавливаем видимость в зависимости от цены
     }));
 
     return {
-      ...state, // Behalte den Rest des state unverändert
-      products: filteredProducts, // Aktualisiere nur die Produkte
+      ...state,
+      data: filteredProducts, // Обновляем продукты в зависимости от фильтра по цене
     };
   }
-  return state; // Возвращаем текущее состояние, если действие не распознано
+  return state;
 };
