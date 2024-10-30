@@ -28,24 +28,24 @@ function OrderForm({ addNewOrder, setIsModalOpen }) {
     setIsModalOpen(true); // Открываем модальное окно для подтверждения
     reset();
   };
-  const registerName = register('name', {
-    required: '*The field "Name" is required'
+  const registerName = register("name", {
+    required: '*The field "Name" is required',
   });
 
-  const registerPhone = register('phone', {
+  const registerPhone = register("phone", {
     required: '*The field "Phone" is required',
     pattern: {
       value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
-      message: 'You entered the wrong phone.'
-    }
+      message: "You entered the wrong phone.",
+    },
   });
 
-  const registerEmail = register('email', {
+  const registerEmail = register("email", {
     required: '*The field "Email" is required',
     pattern: {
       value: /^\S+@\S+\.\S+$/,
-      message: 'You entered the wrong e-mail.'
-    }
+      message: "You entered the wrong e-mail.",
+    },
   });
 
   return (
@@ -57,28 +57,27 @@ function OrderForm({ addNewOrder, setIsModalOpen }) {
         <p className={s.total_sum}>{`$${totalSum.toFixed(2)}`}</p>
       </div>
       <form className={s.order_form} onSubmit={handleSubmit(order)}>
-        <input type="text" placeholder="Name" className={s.input} {...registerName} />
-        {
-          errors.name && <p>{errors.name?.message}</p>
-        }
+        <input
+          type="text"
+          placeholder="Name"
+          className={s.input}
+          {...registerName}
+        />
+        {errors.name && <p>{errors.name?.message}</p>}
         <input
           type="tel"
           placeholder="Phone number"
           className={s.input}
           {...registerPhone}
         />
-        {
-          errors.phone && <p>{errors.phone?.message}</p>
-        }
+        {errors.phone && <p>{errors.phone?.message}</p>}
         <input
           type="email"
           placeholder="Email"
           className={s.input}
-          {...registerEmail} 
+          {...registerEmail}
         />
-            {
-          errors.email && <p>{errors.email?.message}</p>
-        }
+        {errors.email && <p>{errors.email?.message}</p>}
         <button className={s.form_button}>Checkout</button>
       </form>
     </div>
