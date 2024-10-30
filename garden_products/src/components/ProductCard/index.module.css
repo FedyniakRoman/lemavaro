@@ -199,14 +199,20 @@
 .price_discounted {
     font-size: 40px;
     font-weight: 600;
+/* <<<<<<< HEAD */
+    /* color: #424436;  */
     color: var(--color); 
+/* ======= */
+    /* color: #000000;  */
+/* >>>>>>> main */
     padding-top: 8px;
 }
 
 .price_no_discount {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    /* color: #000000;  */
+    color: var(--color); 
 }
 
 /* --------------------------------------------- */

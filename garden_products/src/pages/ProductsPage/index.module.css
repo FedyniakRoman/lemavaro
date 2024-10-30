@@ -54,7 +54,8 @@
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 40px;
-    color: #424436
+    /* color: #424436 */
+    color: var(--color);
 }
 
 @media(max-width: 1000px) {
@@ -98,3 +99,4 @@
         font-size: 40px;
     }
 }
+

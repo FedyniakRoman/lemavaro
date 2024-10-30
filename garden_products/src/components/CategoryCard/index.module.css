@@ -6,7 +6,8 @@
     flex-direction: column;
     gap: 16px;
     text-decoration: none;
-    color: #282828;
+    /* color: #282828; */
+    color: var(--color);
     cursor: pointer;
     transition: all .3s ease-in-out;
     text-align: center;

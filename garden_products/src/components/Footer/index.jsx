@@ -16,7 +16,6 @@ export default function Footer() {
         <div className={s.colum}>
           <span className={s.socials}>Socials</span>
           <div className={s.icons}>  
-       
             <RiInstagramFill onClick={() => window.open("https://www.instagram.com/startainstitute/", "_blank")} size={44} className={s.icon_socials}/>
             <IoLogoWhatsapp onClick={() => window.open("https://wa.me/4915735999409", "_blank")} size={44} className={s.icon_socials}/>
 
@@ -24,7 +23,7 @@ export default function Footer() {
         </div>
         <div className={s.colum}>
           <span className={s.address}>Address</span>
-          <span className={s.address_detail}>Linkstrasse 2, 8 OG, 10785, Berlin, Deutschland</span>
+          <span className={s.address_detail}>Linkstraße 2, 8 OG, 10785, Berlin, Deutschland</span>
         </div>
         <div className={s.colum}>
           <span className={s.working}>Working Hours</span>

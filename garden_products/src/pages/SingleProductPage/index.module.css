@@ -1,12 +1,11 @@
 .container_single_card {
   max-width: 1360px;
   margin: 0px auto;
-
 }
 
 .nav_container {
   width: 603px;
-  height: auto; /* Уберите фиксированную высоту, если она не нужна */
+  height: auto;
   margin-bottom: 30px;
   padding-top: 30px;
   position: relative;
@@ -38,7 +37,7 @@
 }
 
 .card_name {
-  color: #424436; 
+  color: #8B8B8B; 
 }
 
 .nav_list::after {
@@ -87,8 +86,6 @@
     position: relative;
     width: 100%;
     height:auto;
-    
-
 }
 
 
@@ -100,7 +97,6 @@
   justify-content: space-between;
 
   gap: 28px;
-
 }
 
 .inform_container{
@@ -142,7 +138,8 @@ height: 48px;
 }
 
 .price_original {
-  color: #424436;
+  /* color: #424436; */
+  color: var(--color);
 
   font-size: 64px;
   font-weight: 700;
@@ -175,13 +172,12 @@ height: 48px;
   top: -10px;
 }
 
-
-
 .count_container {
   display:flex;
   gap: 30px;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .count_button_container{
@@ -193,12 +189,12 @@ height: 48px;
   width: 48px;
   height: 55px;
   border: 1px solid #DDDDDD;
-  background-color: #fff;
+  background-color: var(--card-color);
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  cursor: pointer;
 }
 
 .count_minus, .count_plus {
@@ -214,25 +210,22 @@ height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #424436;
+  color: var(--color);
   border: 1px solid #DDDDDD;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--card-color);
 }
 
 .add_btn {
   width: 316px;
   height: 55px;
   padding: 16px 32px 16px 32px;
-
-
   background: #92A134;
   border: none;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
-
 }
 
 .add_btn:hover {
@@ -240,27 +233,22 @@ height: 48px;
 }
 
 .description {
-  color: #424436;
   padding-top: 10px;
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
   text-align: left;
-
+  color: var(--color);
 }
 
 .description_text {
   text-align: center;
-
   font-size: 16px;
   font-weight: 400;
   line-height: 20.8px;
   text-align: left;
-
-  color: #424436;
-  
-
+  color: var(--color);
 }
 
 
@@ -269,6 +257,6 @@ height: 48px;
   font-weight: 500;
   line-height: 20.8px;
   text-align: left;
-  color: #424436;
+  color: var(--color);
   text-decoration: underline;
 }

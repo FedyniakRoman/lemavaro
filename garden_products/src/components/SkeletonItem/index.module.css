@@ -4,4 +4,38 @@
     border: 1px solid #F2F6D3;
     background-color: #F2F6D3;
     border-radius: 12px;
+
+    /* Анимация скелетона */
+
+    display: inline-block;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f3f3f3 50%, #e0e0e0 75%);
+    background-size: 400% 100%;
+    border-radius: 8px;
+    animation: shimmer 1.8s infinite ease-in-out, resize 1.5s infinite ease-in-out alternate;
+    width: 100%;
+    height: 20px;
+
 }
+
+/* Анимация для бегущей полосы */
+@keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+  
+  /* Анимация для изменения размеров */
+  @keyframes resize {
+    0% {
+      height: 20px;
+    }
+    50% {
+      height: 25px;
+    }
+    100% {
+      height: 20px;
+    }
+  }

@@ -60,9 +60,9 @@ const checkProduct = (state, payload) => {
 const initialState = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Функция для обновления localStorage
-// const updateLocalStorage = (cartState) => {
-//   localStorage.setItem("cart", JSON.stringify(cartState));
-// };
+const updateLocalStorage = (cartState) => {
+  localStorage.setItem("cart", JSON.stringify(cartState));
+};
 
 // Редьюсер для управления состоянием корзины
 export const cartReducer = (state = initialState, action) => {
@@ -92,7 +92,7 @@ export const cartReducer = (state = initialState, action) => {
   }
 
   // Обновляем localStorage при каждом изменении состояния корзины
-  // updateLocalStorage(newState);
+  updateLocalStorage(newState);
 
   return newState;
 };

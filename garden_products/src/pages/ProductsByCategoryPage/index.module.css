@@ -25,6 +25,7 @@
   font-size: 1rem;
   line-height: 126%;
   padding: .5rem 1rem;
+  color: var(--color-nav-chain-last);
 }
 
 .item::after {
@@ -40,6 +41,7 @@
 
 .item:last-child::after {
   content: none;
+  
 }
 
 .link {
@@ -51,7 +53,7 @@
   font-weight: 700;
   text-align: left;
   margin-bottom: 40px;
-  color: #424436; 
+  color: var(--color); 
   line-height: 70.4px;
 }
 

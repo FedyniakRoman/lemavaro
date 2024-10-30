@@ -52,7 +52,8 @@
     padding: 8px 16px;
     position: relative;
     z-index: 1;
-    background-color: #FFFFF1;
+    /* background-color: #FFFFF1; */
+    background-color: var(--card-color);
     color: #8B8B8B;
 }
 
@@ -66,15 +67,17 @@
     transform: translateY(-50%); 
 }
 
-
 .empty_container{
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
+
 .empty_paragraph{
     font-size: 20px;
+    color: var(--color);
 }
+
 .empty_button{
     background-color: #92A134;
     color: #fff;
@@ -86,10 +89,13 @@
     line-height: 26px;
     text-align: center;
     max-width: 313px;
+    
 }
+
 /* Эффект наведения для кнопки */
 .empty_button:hover {
-    background-color: #424436; 
-    border: 1px solid #424436;
-    color: #fff;
+    /* background-color: #424436; 
+    border: 1px solid #424436; */
+    /* color: #fff; */
+    opacity: 0.7;
 }

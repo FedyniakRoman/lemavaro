@@ -165,6 +165,27 @@ export default function SingleProductPage() {
       
         }
 
+{/* Меняю местами начальную цену и цену со скидкой, для правильного  */}
+{/* {
+        <div className={s.price_container}>
+
+        {discont_price && discont_price < price && (
+          <>
+            <span className={s.price_discounted}>
+              ${discont_price}
+            </span>
+            <span className={s.discount_price}>
+              -{Math.round(((price - discont_price) / price) * 100)}%
+            </span>
+
+          </>
+        )}
+        <span className={s.price_original}>${price}</span>
+      </div>
+      
+        } */}
+
+
       <div className={s.count_container}>
         <div className={s.count_button_container}>
         <button className={s.count_button} onClick={decrementCount}>

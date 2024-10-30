@@ -26,7 +26,9 @@ body.light {
   --card-color: #F2F6D3;
   --card-in-color: #FFFFFF;
   --icon-color: #424436; /* Цвет иконок для светлой темы */
-  
+  --color-nav-chain-last: #424436; /* Цвет шрифта последнего элемента в "Навигационной цепочке" */
+
+  --map-brightness: 1;
 }
 
 /* Тёмная тема */
@@ -34,8 +36,12 @@ body.dark {
   /* background-color: #121212; */
   background-color: #424436;
   --color: #FFFFF1;
-  --card-color: #424436;
+  --card-color: #383A2C;
+  ;
   --icon-color: #FFFFF1; /* Цвет иконок для темной темы */
+  --color-nav-chain-last: #FFFFFF;
+  --map-brightness: 0.5;
+
 }
 
 a:hover{

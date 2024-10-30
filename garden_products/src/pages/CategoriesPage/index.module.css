@@ -40,9 +40,11 @@
     content: none;
 }
 
-.link {
+a:link, a:visited {
     color: #8b8b8b;
 }
+
+
 
 .wrapper {
     margin-bottom: 5rem;
