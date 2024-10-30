@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import s from "./index.module.css";
+import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 
-function OrderForm({ addNewOrder, setIsModalOpen }) {
+function OrderForm({ setIsModalOpen }) {
   const cartState = useSelector((store) => store.cart);
 
   const {
@@ -25,7 +26,17 @@ function OrderForm({ addNewOrder, setIsModalOpen }) {
       cart: cartState,
       sum: totalSum.toFixed(2),
     });
-    addNewOrder(data); // Отправляем заказ
+    // fetch("http://localhost:3333/order/send", {
+    fetch(`${backendUrl}/order/send`, {
+      //Запрос заказа
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json)); // Выводим ответ сервера в консоль
     setIsModalOpen(true); // Открываем модальное окно для подтверждения
     reset();
   };

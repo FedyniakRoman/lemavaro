@@ -6,7 +6,7 @@ import { getAllCategories } from "../../requests/categories";
 import { changeStatusAction } from "../../store/reducers/categoriesReducer";
 import { getAllProducts } from "../../requests/products";
 import ProductsContainer from "../../components/ProductsContainer";
-import DiscountForm from "../../components/FormContainer";
+import DiscountForm from "../../components/DiscountForm";
 
 
 
