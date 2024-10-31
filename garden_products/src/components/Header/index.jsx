@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import backendUrl from "../../config"; // Переменная для удобного переключения между локальным и удаленным бэкендом.
 import ModalDiscountContainer from "../ModalDiscountContainer";
 
+
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -124,20 +125,7 @@ export default function Header() {
             </Link>
           </div>
         </div>
-        
-        {location.pathname === "/" && (
-          <div className={s.header_image_container}>
-            <h1 className={s.header_image_text}>
-              Amazing Discounts <br /> on Garden Products!
-            </h1>
-
-            <Link to="/sales" className={s.header_image_button}>
-              Check out
-            </Link>
-          </div>
-        )}
       </div>
-
       {/* Подключаем модальное окно, передавая все необходимые пропсы */}
       <ModalDiscountContainer
         isModalOpen={isModalOpen}

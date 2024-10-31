@@ -25,20 +25,6 @@ function CartPage() {
     }
   }, [cartState]); // Обновляем при изменении cartState
 
-  // Функция для отправки нового заказа
-  const addNewOrder = (newOrder) => {
-    // fetch("http://localhost:3333/order/send", {
-    fetch(`${backendUrl}/order/send`, {       //Запрос заказа
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(newOrder),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json)); // Выводим ответ сервера в консоль
-  };
-
   // Функция для очистки корзины
   const clearCart = () => {
     dispatch(deleteAllAction()); // Отправляем действие для удаления всех товаров из корзины
@@ -73,7 +59,6 @@ function CartPage() {
             <CartCortainer products={cartState} />
             {/* Передаем функции для оформления заказа и открытия модального окна */}
             <OrderForm
-              addNewOrder={addNewOrder} // Функция для добавления нового заказа
               clearCart={clearCart} // Функция для очистки корзины
               setIsModalOpen={setIsModalOpen} // Устанавливаем состояние для открытия модального окна
             />
