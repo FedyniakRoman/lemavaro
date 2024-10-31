@@ -14,23 +14,18 @@ import {
 function ProductsPage() {
   const productsState = useSelector((store) => store.products);
   const dispatch = useDispatch();
-
   // При первом рендере компонента загружаем все продукты
   useEffect(() => {
     dispatch(changeStatusAction());
     dispatch(getAllProducts());
   }, []);
-
   // Извлекаем данные продуктов и статус из состояния
   const { products = [], status } = productsState;
-
   // Локальные состояния для фильтров минимальной и максимальной цены
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(Infinity);
-
   // Локальное состояние для фильтра по скидке (checked для чекбокса)
   const [checked, setChecked] = useState(false);
-
   // Эффект для фильтрации по цене, вызывается при изменении minValue или maxValue
   useEffect(() => {
     dispatch(
@@ -41,7 +36,6 @@ function ProductsPage() {
       })
     );
   }, [minValue, maxValue, checked]);
-
   // Фильтрация продуктов по видимости, цене и наличию скидки
   const filteredProducts = Array.isArray(products)
     ? products
@@ -53,14 +47,12 @@ function ProductsPage() {
           return isWithinPriceRange && isDiscounted; // Продукт должен удовлетворять обеим условиям
         })
     : [];
-
   // Функция для сброса фильтров
   const resetFilters = () => {
     setMinValue(0);
     setMaxValue(Infinity);
     setChecked(false);
   };
-
   return (
     <section className={s.container}>
       <nav className={s.nav}>
@@ -71,12 +63,14 @@ function ProductsPage() {
             </Link>
           </li>
           <li className={s.item}>
+          
             <Link to="/products" onClick={resetFilters}>
               All Products
             </Link>
           </li>
         </ul>
       </nav>
+
       <div className={s.wrapper}>
         <h2 className={s.title}>All Products</h2>
         {/* Фильтры: сортировка, диапазон цен и скидки */}
@@ -96,7 +90,10 @@ function ProductsPage() {
             <ProductsContainer products={filteredProducts} />
           )}
         </div>
-      </div>
+      
+          
+        </div>
+      
     </section>
   );
 }
