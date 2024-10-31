@@ -47,17 +47,25 @@ export default function SingleProductPage() {
     }
   };
 
+
   const favorit = useSelector((store) => store.favorites);
 
   // Ищем текущий товар в избранном
-  const favoritProduct = favorit.find((product) => product.id === id);
+  const favoritProduct = favorit.find((product) => product.id === +id);
+
+  // const [isFavorited, setIsFavorited] = useState(false);
+
+  // // useEffect для установки состояния из redux
+  // useEffect(() => {
+  //   setIsFavorited(!!favoritProduct); // Устанавливаем состояние в зависимости от того, найден ли продукт
+  // }, [favoritProduct]);
 
   const handleToggleFavorite = () => {
     if (favoritProduct) {
       dispatch(deleteProductFromFavoritesAction(id));
     } else {
       dispatch(
-        addProductToFavoritesAction({ id, title, image, price, discont_price })
+        addProductToFavoritesAction({ id:+id, title, image, price, discont_price })
       );
     }
   };
