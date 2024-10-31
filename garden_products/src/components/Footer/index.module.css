@@ -76,9 +76,15 @@ h1 {
     margin-bottom: 80px;
 }
 
+.icons {
+    color: var(--color);
+    cursor: pointer;
+}
+
 .map {
     width: 100%;
     height: 100%; 
     border: 2px solid #d3d3d3;
     border-radius: 8px;
+    filter: brightness(var(--map-brightness)); /*Переменная использована для затемнения карты при переключении на Темную тему*/
 }

@@ -16,18 +16,13 @@ export default function Footer() {
         <div className={s.colum}>
           <span className={s.socials}>Socials</span>
           <div className={s.icons}>  
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-        <RiInstagramFill size={44} color="black" style={{ cursor: 'pointer' }} />
-      </a>
-      <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
-        <IoLogoWhatsapp size={44} color="black" style={{ cursor: 'pointer' }} />
-      </a>
-         
+          <RiInstagramFill onClick={() => window.open("https://www.instagram.com/startainstitute/", "_blank")} size={44} />
+          <IoLogoWhatsapp onClick={() => window.open("https://wa.me/4915735999409", "_blank")} size={44} />
           </div>
         </div>
         <div className={s.colum}>
           <span className={s.address}>Address</span>
-          <span className={s.address_detail}>Linkstrasse 2, 8 OG, 10785, Berlin, Deutschland</span>
+          <span className={s.address_detail}>Linkstraße 2, 8 OG, 10785, Berlin, Deutschland</span>
         </div>
         <div className={s.colum}>
           <span className={s.working}>Working Hours</span>
