@@ -1,0 +1,97 @@
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  .modal_content {
+    background-color: #92A134;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 404px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal_header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  
+  .modal_header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 44px;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .modal_close_button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .modal_close_button:hover {
+    color: #f26d22;
+  }
+  
+  .modal_product_card_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Обеспечивает вертикальное расположение карточки продукта и кнопки */
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .add_to_cart_container {
+    width: 100%; /* Оставляем кнопку на всю ширину контейнера */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Отступ сверху для визуального разделения с карточкой продукта */
+  }
+  
+  .add_to_cart_button {
+    background-color: #FFFFF1;
+    color: #424436;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add_to_cart_button:hover {
+    background-color: #424436;
+    color: #FFFFF1;
+  }
+  
+  .add_to_cart_button:active {
+    transform: scale(0.98);
+  }

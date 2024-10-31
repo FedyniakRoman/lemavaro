@@ -1,0 +1,58 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+  }
+  
+  /* Das Bild */
+  .img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+  }
+  
+
+  .content_box {
+    max-width: 1440px; 
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    right: 40px;
+    bottom: 210px;
+    margin: 0 auto;
+    padding: 0 40px;
+    
+  }
+
+  .content {
+    font-size: 96px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #FFFFFF;
+  }
+  
+  .button {
+    background-color: #92A134;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 16px 56px;
+    width: 218px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    background:  #92A134;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top:40px;
+  }
+
+  .button:hover {
+    transform: scale(1.05);
+    background-color: rgba(146, 161, 52, 0.5);
+    
+  }
+  
