@@ -83,7 +83,7 @@ function SalesPage() {
           maxValue={maxValue}
           showCheckbox={false} // Скрыть чекбокс на странице SalesPage
         />
-        <div className={s.container}>
+        <div className={s.sales_product_container}>
           {status === "loading" ? (
             <SkeletonContainer count={11} />
           ) : (
