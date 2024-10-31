@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getSingleProduct } from "../../requests/products";
+import { getProductsByCategory, getSingleProduct } from "../../requests/products";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ModalSingelImageContainer from "../../components/ModalSingleImageContainer";
 import {
   addProductToCartAction,
   updateCartAction,
-  incrementCountAction,
 } from "../../store/reducers/cartReducer";
 import backendUrl from "../../config"; //Переменная для удобного переключения между локальным и удаленным бэкендом.
 import {
@@ -82,6 +81,11 @@ export default function SingleProductPage() {
     }
   };
 
+  const categoryTitle = useSelector((store) => store.productsByCategory.category?.title)
+
+
+
+// useEffect(() => dispatch(getProductsByCategory(category)),[category, dispatch])
   return (
     <div className={s.container_single_card}>
       <nav className={s.nav_container}>
@@ -97,9 +101,8 @@ export default function SingleProductPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to={"/products"} className={s.link}>
-              {" "}
-              All Products
+          <Link to={`/categories/${categoryTitle}`} className={s.link}>
+              {categoryTitle || 'Loading...'} {/* Отображаем название категории */}
             </Link>
           </li>
           {data && (
