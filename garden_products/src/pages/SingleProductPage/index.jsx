@@ -65,13 +65,13 @@ export default function SingleProductPage() {
 
   const cart = useSelector((state) => state.cart);
   const handleAddToCart = () => {
-    const newProduct = cart.find((e) => e.id === +id);
+    const newProduct = cart.find((e) => e.id === id);
     if (newProduct) {
       dispatch(updateCartAction({ id, count: newProduct.count + count }));
     } else {
       dispatch(
         addProductToCartAction({
-          id,
+          id: +id,
           title,
           price,
           discont_price,

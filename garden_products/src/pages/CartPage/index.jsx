@@ -15,6 +15,8 @@ function CartPage() {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна (открыто/закрыто)
 
+  console.log(cartState);
+  
   // Сохраняем корзину в localStorage при изменении состояния корзины
   useEffect(() => {
     if (cartState.length > 0) {
