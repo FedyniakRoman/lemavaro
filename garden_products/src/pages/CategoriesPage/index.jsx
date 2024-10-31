@@ -38,7 +38,7 @@ function CategoriesPage() {
       {status === 'loading' ? (
         <SkeletonContainer count={11}/>
       ) : (
-        <CategoriesContainer categories={data} />
+        <CategoriesContainer categories={data} itemsPerRow={5} />
       )}
     </div>
     </div>

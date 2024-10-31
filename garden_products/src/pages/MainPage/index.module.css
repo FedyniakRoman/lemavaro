@@ -1,6 +1,7 @@
 .container{
-    max-width: 1360px;
     margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1440px;
 }
 .title_container{
     align-items: center;

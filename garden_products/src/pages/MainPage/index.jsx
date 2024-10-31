@@ -59,7 +59,7 @@ function MainPage() {
         {statusCategorie === "loading" ? (
           "Categories are loading..."
         ) : (
-          <CategoriesContainer categories={limitedData} />
+          <CategoriesContainer categories={limitedData} itemsPerRow={4} />
         )}
       </section>
       {/* <div className={s.container}> */}

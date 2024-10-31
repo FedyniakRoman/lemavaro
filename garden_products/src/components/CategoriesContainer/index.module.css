@@ -1,9 +1,17 @@
 .container{
     display: grid;
     gap: 32px;
-    grid-template-columns: repeat(5, 1fr);
     margin-bottom: 80px;
 }
+/* Специальный класс для 4 карточек */
+.fourItems {
+    grid-template-columns: repeat(4, 1fr);
+}
+/* Специальный класс для 5 карточек */
+.fiveItems {
+    grid-template-columns: repeat(5, 1fr);
+}
+
 @media(max-width: 1000px){
     .container{
         display: grid;
