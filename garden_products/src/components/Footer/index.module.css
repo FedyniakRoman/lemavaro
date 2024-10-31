@@ -3,12 +3,13 @@
     margin: 0 auto;
 }
 
-h1 {
-    font-family: Montserrat;
+.h1 {
+  
     text-align: left;
     font-size: 64px;
     color: #424436;
     margin-bottom: 20px;
+
 }
 
 .info_footer {
@@ -82,3 +83,57 @@ h1 {
     border: 2px solid #d3d3d3;
     border-radius: 8px;
 }
+
+
+@media (max-width: 1000px) {
+    .container_footer {
+        width: 1,000px;
+        height: 840px;
+        margin-top: 20px;
+        padding: 0 10px; 
+    }
+    
+}
+
+ 
+@media (max-width: 768px) {
+    .container_footer{
+        margin-top: 20px;
+        padding: 0 10px; 
+    }
+    .info_footer {
+    height: auto; 
+    margin-top: 10px;
+    }
+
+    .colum {
+        padding: 16px; 
+    }
+
+    .label,
+    .socials,
+    .address,
+    .working {
+        font-size: 18px; 
+    }
+
+    .number,
+    .address_detail,
+    .working_hours {
+        font-size: 24px; 
+    }
+
+    .h1 {
+        font-size: 48px; 
+        margin-bottom: 10px;
+    }
+
+    .map_container {
+        height: 250px;
+    }
+
+    .map {
+        border-radius: 8px; 
+    } 
+}
+
