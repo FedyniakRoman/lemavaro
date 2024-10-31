@@ -6,7 +6,7 @@ import { RiInstagramFill } from "react-icons/ri";
 export default function Footer() {
   return (
     <div className={s.container_footer}>
-      <h1>Contact</h1>
+      <h1 className='s.h1'>Contact</h1>
 
       <div className={s.info_footer}>
         <div className={s.colum}>
