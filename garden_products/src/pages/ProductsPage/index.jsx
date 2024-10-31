@@ -63,9 +63,7 @@ function ProductsPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/products" onClick={resetFilters} className={s.link}>
-              All Products
-            </Link>
+          
             <Link to="/products" onClick={resetFilters}>
               All Products
             </Link>
@@ -84,7 +82,7 @@ function ProductsPage() {
           setChecked={setChecked}
           checked={checked}
         />
-        <div className={s.container}>
+        <div className={s.products_container}>
           {/* Если статус "loading", отображаем скелетон, иначе контейнер с продуктами */}
           {status === "loading" ? (
             <SkeletonContainer count={11} />
