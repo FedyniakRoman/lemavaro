@@ -12,6 +12,8 @@ import ModalDiscountContainer from "../ModalDiscountContainer";
 
 export default function Header() {
   const location = useLocation();
+
+  const showLine = location.pathname !== '/'
   const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -134,8 +136,9 @@ export default function Header() {
         error={error}
         handleCloseModal={handleCloseModal}
       />
-      
-      <div className={s.linie}></div>
+      {/* Показывать line для скидки только если showCheckbox установлен в true */}
+      {showLine &&
+      <div className={s.line}></div>}
     </header>
   );
 }

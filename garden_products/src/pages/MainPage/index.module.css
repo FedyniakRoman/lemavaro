@@ -17,11 +17,6 @@
     padding-right: 32px;
     color: #424436;
 }
-.line{
-    background: #ddd;
-    height: 1px;
-    width: 100%;
-}
 .btn_div{
     align-items: center;
     display: flex;
