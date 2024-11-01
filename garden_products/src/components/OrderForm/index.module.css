@@ -66,6 +66,9 @@
     font-size: 20px;
     line-height: 26px;
 }
+.close_button_invisible{
+    display:none;
+}
 @media(max-width: 1000px){
     .order_container{
         max-height: 600px;
