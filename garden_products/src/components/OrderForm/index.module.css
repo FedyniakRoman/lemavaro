@@ -66,3 +66,81 @@
     font-size: 20px;
     line-height: 26px;
 }
+.close_button_invisible{
+    display:none;
+}
+@media(max-width: 1000px){
+    .order_container{
+        max-height: 600px;
+        padding: 32px 20px 0;
+        width: 470px;
+    }
+    .order_title{
+        padding-bottom: 12px;
+    }
+    .total_price_box{
+        padding-bottom: 20px;
+    }
+    .order_form{
+        row-gap: 12px;
+    }
+}
+@media(max-width: 768px){
+    .order_container{
+        max-height: 600px;
+        padding: 32px 20px 0;
+        width: 728px;
+    }
+    .order_title, .total_items, .total_title{
+        font-size: 32px;
+    }
+    .total_sum{
+        font-size:56px;
+    }
+    .input{
+        padding: 16px 20px;
+    }
+    .form_button{
+        width: 172px;
+    }
+}
+@media(max-width: 480px){
+    .order_container{
+        max-height: 520px;
+        padding: 24px 20px 0;
+        width: 440px;
+    }
+    .order_title, .total_items, .total_title{
+        font-size: 28px;
+    }
+    .total_sum{
+        font-size:48px;
+    }
+    .order_form{
+        row-gap: 8px;
+    }
+    .input{
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+    .form_button{
+        width: 100%;
+        font-size: 18px;
+        padding: 12px 173px;
+    }
+}
+@media(max-width: 360px){
+    .order_container{
+        max-height: 530px;
+        padding: 24px 20px 0;
+        width: 320px;
+    }
+    .total_sum{
+        font-size:40px;
+    }
+    .form_button{
+        width: 100%;
+        font-size: 18px;
+        padding: 12px 113px;
+    }
+}

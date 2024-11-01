@@ -1,6 +1,7 @@
 .container{
-    max-width: 1360px;
     margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1440px;
 }
 .title_container{
     align-items: center;
@@ -16,11 +17,6 @@
     line-height: 110%;
     padding-right: 32px;
     color: var(--color);
-}
-.line{
-    background: #ddd;
-    height: 1px;
-    width: 100%;
 }
 .btn_div{
     align-items: center;

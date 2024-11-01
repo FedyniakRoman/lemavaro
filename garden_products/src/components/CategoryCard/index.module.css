@@ -23,3 +23,45 @@
 .img_container:hover{
     opacity: 0.5;
 }
+@media(max-width: 1000px){
+    .card { 
+        max-height: 306px;
+        max-width: 318px;
+    }
+    .img {
+        height: 250px;
+        object-fit: cover;
+        overflow: hidden;
+        position: relative;
+    }
+}
+@media(max-width: 768px){
+    .card { 
+        max-height: 318px;
+        max-width: 354px;
+    }
+    .img {
+        height: 250px;
+    }
+}
+@media(max-width: 480px){
+    .card { 
+        max-height: 318px;
+        max-width: 210px;
+    }
+    .img {
+        height: 260px;
+    }
+    .title{
+        font-size: 18px;
+    }
+}
+@media(max-width: 360px){
+    .card { 
+        max-height: 255px;
+        max-width: 320px;
+    }
+    .img {
+        height: 220px;
+    }
+}
