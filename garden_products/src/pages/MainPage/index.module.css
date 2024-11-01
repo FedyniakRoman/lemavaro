@@ -15,7 +15,7 @@
     font-weight: 700;
     line-height: 110%;
     padding-right: 32px;
-    color: #424436;
+    color: var(--color);
 }
 .line{
     background: #ddd;

@@ -1,7 +1,6 @@
 .container_single_card {
   max-width: 1360px;
   margin: 0px auto;
-
 }
 
 .nav_container {
@@ -29,12 +28,10 @@
   white-space: nowrap;
   z-index: 1;
   position: relative; 
-  
 }
 
 .link {
   color: #8B8B8B;
-  
 }
 
 .card_name {
@@ -67,12 +64,10 @@
 }
 
 .product_details {
-
   display: flex;
   flex-direction: row;
   gap: 30px; 
   margin-bottom: 30px;
-  
 }
 
 .image_container {
@@ -87,8 +82,6 @@
     position: relative;
     width: 100%;
     height:auto;
-    
-
 }
 
 .inform_container {
@@ -97,9 +90,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   gap: 28px;
-
 }
 
 .inform_container{
@@ -109,7 +100,6 @@ flex-direction: column;
 
 .container_title_and_icons {
   gap: 16px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -117,17 +107,15 @@ flex-direction: column;
 
 .title {
   color: #424436;
-
   font-size: 35px;
   font-weight: 700;
   line-height: 44px;
- 
   text-align: left;
 }
 
 .icon_heart {
   width: 58px;
-height: 48px;
+  height: 48px;
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -136,17 +124,15 @@ height: 48px;
   align-items: center;
   display: flex;
   flex-direction: row;
-
   gap: 26px;
 }
 
 .price_original {
-  color: #424436;
-
   font-size: 64px;
   font-weight: 700;
   line-height: 70.4px;
   text-align: left;
+  color: var(--color);
  
 }
 .price_original_discounted {
@@ -156,7 +142,6 @@ font-size: 40px;
 font-weight: 500;
 line-height: 52px;
 text-align: left;
-
 }
 
 .price_discounted {
@@ -166,8 +151,6 @@ text-align: left;
   font-weight: 700;
   line-height: 70.4px;
   text-align: left;
-
-
 }
 
 .discount_price{
@@ -208,7 +191,6 @@ text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
 .count_minus, .count_plus {
@@ -234,15 +216,12 @@ text-align: left;
   width: 316px;
   height: 55px;
   padding: 16px 32px 16px 32px;
-
-
   background: #92A134;
   border: none;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
-
 }
 
 .add_btn:hover {
@@ -257,22 +236,16 @@ text-align: left;
   font-weight: 600;
   line-height: 26px;
   text-align: left;
-
 }
 
 .description_text {
   text-align: center;
-
   font-size: 16px;
   font-weight: 400;
   line-height: 20.8px;
   text-align: left;
-
   color: #424436;
-  
-
 }
-
 
 .read {
   font-size: 16px;
