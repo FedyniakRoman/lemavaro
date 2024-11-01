@@ -20,8 +20,16 @@
 }
 
 .nav_menu a {
-  color: #424436;
+  color: var(--color);
   text-decoration: none;
+}
+
+.nav_menu a:visited {
+  color: var(--color);
+}
+
+.nav_menu a:hover {
+  color: #92A134;
 }
 
 .nav_menu_container {
@@ -341,4 +349,23 @@
   font-size: 30px;
   font-weight: 600;
   color: #424436;
+}
+
+.heart_icon  {
+  max-width: 48px;
+  width: 100%;
+  height: auto;
+  font-size: 95px;
+  color: var(--color);
+  stroke: 3px;
+}
+
+
+.bag_icon {
+  max-width: 48px;
+  width: 100%;
+  height: auto;
+  font-size: 95px;
+  color: var(--color);
+  fill: none;
 }

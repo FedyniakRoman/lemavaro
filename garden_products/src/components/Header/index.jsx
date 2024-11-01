@@ -8,6 +8,9 @@ import ThemeToggle from "../ThemeToggle"; // Импорт компонента �
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; // Переменная для удобного переключения между локальным и удаленным бэкендом.
 import ModalDiscountContainer from "../ModalDiscountContainer";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+import { PiHandbagLight } from "react-icons/pi";
 
 
 export default function Header() {
@@ -116,11 +119,11 @@ export default function Header() {
 
           <div className={s.nav_icons_right}>
             <Link to={"/favorites"} className={s.icon_box}>
-              <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+              <IoIosHeartEmpty className={s.heart_icon} />
               <span className={s.favorite_count}>{favoritesState.length}</span> {/* Количество товаров в избранном */}
             </Link>
             <Link to={"/cart"} className={s.icon_box}>
-              <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+              <HiOutlineShoppingBag className={s.bag_icon}/>
               <span className={s.cart_count}>
                 {cartState.reduce((total, product) => total + product.count, 0)}
               </span>

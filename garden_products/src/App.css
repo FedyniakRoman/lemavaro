@@ -21,12 +21,19 @@ body{
 body.light {
   background-color: #FFFFF1;
   color: #282828;
+  --map-brightness: 1;
+  --color: #424436;
+  --card-color: #F2F6D3;
 }
 
 /* Тёмная тема */
 body.dark {
-  background-color: #121212;
+  /* background-color: #121212; */
+  background-color: #424436;
   color: #ffffff;
+  --map-brightness: 0.5; /*Затемнение карты для темной темы*/ 
+  --color: #FFFFF1;
+  --card-color: #383A2C;
 }
 
 a:hover{

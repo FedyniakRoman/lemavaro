@@ -28,7 +28,8 @@
     flex-direction: column;
     border-radius: 10px;
     padding: 32px 0px 0px 0px;
-    background-color: #F2F6D3;
+    /* background-color: #F2F6D3; */
+    background-color: var(--card-color);
     gap: 16px;
     width: 100%;
     height: 100%; 
@@ -77,11 +78,17 @@
     margin-bottom: 80px;
 }
 
+.icons {
+    color: var(--color);
+    cursor: pointer;
+}
+
 .map {
     width: 100%;
     height: 100%; 
     border: 2px solid #d3d3d3;
     border-radius: 8px;
+    filter: brightness(var(--map-brightness)); /*Переменная использована для затемнения карты при переключении на Темную тему*/
 }
 
 
@@ -136,4 +143,3 @@
         border-radius: 8px; 
     } 
 }
-
