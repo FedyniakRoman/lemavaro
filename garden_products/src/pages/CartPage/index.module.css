@@ -58,7 +58,19 @@
     background-color: #FFFFF1;
     color: #8B8B8B;
 }
-
+.item_invisible{
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 126%;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFF1;
+    color: #8B8B8B;
+    display: none;
+}
 .linie {
     background: #ddd;
     height: 1px;
@@ -173,10 +185,16 @@
         display: none;
     }
 }
-
+.empty_paragraph, .empty_button {
+    font-size: 18px;
+}
 @media(max-width: 360px) {
     .container {
         max-width: 360px;
+     
+    }
+    .cart_container{
+        margin-bottom: 24px;
     }
     .title_container {
         margin: 24px 0;
@@ -189,5 +207,14 @@
 
     .nav_container{
         display: none;
+    }
+    .empty_container{
+        gap: 24px;
+    }
+    .item_invisible{
+        display:block;
+        width: 169px;
+        margin: 0 auto;
+        font-size: 14px;
     }
 }

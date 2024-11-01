@@ -66,9 +66,9 @@
     font-size: 20px;
     line-height: 26px;
 }
-@media(max-width: 1250px){
+@media(max-width: 1000px){
     .order_container{
-        max-height: 538px;
+        max-height: 600px;
         padding: 32px 20px 0;
         width: 470px;
     }
@@ -82,7 +82,7 @@
         row-gap: 12px;
     }
 }
-@media(max-width: 878px){
+@media(max-width: 768px){
     .order_container{
         max-height: 600px;
         padding: 32px 20px 0;
@@ -101,7 +101,7 @@
         width: 172px;
     }
 }
-@media(max-width: 831px){
+@media(max-width: 480px){
     .order_container{
         max-height: 520px;
         padding: 24px 20px 0;

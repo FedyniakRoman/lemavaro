@@ -75,6 +75,9 @@ function CartPage() {
           clearCart(); // Очищаем корзину после завершения заказа
         }}
       />
+       <Link to={"/"} className={s.item_invisible}>
+              Back to the store
+            </Link>
     </section>
   );
 }
