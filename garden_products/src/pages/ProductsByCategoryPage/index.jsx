@@ -21,7 +21,7 @@ function ProductsByCategoryPage() {
   const productsByCategoryState = useSelector(
     (store) => store.productsByCategory
   );
-  console.log("ProductsByCategoriePage", productsByCategoryState);
+ 
   // Извлекаем данные продуктов и статус из состояния
   const { data = [], category = {}, status } = productsByCategoryState || {}; // Деструктуризация состояния с проверкой
 

@@ -1,13 +1,16 @@
 .container {
     margin: 0 auto;
-    max-width: 1400px;
+    padding: 0 40px;
+    max-width: 1440px;
 }
-.cart_container{
+
+.cart_container {
     display: flex;
     gap: 32px;
     justify-content: space-between;
     margin-bottom: 80px;
 }
+
 .title_container {
     align-items: center;
     display: flex;
@@ -18,7 +21,7 @@
     gap: 35px;
 }
 
-.title_page {
+.title {
     font-size: 64px;
     font-weight: 700;
     line-height: 71px;
@@ -62,20 +65,22 @@
     width: 100%;
     position: absolute;
     top: 60%;
-    left: 0; 
-    transform: translateY(-50%); 
+    left: 0;
+    transform: translateY(-50%);
 }
 
 
-.empty_container{
+.empty_container {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
-.empty_paragraph{
+
+.empty_paragraph {
     font-size: 20px;
 }
-.empty_button{
+
+.empty_button {
     background-color: #92A134;
     color: #fff;
     padding: 16px 32px;
@@ -87,9 +92,102 @@
     text-align: center;
     max-width: 313px;
 }
+
 /* Эффект наведения для кнопки */
 .empty_button:hover {
-    background-color: #424436; 
+    background-color: #424436;
     border: 1px solid #424436;
     color: #fff;
+}
+
+@media(max-width: 1000px) {
+    .container {
+        padding: 0 20px;
+        max-width: 1000px;
+    }
+}
+
+@media(max-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+
+    .cart_container {
+        flex-direction: column;
+    }
+
+    .title_container {
+        margin-bottom: 32px;
+        margin-top: 32px;
+        gap: 20px;
+    }
+
+    .nav {
+        margin: 32px 0;
+    }
+
+    .title {
+        font-size: 56px;
+    }
+}
+
+@media(max-width: 480px) {
+    .container {
+        max-width: 480px;
+    }
+
+    .title {
+        font-size: 48px;
+        white-space: normal;
+        width: 271px;
+        line-height: 50px;
+    }
+
+    .title_container {
+        margin: 32px 0;
+        align-items: flex-start;
+        gap: 16px;
+        height: 106px;
+    }
+    .nav_container{
+        padding: 0;
+        margin:0;
+        justify-content: flex-end;
+       
+    }
+    .nav_list {
+        padding-top: 0; 
+        margin-top: 14px;
+        align-self: flex-start;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .item{
+        font-size: 14px;
+        width: auto;
+    }
+    .price_original {
+        font-size: 18px;
+    }
+    .linie{
+        display: none;
+    }
+}
+
+@media(max-width: 360px) {
+    .container {
+        max-width: 360px;
+    }
+    .title_container {
+        margin: 24px 0;
+        height: 44px;
+    }
+    .title {
+        font-size: 40px;
+        white-space: nowrap;
+    }
+
+    .nav_container{
+        display: none;
+    }
 }

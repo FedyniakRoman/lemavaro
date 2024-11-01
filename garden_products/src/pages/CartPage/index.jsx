@@ -35,7 +35,7 @@ function CartPage() {
   return (
     <section className={s.container}>
       <div className={s.title_container}>
-        <h2 className={s.title_page}>Shopping cart</h2>
+        <h2 className={s.title}>Shopping cart</h2>
         <div className={s.nav_container}>
           <div className={s.nav_list}>
             <div className={s.linie}></div>

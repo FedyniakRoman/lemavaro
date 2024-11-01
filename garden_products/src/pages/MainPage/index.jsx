@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import CategoriesContainer from "../../components/CategoriesContainer";
 import s from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,11 +37,14 @@ function MainPage() {
     return shuffled.slice(0, num); // Wähle die ersten 'num' Produkte
   };
 
-  //   // Wähle zufällig 4 Produkte aus
-  let randomDiscountedProducts = Array.isArray(products)
-    ? getRandomProducts(discountedProducts, 4)
-    : [];
- 
+  // Wähle zufällig 4 Produkte aus
+   // Verwende useMemo, um zufällige Produkte zu berechnen und nur bei Änderung von products neu zu berechnen
+   const randomDiscountedProducts = useMemo(() => {
+    const discountedProducts = Array.isArray(products)
+      ? products.filter((product) => product.discont_price !== null)
+      : [];
+    return getRandomProducts(discountedProducts, 4);
+  }, [products]); // Neu berechnen, wenn sich die Produktliste ändert
 
   return (
     <div className={s.main_page}>
