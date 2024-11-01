@@ -15,6 +15,8 @@ import {
   addProductToFavoritesAction,
   deleteProductFromFavoritesAction,
 } from "../../store/reducers/favoritesReducer";
+import { getAllCategories } from "../../requests/categories";
+import { productsByCategoryReducer } from "../../store/reducers/productsByCategoryReducer";
 
 export default function SingleProductPage() {
   const { id } = useParams();
@@ -25,8 +27,24 @@ export default function SingleProductPage() {
 
   const singleProductState = useSelector((store) => store.singleProduct);
 
-  const { data } = singleProductState || { status: "loading", data: [] };
+  const categoryId = singleProductState.data.categoryId
 
+
+  // useEffect(() => dispatch(getAllCategories(categoryId)),[categoryId])
+  useEffect(() => {
+    if (categoryId) {
+      dispatch(getProductsByCategory(categoryId));
+    }
+  }, [dispatch, categoryId]);
+  const productsByCategoryState = useSelector((store) => store.productsByCategory );
+
+  const categoryTitle = productsByCategoryState?.category?.title;
+  console.log(categoryTitle);
+  
+
+
+  const { data } = singleProductState || { status: "loading", data: [] };
+ 
   const { title, price, discont_price, description, image } = data;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,16 +71,9 @@ export default function SingleProductPage() {
   // Ищем текущий товар в избранном
   const favoritProduct = favorit.find((product) => product.id === +id);
 
-  // const [isFavorited, setIsFavorited] = useState(false);
-
-  // // useEffect для установки состояния из redux
-  // useEffect(() => {
-  //   setIsFavorited(!!favoritProduct); // Устанавливаем состояние в зависимости от того, найден ли продукт
-  // }, [favoritProduct]);
-
   const handleToggleFavorite = () => {
     if (favoritProduct) {
-      dispatch(deleteProductFromFavoritesAction(id));
+      dispatch(deleteProductFromFavoritesAction(+id));
     } else {
       dispatch(
         addProductToFavoritesAction({ id:+id, title, image, price, discont_price })
@@ -89,11 +100,12 @@ export default function SingleProductPage() {
     }
   };
 
-  const categoryTitle = useSelector((store) => store.productsByCategory.category?.title)
 
 
+  
+ 
 
-// useEffect(() => dispatch(getProductsByCategory(category)),[category, dispatch])
+
   return (
     <div className={s.container_single_card}>
       <nav className={s.nav_container}>
@@ -110,7 +122,7 @@ export default function SingleProductPage() {
           </li>
           <li className={s.item}>
           <Link to={`/categories/${categoryTitle}`} className={s.link}>
-              {categoryTitle || 'Loading...'} {/* Отображаем название категории */}
+              {categoryTitle || 'Loading...'}
             </Link>
           </li>
           {data && (
