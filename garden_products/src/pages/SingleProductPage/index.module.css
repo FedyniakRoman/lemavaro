@@ -35,7 +35,8 @@
 }
 
 .card_name {
-  color: #424436; 
+  /* color: #424436;  */
+  color: var(--color); 
 }
 
 .nav_list::after {
@@ -76,12 +77,11 @@
 }
 
 .image {
-  
   border-radius: 10px;
-    object-fit: cover;
-    position: relative;
-    width: 100%;
-    height:auto;
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  height:auto;
 }
 
 .inform_container {
@@ -94,8 +94,8 @@
 }
 
 .inform_container{
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .container_title_and_icons {
@@ -106,11 +106,12 @@ flex-direction: column;
 }
 
 .title {
-  color: #424436;
   font-size: 35px;
   font-weight: 700;
   line-height: 44px;
   text-align: left;
+  color: var(--color);
+
 }
 
 .icon_heart {
@@ -138,14 +139,14 @@ flex-direction: column;
 .price_original_discounted {
   color: #8B8B8B;
   text-decoration: line-through;
-font-size: 40px;
-font-weight: 500;
-line-height: 52px;
-text-align: left;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 52px;
+  text-align: left;
 }
 
 .price_discounted {
-   color:  #424436;
+  color:  var(--color);
   font-family: Montserrat;
   font-size: 64px; 
   font-weight: 700;
@@ -168,8 +169,6 @@ text-align: left;
   top: -20px;
 }
 
-
-
 .count_container {
   display:flex;
   gap: 30px;
@@ -191,12 +190,22 @@ text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-color);
+}
+
+.count_button:hover {
+  cursor: pointer;
 }
 
 .count_minus, .count_plus {
   width: 20px;
   height: 20px;
   color: #8B8B8B;
+
+}
+
+.count_minus, .count_plus:hover {
+  cursor: pointer;
 }
 
 .count_value {
@@ -206,10 +215,12 @@ text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #424436;
+  color: var(--background-color);
   border: 1px solid #DDDDDD;
   border-radius: 5px;
   background-color: #fff;
+  background-color: var(--background-color);
+  cursor: default;
 }
 
 .add_btn {
@@ -225,17 +236,19 @@ text-align: left;
 }
 
 .add_btn:hover {
-  background-color: #424436;
+  /* background-color: #424436; */
+  opacity: 0.5;
 }
 
 .description {
-  color: #424436;
   padding-top: 10px;
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
   text-align: left;
+  color: var(--color);
+
 }
 
 .description_text {
@@ -244,7 +257,7 @@ text-align: left;
   font-weight: 400;
   line-height: 20.8px;
   text-align: left;
-  color: #424436;
+  color: var(--color);
 }
 
 .read {
@@ -252,7 +265,7 @@ text-align: left;
   font-weight: 500;
   line-height: 20.8px;
   text-align: left;
-  color: #424436;
+  color: var(--color);
   text-decoration: underline;
 }
 
