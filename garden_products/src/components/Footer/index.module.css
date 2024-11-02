@@ -102,19 +102,69 @@
     
 }
 
- 
+
 @media (max-width: 768px) {
     .container_footer{
-        margin-top: 20px;
-        padding: 0 10px; 
+        width: 678px;
+       
     }
-    .info_footer {
-    height: auto; 
-    margin-top: 10px;
+    .h1 {
+        font-size: 56px; 
+        margin-bottom: 20px;
     }
 
-    .colum {
-        padding: 16px; 
+    .info_footer {
+        height: auto; 
+        margin-top: 10px;
+    }
+    
+    .label,
+    .socials,
+    .address,
+    .working {
+        font-size: 18px;
+        margin: 2px 0; 
+        line-height: 1.2;
+    }
+    
+    .number,
+    .address_detail,
+    .working_hours {
+        font-size: 24px;
+        margin: 2px 0; 
+        line-height: 1.2;
+    }
+    
+    .info_footer > * {
+        padding: 1px 0; 
+    }
+    
+    .map_container {
+        margin-top:15px ;
+        height: 250px;
+    }
+
+    .map {
+        border-radius: 8px; 
+    } 
+}
+
+@media(max-width:480px){
+    .container_footer {
+        width: 100%; 
+        padding: 0 10px; 
+    }
+
+    .h1 {
+        font-size: 48px;
+        text-align: center; 
+    }
+
+    .info_footer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 8px; 
+       
     }
 
     .label,
@@ -122,24 +172,60 @@
     .address,
     .working {
         font-size: 18px; 
+        margin-top: 15px; 
     }
 
     .number,
     .address_detail,
     .working_hours {
-        font-size: 24px; 
+        font-size: 28px;
+     
+    }
+
+    .icons{
+        margin-top: -40px;
+        margin-left: 80px;
+    }
+    .map_container {
+        width: 440px;
+        height: 250px;
+    }
+}
+
+@media(max-width:360px){
+    .container_footer {
+     display: flex;
+     flex-direction: column;
+     padding: 0px 30px;
     }
 
     .h1 {
-        font-size: 48px; 
-        margin-bottom: 10px;
+        font-size: 40px;
+        text-align: center; 
     }
 
+    .label,
+    .socials,
+    .address,
+    .working {
+        font-size: 18px; 
+        margin-top: 15px; 
+    }
+
+    .number,
+    .address_detail,
+    .working_hours {
+        font-size: 28px;
+     
+    }
+
+    .icons{
+        margin-top: -40px;
+        margin-left: 80px;
+    }
     .map_container {
+        width: 100%; 
+        max-width: 320px;
         height: 250px;
     }
-
-    .map {
-        border-radius: 8px; 
-    } 
 }

@@ -427,6 +427,7 @@ height: 47px;
     gap: 20px;
     display: flex;
     flex-direction: column;
+ align-items: center;
   }
   
   .nav_container{
@@ -434,10 +435,7 @@ height: 47px;
   }
   .title_name{
     display: block;
-    font-size: 28px;
-    line-height: 30.8px;
-    padding: 18px;
-  
+    font-size: 23px;
   }
   .title {
    display: none;
@@ -446,40 +444,44 @@ height: 47px;
     .icon_heart{
       display: none;
     }
-  
+   
+    .image_container{
+    
+  display: flex;
+    }
     .image {
-      width: 320px;
-      height:220px;
-      margin-left: auto;
-      margin-right: 0;
+     width: 360px;
+     height: 220px;
   }
-      /* .inform_container {
-      width: 320px;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }  */
+      .inform_container {
+      width: auto;
+     
+    } 
       
   .price_container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+ 
+  
   } 
   
   .discount_price{
-  
+  display: none;
+  }
+  .price_discounted,
+   .price_original_discounted{
+    font-size: 38px;
+    text-align: center;
   }
  
-  .count_container {
-    flex-wrap: wrap;
-    gap: 20px;
-    
+  .count_button_container {
+    width: 146px;
+    height: 47px;  
   }
   .add_btn{
- width: 320px;
+ width:450px;
 height: 47px;
-  } 
+  }  
+
+  
  }
 
   
