@@ -63,6 +63,9 @@
 .item:last-child::after {
   content: none;
 }
+.title_name{
+  display: none;
+}
 
 .product_details {
   display: flex;
@@ -295,14 +298,17 @@
     width: 100%;
     height: auto; 
   }
+ 
 }
 
 @media (max-width: 768px) {
   .product_details {
     display: flex;
-    
+    position: relative;
+    margin-bottom: 70px;
   }
   .inform_container {
+   
     flex: 1; 
     min-width: 50%; 
     max-width: 50%; 
@@ -340,26 +346,154 @@ height: 58px;
 
   .description_container {
     width: 748px;
-align-self: flex-end;  
+    align-self: flex-end;  
   }
 
-  .read_more{
-    position: absolute;
-  }
- 
+ .read{
+    position:absolute;
+    left: 0px;
+  } 
 }
 
 @media (max-width: 480px){
   .product_details {
     display: flex;
-    flex-wrap: wrap;
+ 
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .icon_heart{
+    display: none;
+  }
+  .inform_container {
+    width: 210px;
+    height: auto;
+  }
+  
+  .image {
+      width: 210px;
+      height:179px;
+  }
+  .nav_container{
+    display: none;
+  }
+  .title_name{
+    display: block;
+    font-size: 28px;
+    line-height: 30.8px;
+    padding: 18px;
+
+  }
+  .title {
+   display: none;
   }
 
-  .title {
-    order: 1;
-    font-size: 25px;
-    font-weight: 600;
-    line-height: 34px;
+  .price_container {
+    position: relative;
+    width: 210px;
+    top: -20px;
   }
+  .discount_price{
+    position:absolute;
+    left: -70px;
+  }
+ 
+  .count_container {
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  .add_btn{
+ width: 210px;
+height: 47px;
+  }
+
+  .description_container {
+    width: 430px;
+    align-self: flex-end;  
+    gap: 12px;
+  }
+
+ .read{
+    position:absolute;
+    left: 0px;
+  } 
 
 }
+
+
+@media (max-width: 360px){
+  .product_details {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+  }
+  
+  .nav_container{
+    display: none;
+  }
+  .title_name{
+    display: block;
+    font-size: 23px;
+  }
+  .title {
+   display: none;
+  }
+  
+    .icon_heart{
+      display: none;
+    }
+   
+    .image_container{
+    
+  display: flex;
+    }
+    .image {
+     width: 360px;
+     height: 220px;
+  }
+      .inform_container {
+      width: auto;
+     
+    } 
+      
+  .price_container {
+ 
+  
+  } 
+  
+  .discount_price{
+  display: none;
+  }
+  .price_discounted,
+   .price_original_discounted{
+    font-size: 38px;
+    text-align: center;
+  }
+ 
+  .count_button_container {
+    width: 146px;
+    height: 47px;  
+  }
+  .add_btn{
+ width:450px;
+height: 47px;
+  }  
+
+  
+ }
+
+  
+
+ /* .description_container {
+    width: 230px;
+    align-self: flex-end;  
+    gap: 12px;
+  }
+
+ .read{
+    position:absolute;
+    left: 0px;
+  }  */
+
