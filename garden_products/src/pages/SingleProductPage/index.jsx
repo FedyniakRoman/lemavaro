@@ -100,14 +100,9 @@ export default function SingleProductPage() {
     }
   };
 
-
-
-  
- 
-
-
   return (
     <div className={s.container_single_card}>
+  
       <nav className={s.nav_container}>
         <ul className={s.nav_list}>
           <li className={s.item}>
@@ -134,6 +129,7 @@ export default function SingleProductPage() {
           )}
         </ul>
       </nav>
+      <h3 className={s.title_name}>{`${title}`}</h3>
 
       {/* Блок с изображением продукта */}
       <div className={s.product_details}>
@@ -215,7 +211,7 @@ export default function SingleProductPage() {
             <h3 className={s.description}>Description</h3>
             <p className={s.description_text}>{description}</p>
           </div>
-          <div className="s.read_more">
+          <div className={s.read_more}>
             <h4 className={s.read}> Read more</h4>
           </div>
         </div>

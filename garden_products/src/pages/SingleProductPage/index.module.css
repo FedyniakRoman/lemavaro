@@ -62,6 +62,9 @@
 .item:last-child::after {
   content: none;
 }
+.title_name{
+  display: none;
+}
 
 .product_details {
   display: flex;
@@ -282,14 +285,17 @@ text-align: left;
     width: 100%;
     height: auto; 
   }
+ 
 }
 
 @media (max-width: 768px) {
   .product_details {
     display: flex;
-    
+    position: relative;
+    margin-bottom: 70px;
   }
   .inform_container {
+   
     flex: 1; 
     min-width: 50%; 
     max-width: 50%; 
@@ -327,26 +333,152 @@ height: 58px;
 
   .description_container {
     width: 748px;
-align-self: flex-end;  
+    align-self: flex-end;  
   }
 
-  .read_more{
-    position: absolute;
-  }
- 
+ .read{
+    position:absolute;
+    left: 0px;
+  } 
 }
 
 @media (max-width: 480px){
   .product_details {
     display: flex;
-    flex-wrap: wrap;
+ 
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .icon_heart{
+    display: none;
+  }
+  .inform_container {
+    width: 210px;
+    height: auto;
+  }
+  
+  .image {
+      width: 210px;
+      height:179px;
+  }
+  .nav_container{
+    display: none;
+  }
+  .title_name{
+    display: block;
+    font-size: 28px;
+    line-height: 30.8px;
+    padding: 18px;
+
+  }
+  .title {
+   display: none;
   }
 
-  .title {
-    order: 1;
-    font-size: 25px;
-    font-weight: 600;
-    line-height: 34px;
+  .price_container {
+    position: relative;
+    width: 210px;
+    top: -20px;
   }
+  .discount_price{
+    position:absolute;
+    left: -70px;
+  }
+ 
+  .count_container {
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  .add_btn{
+ width: 210px;
+height: 47px;
+  }
+
+  .description_container {
+    width: 430px;
+    align-self: flex-end;  
+    gap: 12px;
+  }
+
+ .read{
+    position:absolute;
+    left: 0px;
+  } 
 
 }
+
+
+@media (max-width: 360px){
+  .product_details {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav_container{
+    display: none;
+  }
+  .title_name{
+    display: block;
+    font-size: 28px;
+    line-height: 30.8px;
+    padding: 18px;
+  
+  }
+  .title {
+   display: none;
+  }
+  
+    .icon_heart{
+      display: none;
+    }
+  
+    .image {
+      width: 320px;
+      height:220px;
+      margin-left: auto;
+      margin-right: 0;
+  }
+      /* .inform_container {
+      width: 320px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }  */
+      
+  .price_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  } 
+  
+  .discount_price{
+  
+  }
+ 
+  .count_container {
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  .add_btn{
+ width: 320px;
+height: 47px;
+  } 
+ }
+
+  
+
+ /* .description_container {
+    width: 230px;
+    align-self: flex-end;  
+    gap: 12px;
+  }
+
+ .read{
+    position:absolute;
+    left: 0px;
+  }  */
+
