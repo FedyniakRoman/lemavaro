@@ -3,6 +3,7 @@
     flex-direction: column;
     background: linear-gradient(to right, #87933D, #55610B);
     max-width: 1360px;
+    width: 100%;
     margin: 74px auto 0 auto ;
     border-radius: 12px;
 }
@@ -78,4 +79,24 @@
     font-weight: 500;
     line-height: 130%;
     color: white;
+}
+
+.form_image {
+    max-width: 748px;
+    width: 100%;
+
+}
+
+@media (max-width: 1000px) {
+
+    .form_image {
+        object-position: center;
+        max-width: 50%;
+        object-fit: cover;
+        object-position: right center;
+        
+    }
+
+
+  
 }
