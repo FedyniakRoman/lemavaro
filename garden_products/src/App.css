@@ -23,6 +23,7 @@ body.light {
   color: #282828;
   --map-brightness: 1;
   --color: #424436;
+  --color-under-card: #424436;
   --card-color: #F2F6D3;
 }
 
@@ -33,6 +34,7 @@ body.dark {
   color: #ffffff;
   --map-brightness: 0.5; /*Затемнение карты для темной темы*/ 
   --color: #FFFFF1;
+  --color-2: #FFFFFF;
   --card-color: #383A2C;
 }
 
