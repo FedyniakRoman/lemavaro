@@ -100,8 +100,6 @@
     stroke:  #92A134; 
 }
 
-/* --------------------------------------- */
-
 /* Контейнер для кнопки добавления товара */
 .add_btn_container {
     bottom: 30px;
@@ -197,14 +195,15 @@
 .price_discounted {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    color: var(--color); 
     padding-top: 8px;
 }
 
 .price_no_discount {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    /* color: #000000;  */
+    color: var(--color); 
 }
 
 /* --------------------------------------------- */

@@ -13,11 +13,13 @@ function OrderForm({ setIsModalOpen }) {
     formState: { errors },
   } = useForm();
   // Рассчитываем общую сумму заказа
-  let totalSum = cartState.reduce((acc, elem) => {
-    return elem.discont_price !== null
-      ? acc + elem.discont_price * elem.count
-      : acc + elem.price * elem.count;
-  }, 0);
+  let totalSum = Math.ceil(
+    cartState.reduce((acc, elem) => {
+      return elem.discont_price !== null
+        ? acc + elem.discont_price * elem.count
+        : acc + elem.price * elem.count;
+    }, 0)
+  );
 
   const order = (data) => {
     console.log({
@@ -90,7 +92,7 @@ function OrderForm({ setIsModalOpen }) {
           {...registerEmail}
         />
         {errors.email && <p className={s.error_content}>{errors.email?.message}</p>}
-        <button className={s.form_button}>Checkout</button>
+        <button className={s.form_button}>Order</button>
       </form>
     </div>
   );

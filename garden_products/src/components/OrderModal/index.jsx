@@ -11,6 +11,7 @@ function OrderModal({ isOpen, onClose }) {
         <div className={s.modal_overlay}>
           <div className={s.modal_wrapper}>
             <div className={s.modal_content}>
+            <IoIosClose className={s.close_button_invisible} onClick={onClose} />
               <div className={s.sub_title_box}>
                 <h3 className={s.sub_title}>Congratulations!</h3>
                 <IoIosClose className={s.close_button} onClick={onClose} />
