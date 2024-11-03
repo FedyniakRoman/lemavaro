@@ -26,11 +26,6 @@
     padding: .5rem 1rem;
 }
 
-/* .a {
-    /* color: red;
-    background-color: red;
-} */
-
 .a:visited {
     color: #8b8b8b;
 }
@@ -53,7 +48,9 @@
 .link {
     color: #8b8b8b;
 }
-
+.head_link{
+    color:var(--color-2);
+}
 .wrapper {
     margin-bottom: 40px;
 }

@@ -65,7 +65,7 @@ function FavoritesPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/favorites" onClick={resetFilters}>
+            <Link to="/favorites" onClick={resetFilters} className={s.head_link}>
               Liked products
             </Link>
           </li>

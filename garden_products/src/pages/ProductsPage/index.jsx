@@ -64,7 +64,7 @@ function ProductsPage() {
           </li>
           <li className={s.item}>
           
-            <Link to="/products" onClick={resetFilters}>
+            <Link to="/products" onClick={resetFilters} className={s.head_link}>
               All Products
             </Link>
           </li>
