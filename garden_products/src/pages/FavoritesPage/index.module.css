@@ -53,8 +53,9 @@
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 40px;
-    color: #424436
+    color: var(--color-2);
 }
+
 @media(max-width: 1000px) {
     .container {
         padding: 0 20px;
