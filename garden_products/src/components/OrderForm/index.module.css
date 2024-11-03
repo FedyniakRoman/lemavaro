@@ -1,5 +1,5 @@
 .order_container{
-    background-color: #F2F6D3;
+    background-color: var(--card-color);
     border-radius: 12px;
     max-height: 582px;
     padding: 32px 32px 0;
@@ -7,34 +7,39 @@
 }
 
 .order_title{
-    color: #282828;
+    color: var(--color-2);
     font-weight: 700; 
     padding-bottom: 24px;
     font-size: 40px;
     line-height: 44px;
 }
+
 .total_items{
     color: #8b8b8b;
     font-weight: 500;
     font-size: 40px;
 }
+
 .total_price_box{
     align-items: baseline;
     display: flex;
     justify-content: space-between;
     padding-bottom: 32px;
 }
+
 .total_title{
     color: #8b8b8b;
     font-weight: 500;
     font-size: 40px;
     line-height: 52px;
 }
+
 .total_sum{
-    color: #282828;
+    color: var(--color-2);
     font-weight: 700;
     font-size: 64px;
 }
+
 .order_form{
     display: flex;
     flex-direction: column;
@@ -42,8 +47,10 @@
     row-gap: 16px;
     width: 100%;
 }
+
 .input{
-    background-color: #fcfeff;
+    /* background-color: #fcfeff; */
+    background-color: var(--input-color);
     border: 1px solid #ddd;
     border-radius: 6px;
     color: #8B8B8B;
@@ -56,6 +63,7 @@
     padding: 16px 32px;
 
 }
+
 .form_button{
     background-color: #92A134;
     color: #fff;
@@ -66,9 +74,11 @@
     font-size: 20px;
     line-height: 26px;
 }
+
 .close_button_invisible{
     display:none;
 }
+
 @media(max-width: 1000px){
     .order_container{
         max-height: 600px;

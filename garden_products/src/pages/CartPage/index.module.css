@@ -26,7 +26,7 @@
     font-weight: 700;
     line-height: 71px;
     white-space: nowrap;
-    color: #424436;
+    color: var(--color-2);
 }
 
 .nav_container {
@@ -55,7 +55,7 @@
     padding: 8px 16px;
     position: relative;
     z-index: 1;
-    background-color: #FFFFF1;
+    background-color: var(--card-color);
     color: #8B8B8B;
 }
 .item_invisible{
@@ -80,7 +80,6 @@
     left: 0;
     transform: translateY(-50%);
 }
-
 
 .empty_container {
     display: flex;

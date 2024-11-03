@@ -26,11 +26,6 @@
     padding: .5rem 1rem;
 }
 
-/* .a {
-    /* color: red;
-    background-color: red;
-} */
-
 .a:visited {
     color: #8b8b8b;
 }
@@ -63,7 +58,6 @@
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 40px;
-    /* color: #424436 */
     color: var(--color-2);
 }
 
