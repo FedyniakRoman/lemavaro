@@ -56,7 +56,7 @@
 /* Стиль иконок "сердце" и "сумка" */
 .btn_icon_heart{
     cursor: pointer;
-    width: 48px;
+    font-size: 48px;
     height: auto;
     vertical-align: middle;
     color: white;
@@ -70,7 +70,7 @@
 
 .btn_icon_bag {
     cursor: pointer;
-    width: 48px;
+    font-size:48px;
     height: auto;
     vertical-align: middle;
     color: white;
@@ -277,8 +277,11 @@
     .price_discounted, .price_no_discount{
         font-size: 36px;
     }
+    .icons_container{
+        gap: 4px;
+    }
     .btn_icon_heart, .btn_icon_bag{
-        width: 40px;
+        font-size: 40px;
     }
     .sale_value{
         font-size: 18px;
