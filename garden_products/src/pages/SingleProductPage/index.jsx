@@ -141,6 +141,9 @@ export default function SingleProductPage() {
             onClick={handleImageClick}
             style={{ cursor: "pointer" }}
           />
+          <span className={s.discount_price_img}>
+                    -{Math.round(((price - discont_price) / price) * 100)}%
+                  </span>
           <ModalSingelImageContainer
             isOpen={isModalOpen}
             onClose={handleCloseModal}
