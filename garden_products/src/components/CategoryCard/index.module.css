@@ -24,6 +24,7 @@
 .img_container:hover{
     opacity: 0.5;
 }
+
 @media(max-width: 1000px){
     .card { 
         max-height: 306px;
@@ -66,3 +67,4 @@
         height: 220px;
     }
 }
+
