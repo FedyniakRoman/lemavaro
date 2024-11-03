@@ -305,6 +305,7 @@
 
 @media (max-width: 768px) {
   .product_details {
+    width: 728px;
     display: flex;
     position: relative;
     margin-bottom: 70px;
@@ -347,7 +348,7 @@ height: 58px;
   }
 
   .description_container {
-    width: 748px;
+    width: 728px;
     align-self: flex-end;  
   }
 
@@ -526,7 +527,8 @@ width: 440px;
    
 }
 .add_btn { 
-  min-width: 330px;
+  min-width: 320px;
+  height: 47px;
 
 }
  .description_container {
