@@ -1,10 +1,11 @@
 .container {
-  max-width: 1360px;
-  margin: 0 auto; 
+  margin: 0 auto;
+  padding: 0 40px;
+  max-width: 1440px;
 }
 
 .nav {
-  margin: 2.5rem 0;
+  margin: 40px 0;
 }
 
 .nav_list {
@@ -14,9 +15,10 @@
   gap: 16px;
 }
 
-.current_category{
+.current_category {
   cursor: pointer;
 }
+
 .item {
   position: relative;
   padding: 0 20px;
@@ -43,7 +45,7 @@
 }
 
 .link {
-  color: #8b8b8b;
+  color: var(--color-2);
 }
 
 .title {
@@ -51,7 +53,7 @@
   font-weight: 700;
   text-align: left;
   margin-bottom: 40px;
-  color: #424436; 
+  color: var(--color-2);
   line-height: 70.4px;
 }
 
@@ -62,70 +64,51 @@
   margin-bottom: 40px;
 }
 
-.label_price{
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-} 
 
-.label_sort, .label_discount {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-  margin-left: 24px;
+@media(max-width: 1000px) {
+  .container {
+      padding: 0 20px;
+      max-width: 1000px;
+  }
+  .title {
+      margin-bottom: 32px;
+  }
 }
 
-.input_price, .select_sort {
-  border: .0625rem solid #ddd;
-  border-radius: .375rem;
-  font-size: .9375rem;
-  height: 2.25rem;
-  padding: .5rem 1rem;
-  margin-left: 16px;
+@media(max-width: 768px) {
+  .container {
+      max-width: 768px;
+  }
+  .nav {
+      margin: 32px 0;
+  }
+  .title {
+      font-size: 56px;
+  }
 }
 
-.input_discount {
-  position: relative;
-  width: 2.25rem;
-  height: 2.25rem;
-  cursor: pointer;
-  appearance: none;
-  border: .0625rem solid #ddd;
-  border-radius: .375rem;
-  transition: all .3s ease-in-out;
-  background-color: white;
-}
+@media(max-width: 480px) {
+  .container {
+      max-width: 480px;
+  }
 
-.input_discount:checked {
-  background-color: #92A134; 
-  border-color: #92A134;
+  .title {
+      font-size: 48px;
+      margin-bottom: 24px;
+  }
+  .nav_list{
+      display: none;
+  }
+  .price_original{
+      font-size: 18px;
+  }
 }
+@media(max-width: 360px) {
+  .container {
+      max-width: 360px;
+  }
 
-.input_discount:checked::after {
-  content: "✓";
-  color: white;
-  font-size: 1.25rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.input_discount::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.3s ease;
-}
-
-.input_discount:checked::after {
-  transform: translate(-50%, -50%) scale(1); /* Отображение галочки */
-}
-
-.loading {
-  color: #888;
-  text-align: center;
-  margin-top: 50px;
+  .title {
+      font-size: 40px;
+  }
 }

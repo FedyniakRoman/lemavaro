@@ -40,10 +40,12 @@
     line-height: 26px;
     font-family: 'Montserrat', regular;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .not_found_button:hover {
     opacity: 0.8;
+    color: #FFFFFF;
 }
 
 a {

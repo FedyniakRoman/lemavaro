@@ -49,6 +49,7 @@ const checkProductInFavorites = (state, payload) => {
   }
 };
 
+
 // Загрузка начального состояния корзины из localStorage
 const initialState = JSON.parse(localStorage.getItem("favorites")) || [];
 

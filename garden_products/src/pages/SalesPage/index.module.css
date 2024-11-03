@@ -5,7 +5,7 @@
 }
 
 .nav {
-    margin: 2.5rem 0;
+    margin: 40px 0;
 }
 
 .nav_list {
@@ -54,7 +54,7 @@
     font-weight: 700;
     line-height: 110%;
     margin-bottom: 40px;
-    color: #424436
+    color: var(--color);
 }
 
 @media(max-width: 1000px) {
@@ -62,13 +62,18 @@
         padding: 0 20px;
         max-width: 1000px;
     }
+    .title {
+        margin-bottom: 32px;
+    }
 }
 
 @media(max-width: 768px) {
     .container {
         max-width: 768px;
     }
-
+    .nav {
+        margin: 32px 0;
+    }
     .title {
         font-size: 56px;
     }
@@ -81,6 +86,7 @@
 
     .title {
         font-size: 48px;
+        margin-bottom: 24px;
     }
     .nav_list{
         display: none;

@@ -1,5 +1,5 @@
 .card { 
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
     align-items: flex-start;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -7,6 +7,7 @@
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease-in-out;
+    background-color: var(--card-color);
 }
 
 /* ----------------------------------- */
@@ -99,8 +100,6 @@
     stroke:  #92A134; 
 }
 
-/* --------------------------------------- */
-
 /* Контейнер для кнопки добавления товара */
 .add_btn_container {
     bottom: 30px;
@@ -166,7 +165,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     align-self: stretch;
-    color: #424436;
+    /* color: #424436; */
+    color: var(--color);
     display: -webkit-box;
     font-size: 20px;
     font-weight: 500;
@@ -195,14 +195,15 @@
 .price_discounted {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    color: var(--color); 
     padding-top: 8px;
 }
 
 .price_no_discount {
     font-size: 40px;
     font-weight: 600;
-    color: #000000; 
+    /* color: #000000;  */
+    color: var(--color); 
 }
 
 /* --------------------------------------------- */

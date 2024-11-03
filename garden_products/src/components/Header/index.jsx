@@ -8,11 +8,19 @@ import ThemeToggle from "../ThemeToggle"; // Импорт компонента �
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; // Переменная для удобного переключения между локальным и удаленным бэкендом.
 import ModalDiscountContainer from "../ModalDiscountContainer";
+
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
+
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+import { PiHandbagLight } from "react-icons/pi";
+
 
 
 export default function Header() {
   const location = useLocation();
+
+  const showLine = location.pathname !== '/'
   const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -120,11 +128,11 @@ export default function Header() {
 
           <div className={s.nav_icons_right}>
             <Link to={"/favorites"} className={s.icon_box}>
-              <img className={s.heart_icon} src={heartIcon} alt="Heart Icon" />
+              <IoIosHeartEmpty className={s.heart_icon} />
               <span className={s.favorite_count}>{favoritesState.length}</span> {/* Количество товаров в избранном */}
             </Link>
             <Link to={"/cart"} className={s.icon_box}>
-              <img className={s.bag_icon} src={bagIcon} alt="Bag Icon" />
+              <HiOutlineShoppingBag className={s.bag_icon}/>
               <span className={s.cart_count}>
                 {cartState.reduce((total, product) => total + product.count, 0)}
               </span>
@@ -138,15 +146,19 @@ export default function Header() {
 
                      {/* Боковое выезжающее меню  */}
                      <div className={`${s.side_menu} ${isMenuOpen ? s.side_menu_open : ""}`}>
-          <div className={s.discount_container} onClick={handleOpenModal}>
-            <p className={s.discount_text}>1 day discount!</p>
-          </div>
+
+                     <RxCross2 className={s.close_icon} onClick={toggleMenu} />
+
           <nav className={s.side_nav_links}>
             <Link to="/" onClick={toggleMenu}>Main page</Link>
             <Link to="/categories" onClick={toggleMenu}>Categories</Link>
             <Link to="/products" onClick={toggleMenu}>All Products</Link>
             <Link to="/sales" onClick={toggleMenu}>All Sales</Link>
           </nav>
+
+          <div className={s.discount_container} onClick={handleOpenModal}>
+            <p className={s.discount_text}>1 day discount!</p>
+          </div>
         </div>
         
       </div>
@@ -160,7 +172,13 @@ export default function Header() {
       />
 
 
+
       <div className={s.linie}></div>
+
+      {/* Показывать line для скидки только если showCheckbox установлен в true */}
+      {showLine &&
+      <div className={s.line}></div>}
+
     </header>
   );
 }

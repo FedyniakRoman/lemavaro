@@ -15,6 +15,8 @@ function CartPage() {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна (открыто/закрыто)
 
+  console.log(cartState);
+  
   // Сохраняем корзину в localStorage при изменении состояния корзины
   useEffect(() => {
     if (cartState.length > 0) {
@@ -33,7 +35,7 @@ function CartPage() {
   return (
     <section className={s.container}>
       <div className={s.title_container}>
-        <h2 className={s.title_page}>Shopping cart</h2>
+        <h2 className={s.title}>Shopping cart</h2>
         <div className={s.nav_container}>
           <div className={s.nav_list}>
             <div className={s.linie}></div>
@@ -73,6 +75,9 @@ function CartPage() {
           clearCart(); // Очищаем корзину после завершения заказа
         }}
       />
+       <Link to={"/"} className={s.item_invisible}>
+              Back to the store
+            </Link>
     </section>
   );
 }

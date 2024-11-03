@@ -53,17 +53,17 @@ function CartItem({ id, image, title, count, price, discont_price }) {
               <>
                 {/* Новая цена отображается без зачеркнутого стиля */}
                 <p className={s.price_discounted}>{`$${priceDiscount.toFixed(
-                  1
+                  0
                 )}`}</p>
                 {/* Старая цена отображается зачеркнутой */}
                 <p className={s.price_original}>{`$${originalPrice.toFixed(
-                  1
+                  0
                 )}`}</p>
               </>
             ) : (
               // Если скидки нет, отображаем только обычную цену без зачёркивания
               <p className={s.price_no_discounted}>{`$${originalPrice.toFixed(
-                1
+                0
               )}`}</p>
             )}
           </div>

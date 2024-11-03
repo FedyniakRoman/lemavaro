@@ -20,7 +20,8 @@ function ProductCard({ id, title, image, price, discont_price }) {
   // Получаем список избранных товаров и товаров в корзине из store
   const favorites = useSelector((store) => store.favorites);
   const cart = useSelector((store) => store.cart);
-
+ 
+ 
   // Ищем текущий товар в избранном и корзине
   const favoriteProduct = Array.isArray(favorites) 
   ? favorites.find((product) => product.id === id)

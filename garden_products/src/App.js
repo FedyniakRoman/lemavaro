@@ -12,7 +12,7 @@ import CartPage from './pages/CartPage';
 import SalesPage from './pages/SalesPage';
 import FavoritesPage from './pages/FavoritesPage';
 //------------------------------------------------------------------ (Lev)
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ThemeToggle from './components/ThemeToggle/index.jsx';
 
@@ -25,6 +25,7 @@ function App() {
   useEffect(() => {
     document.body.className = theme; //Добавление класса 'light' или 'dark' ко Всем Компонентам Приложения (Lev)
   }, [theme]) //Инициализация
+
 
   return (
     <div className="App">
