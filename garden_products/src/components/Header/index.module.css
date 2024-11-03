@@ -181,30 +181,39 @@
   .nav_container{
     padding: 0 20px;;
   }
+
 }
 
 
 @media (max-width: 768px) {
   .nav_menu {
     gap: 20px;
-
   }
-
+  .tree_icon{
+    width: 68px;
+    height: 68px;
+  }
+  .discount_container{
+    margin-bottom: 10px;
+  }
 }
 
-@media  (min-width: 481px) and (max-width: 600px) {
+@media (max-width: 480px) {
   .nav_menu {
     gap: 5px;
     font-size: 12px;
-
+    .tree_icon{
+      width: 44px;
+      height: 44px;
+    }
+  }
+  .nav_icons_left{
+    gap: 8px;
+  }
+  .nav_icons_right{
+    gap: 6px;
   }
 
-}
-
-
-
-
-@media (max-width: 480px) {
   .burger_icon {
     display: block; /* Показываем бургер-иконку */
   }
@@ -223,8 +232,6 @@
   .header_container_top {
     align-items: center;
   }
-
-
 }
 
 @media (max-width: 360px) {

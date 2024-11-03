@@ -52,7 +52,7 @@ function MainPage() {
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Categories</h1>
-          <div className={s.line}></div>
+          <div className={s.line_categories}></div>
           <div className={s.btn_div}>
             <a href="/categories" className={s.btn_link}>
               <span>All categories</span>
@@ -71,7 +71,7 @@ function MainPage() {
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Sale</h1>
-          <div className={s.line}></div>
+          <div className={s.line_sale}></div>
           <div className={s.btn_div}>
             <a href="/sales" className={s.btn_link}>
               <span>All sales</span>

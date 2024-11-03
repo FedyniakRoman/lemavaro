@@ -11,9 +11,9 @@
 .form_and_image_container {
     display: flex;
     flex-direction: row;
-    max-width: 1296px;
-    width: 100%;
-    margin: auto;
+    /* max-width: 1296px; */
+    /* width: 100%; */
+    /* margin: auto; */
 }
 
 .main_form {
@@ -91,15 +91,19 @@
     .form_container{
         width:960px;
     }
-    
-    .form_image {
-        object-position: center;
-        max-width: 50%;
-        object-fit: cover;
-        object-position: right center;
-        
+    .main_form {
+        margin: 0 20px 32px;
     }
 
+    .form_image {
+        object-position: center;
+        width: 470px;
+        object-fit: cover;
+        object-position: 90% center;
+    }
+    .input_field{
+        width: 450px;
+    }
 
   
 }

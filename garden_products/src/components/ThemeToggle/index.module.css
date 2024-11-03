@@ -4,3 +4,9 @@
     height: 30px;   /*Высота кнопки подобрана так, чтобы не изменялся размер кнопки в зависимости от вида кнопки (Лев)*/
     cursor: pointer;
 }
+@media (max-width: 768px){
+    .img_theme{
+        height: 28px;
+        width: 52.5px;;
+    }
+}

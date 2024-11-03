@@ -18,7 +18,7 @@ function ThemeToggle() {
 
     return (
             <button onClick={handleToggle} className={s.button}>
-                <img src= {theme === 'light' ? imageLight : imageDark}/>  
+                <img src= {theme === 'light' ? imageLight : imageDark} className={s.img_theme}/>  
             </button>
     );
 
