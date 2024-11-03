@@ -1,9 +1,10 @@
-.container{
+.container {
     margin: 0 auto;
     padding: 0 40px;
     max-width: 1440px;
 }
-.title_container{
+
+.title_container {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -11,14 +12,16 @@
     padding-bottom: 40px;
     padding-top: 80px;
 }
-.title{
+
+.title {
     font-size: 64px;
     font-weight: 700;
     line-height: 110%;
     padding-right: 32px;
     color: var(--color);
 }
-.btn_div{
+
+.btn_div {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -34,7 +37,9 @@
     white-space: nowrap;
     position: relative;
 }
-.line_categories, .line_sale {
+
+.line_categories,
+.line_sale {
     background: #ddd;
     height: 1px;
     width: 810px;
@@ -42,66 +47,86 @@
     right: 180px;
     transform: translateY(-50%);
 }
-.line_sale{
+
+.line_sale {
     width: 1010px;
 }
-.btn_div:hover{
+
+.btn_div:hover {
     background-color: #F2F6D3;
 }
-.btn_link{
+
+.btn_link {
     color: #8B8B8B;
     cursor: pointer;
     text-decoration: none;
 }
 
-@media (max-width: 1000px){
-    .container{
+@media (max-width: 1000px) {
+    .container {
         padding: 0 20px;
         max-width: 1000px;
     }
-    .title_container{
+
+    .title_container {
         padding-bottom: 32px;
         padding-top: 60px;
     }
-    .line_categories, .line_sale {
+
+    .line_categories,
+    .line_sale {
         width: 425px;
         right: 162px;
     }
-    .line_sale{
+
+    .line_sale {
         width: 651px;
     }
 }
+
 @media(max-width: 768px) {
     .container {
         max-width: 768px;
     }
+
     .title {
         font-size: 56px;
     }
-    .line_categories, .line_sale {
+
+    .line_categories,
+    .line_sale {
         width: 250px;
         right: 160px;
     }
-    .line_sale{
+
+    .line_sale {
         width: 448px;
     }
 }
+
 @media (max-width: 480px) {
-    .btn_div{
-        display: none;
+    .title_container {
+        padding: 56px 0 24px;
     }
-    .title { 
-        font-size: 40px;
+
+    .title {
+        font-size: 48px;
         font-weight: 700;
     }
-    .line_categories, .line_sale {
+
+    .line_categories,
+    .line_sale {
         width: 24px;
         right: 160px;
     }
-    .line_sale{
+
+    .line_sale {
         width: 448px;
     }
 }
-@media (max-width: 360px){
 
+@media (max-width: 360px) {
+    .btn_div {
+        display: none;
+    }
 }

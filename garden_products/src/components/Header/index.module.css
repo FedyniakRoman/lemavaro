@@ -118,7 +118,7 @@
 }
 
 .side_menu {                         
-  position: fixed;
+  position: absolute;
   top: 0;
   right: -250px;
   width: 250px;
@@ -132,7 +132,8 @@
   z-index: 12000;
 }
 
-.side_menu_open {                   
+.side_menu_open {  
+  display: flex;                 
   right: 0;
 }
 

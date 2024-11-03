@@ -25,7 +25,8 @@ export default function Header() {
   const [error, setError] = useState(null);
   // Состояние для бокового меню
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  console.log(isMenuOpen);
+  
   // Функция для переключения состояния меню
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 

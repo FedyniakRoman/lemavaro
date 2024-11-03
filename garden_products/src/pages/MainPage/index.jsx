@@ -9,8 +9,6 @@ import ProductsContainer from "../../components/ProductsContainer";
 import DiscountForm from "../../components/DiscountForm";
 import DiscountBanner from "../../components/DiscountBanner";
 
-
-
 function MainPage() {
   const categorieState = useSelector((store) => store.categories);
   const productsState = useSelector((store) => store.products);
@@ -26,33 +24,29 @@ function MainPage() {
   const limitedData = Array.isArray(data) ? data.slice(0, 4) : [];
   const { products, statusProduct } = productsState;
 
-  // //  Filtere Produkte mit Rabatt (discont_price nicht null)
-  let discountedProducts = Array.isArray(products)
-    ? products.filter((product) => product.discont_price !== null)
-    : [];
-
-  //  // Funktion, um Produkte zufällig zu mischen
+  // Функция для случайного перемешивания товаров
   let getRandomProducts = (arr, num) => {
     const shuffled = arr.sort(() => 0.5 - Math.random()); // Mische die Produkte
     return shuffled.slice(0, num); // Wähle die ersten 'num' Produkte
   };
 
-  // Wähle zufällig 4 Produkte aus
-   // Verwende useMemo, um zufällige Produkte zu berechnen und nur bei Änderung von products neu zu berechnen
-   const randomDiscountedProducts = useMemo(() => {
+  // Выбор случайных 4 товаров
+  // Используем useMemo для вычисления случайных товаров и пересчета только при изменении списка products
+  const randomDiscountedProducts = useMemo(() => {
+    // Фильтрация товаров с скидкой (discont_price не равен null)
     const discountedProducts = Array.isArray(products)
       ? products.filter((product) => product.discont_price !== null)
       : [];
     return getRandomProducts(discountedProducts, 4);
-  }, [products]); // Neu berechnen, wenn sich die Produktliste ändert
+  }, [products]); // Пересчитываем при изменении списка товаров
 
   return (
     <div className={s.main_page}>
-      {/* <DiscountBanner /> */}
+      <DiscountBanner />
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Categories</h1>
-          <div className={s.line_categories}></div>
+          {/* <div className={s.line_categories}></div> */}
           <div className={s.btn_div}>
             <a href="/categories" className={s.btn_link}>
               <span>All categories</span>
@@ -66,12 +60,12 @@ function MainPage() {
         )}
       </section>
       {/* <div className={s.container}> */}
-        <DiscountForm />
+      <DiscountForm />
       {/* </div> */}
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Sale</h1>
-          <div className={s.line_sale}></div>
+          {/* <div className={s.line_sale}></div> */}
           <div className={s.btn_div}>
             <a href="/sales" className={s.btn_link}>
               <span>All sales</span>
