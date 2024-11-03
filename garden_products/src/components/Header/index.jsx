@@ -12,6 +12,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 
 
 
+
 export default function Header() {
   const location = useLocation();
 

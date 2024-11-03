@@ -64,12 +64,8 @@
         padding-top: 60px;
     }
     .line_categories, .line_sale {
-        background: #ddd;
-        height: 1px;
         width: 425px;
-        position: absolute;
         right: 162px;
-        transform: translateY(-50%);
     }
     .line_sale{
         width: 651px;
@@ -82,13 +78,30 @@
     .title {
         font-size: 56px;
     }
+    .line_categories, .line_sale {
+        width: 250px;
+        right: 160px;
+    }
+    .line_sale{
+        width: 448px;
+    }
 }
-@media (min-width: 360px) and (max-width: 479px) {
-    .btn_div {
+@media (max-width: 480px) {
+    .btn_div{
         display: none;
     }
     .title { 
         font-size: 40px;
         font-weight: 700;
     }
+    .line_categories, .line_sale {
+        width: 24px;
+        right: 160px;
+    }
+    .line_sale{
+        width: 448px;
+    }
+}
+@media (max-width: 360px){
+
 }

@@ -15,6 +15,9 @@ body{
   min-height: 100vh;
   width: 100%;
   background-color: #FFFFF1;
+  fill: #FFFFF1;
+  stroke: #424436;
+  stroke-width: 0.7;
 }
 
 /* Светлая тема */

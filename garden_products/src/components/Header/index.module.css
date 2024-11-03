@@ -100,7 +100,10 @@
   left: 0px;
   top: 7px;
 }
-
+.favorite_count{
+  top: 1px;
+  left: 2px;
+}
 .tree_icon {
   max-width: 70px;
 }
@@ -142,29 +145,24 @@
 
 .burger_icon {                     
   display: none;
-  font-size: 24px;
   cursor: pointer;
   color: #424436;
-
 }
 
 .heart_icon  {
-  max-width: 48px;
-  width: 100%;
+  width: 56px;
   height: auto;
-  font-size: 95px;
   color: var(--color);
-  stroke: 3px;
+  stroke: 0.5px;
 }
 
 
 .bag_icon {
-  max-width: 48px;
-  width: 100%;
+  width: 64px;
   height: auto;
-  font-size: 95px;
   color: var(--color);
   fill: none;
+  stroke: 0.5px;
 }
 
 .close_icon {
@@ -189,6 +187,9 @@
   .nav_menu {
     gap: 20px;
   }
+  .nav_icons_right{
+    gap: 8px;
+  }
   .tree_icon{
     width: 68px;
     height: 68px;
@@ -202,20 +203,42 @@
   .nav_menu {
     gap: 5px;
     font-size: 12px;
-    .tree_icon{
+  }
+  .tree_icon{
       width: 44px;
       height: 44px;
-    }
-  }
-  .nav_icons_left{
-    gap: 8px;
   }
   .nav_icons_right{
     gap: 6px;
+    width: auto;
+    margin: 16px 0 20px;
+    margin-left: 187.5px;
   }
-
+  .heart_icon{
+    width: 40px;
+    
+  }
+  .bag_icon {
+    width: 40px;
+  }
+  .nav_icons_left{
+    gap: 16px;
+  }
+ 
+.cart_count{
+  width: 17px;
+  height: 17px;
+  top: 5px;
+}
+.favorite_count{
+  width: 17px;
+  height: 17px;
+  top: 5px;
+}
   .burger_icon {
     display: block; /* Показываем бургер-иконку */
+    font-size: 44px;
+    margin:  12px 0 1px 13px;
   }
 
   .nav_menu,
@@ -231,27 +254,16 @@
   /* Центрируем бургер-иконку по вертикали в шапке */
   .header_container_top {
     align-items: center;
+    justify-content: normal
   }
 }
 
 @media (max-width: 360px) {
-  .burger_icon {
-    display: block; /* Показываем бургер-иконку */
-  }
-
-  .nav_menu,
-  .discount_container {
-    display: none; /* Скрываем горизонтальное меню и кнопку "Discount" */
-  }
-
-  .side_menu .discount_container {
-    display: flex; /* Отображаем кнопку Discount в боковом меню */
-    margin-bottom: 20px;
-  }
-
-  /* Центрируем бургер-иконку по вертикали в шапке */
-  .header_container_top {
-    align-items: center;
+  .nav_icons_right{
+    gap: 6px;
+    width: auto;
+    margin: 16px 0 20px;
+    margin-left: 67.5px;
   }
 
 

@@ -48,7 +48,7 @@ function MainPage() {
 
   return (
     <div className={s.main_page}>
-      <DiscountBanner />
+      {/* <DiscountBanner /> */}
       <section className={s.container}>
         <div className={s.title_container}>
           <h1 className={s.title}>Categories</h1>
