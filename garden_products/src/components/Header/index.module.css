@@ -144,8 +144,8 @@
   display: none;
   font-size: 24px;
   cursor: pointer;
-  color: #424436;
-
+  /* color: #424436; */
+  color: var(--color);
 }
 
 .heart_icon  {
