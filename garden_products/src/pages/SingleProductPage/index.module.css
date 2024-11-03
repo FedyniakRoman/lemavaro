@@ -274,31 +274,31 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
   .product_details {
+    width: 960px;
     display: flex;
     flex-direction: row;
     gap: 10px; 
-    margin: 0 15px;
+    margin: 0 auto;
+  }
+  .nav_container{
+    margin: 32px;
   }
 
   .image_container {
-    flex: 1; 
-    min-width: 50%;
-    max-width: 50%;
+ width: 470px;
   }
 
   .inform_container {
-    flex: 1; 
-    min-width: 50%; 
-    max-width: 50%; 
+    width: 470px; 
   }
 
   .image {
     border-radius: 10px; 
     object-fit: cover; 
-    width: 100%;
-    height: auto; 
+    width: 470px;
+    height: 100%; 
   }
  
 }
@@ -358,30 +358,36 @@ height: 58px;
 }
 
 @media (max-width: 480px){
+  .product_details{
+    width: 440px;
+    position: relative;
+  }
    .nav_container{
     display: none;
   }
+
   .title_name{
     display: block;
-    font-size: 28px;
-    padding: 0 15px;
-    margin-bottom: 10px;
+    font-size: 23px;
+ 
+    margin-bottom: 10px; 
   }
   .title {
    display: none;
   }
   
  .icon_heart{
-      display: none;
-    }
-   
+  position: absolute;
+  right: 40px;
+  width: 36px;
+  top: -75px;
+}   
     .image_container {
-      max-width: 210px;
       position: relative;
     }
   
     .image {
-      height: 185px;
+      height: 179px;
       max-width: 210px; 
     }
     .discount_price_img{
@@ -401,6 +407,7 @@ height: 58px;
       display: flex;
       flex-direction: column;
       gap: 15px;
+      margin-top: -10px;
     } 
 
     .price_discounted{
@@ -414,9 +421,7 @@ height: 58px;
   }
   
   .count_container {
-    justify-content: center;
     margin-top: -5px;
-    flex-wrap: wrap;
 }
 
 .count_button_container {
@@ -425,13 +430,12 @@ height: 58px;
    
 }
 .add_btn { 
-  min-width: 90px;
+  min-width: 210px;
 } 
   .description_container {
-padding: 10px 28px;
 display: flex;
 flex-direction: column;
-    width: 440px;
+width: 440px;
   }
 
  .read{
@@ -444,9 +448,11 @@ flex-direction: column;
 @media (max-width: 360px){
   
   .product_details {
+    width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
   
   .nav_container{
@@ -460,10 +466,12 @@ flex-direction: column;
   .title {
    display: none;
   }
-  
- .icon_heart{
-      display: none;
-    }
+  .icon_heart{
+    position: absolute;
+    right: -5px;
+    width: 36px;
+    top: -65px;
+  }   
    
     .image_container {
       display: flex;
@@ -523,13 +531,10 @@ flex-direction: column;
 }
  .description_container {
     align-self: center;
-    width: 360px;
+    width: 320px;
     height: 245px;
   }
 
- .read{
-    left: 5px;
-  }   
  }
 
   

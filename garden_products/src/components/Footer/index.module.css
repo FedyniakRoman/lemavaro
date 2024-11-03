@@ -94,10 +94,10 @@
 
 @media (max-width: 1000px) {
     .container_footer {
-        width: 1,000px;
+        width: 960px;
         height: 840px;
         margin-top: 20px;
-        padding: 0 10px; 
+ 
     }
     
 }
@@ -105,7 +105,7 @@
 
 @media (max-width: 768px) {
     .container_footer{
-        width: 678px;
+        width: 768px;
        
     }
     .h1 {
@@ -151,8 +151,7 @@
 
 @media(max-width:480px){
     .container_footer {
-        width: 100%; 
-        padding: 0 10px; 
+        width: 440px; 
     }
 
     .h1 {
@@ -196,7 +195,7 @@
     .container_footer {
      display: flex;
      flex-direction: column;
-     padding: 0px 30px;
+     width: 320px;
     }
 
     .h1 {
