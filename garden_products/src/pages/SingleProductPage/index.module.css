@@ -435,7 +435,6 @@ flex-direction: column;
   }
 
  .read{
-  position: absolute;
     left: 5px;
   }     
 
@@ -510,7 +509,7 @@ flex-direction: column;
   
   .count_container {
     justify-content: center;
-    margin-top: -15px;
+    /* margin-top: -15px; */
 }
 
 .count_button_container {
