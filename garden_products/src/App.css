@@ -28,13 +28,13 @@ body.light {
   --color: #424436;
   --color-2: #424436;
   --color-under-card: #424436;
-  --card-color: #F2F6D3;
+  --card-color: #FFFFFF;
   --input-color: #FFFFFF;
+  --cart-color: #F2F6D3;
 }
 
 /* Тёмная тема */
 body.dark {
-  /* background-color: #121212; */
   background-color: #424436;
   color: #ffffff;
   --map-brightness: 0.5; /*Затемнение карты для темной темы*/ 
@@ -42,6 +42,8 @@ body.dark {
   --color-2: #FFFFFF;
   --card-color: #383A2C;
   --input-color: #424436;
+  --cart-color: #383A2C;
+
 }
 
 a:hover{
