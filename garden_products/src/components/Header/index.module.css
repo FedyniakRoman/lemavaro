@@ -224,3 +224,32 @@
 
 
 }
+
+@media (max-width: 360px) {
+  .burger_icon {
+    display: block; /* Показываем бургер-иконку */
+  }
+
+  .nav_menu,
+  .discount_container {
+    display: none; /* Скрываем горизонтальное меню и кнопку "Discount" */
+  }
+
+  .side_menu .discount_container {
+    display: flex; /* Отображаем кнопку Discount в боковом меню */
+    margin-bottom: 20px;
+  }
+
+  /* Центрируем бургер-иконку по вертикали в шапке */
+  .header_container_top {
+    align-items: center;
+  }
+
+
+  .discount_button {
+    width: 166px;
+
+  }
+
+
+}
