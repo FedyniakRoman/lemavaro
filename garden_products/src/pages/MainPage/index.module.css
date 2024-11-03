@@ -50,6 +50,9 @@
     
     }
     .title {
-        margin: auto;
+        
+        font-size: 40px;
+        font-weight: 700;
+
     }
 }
