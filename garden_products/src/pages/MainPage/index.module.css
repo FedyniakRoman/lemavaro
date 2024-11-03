@@ -39,3 +39,17 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+
+@media (min-width: 360px) and (max-width: 479px) {
+    .btn_div {
+        display: none;
+    }
+    .line {
+        display: none;
+    
+    }
+    .title {
+        margin: auto;
+    }
+}

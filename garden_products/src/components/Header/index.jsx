@@ -8,9 +8,13 @@ import ThemeToggle from "../ThemeToggle"; // Импорт компонента �
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; // Переменная для удобного переключения между локальным и удаленным бэкендом.
 import ModalDiscountContainer from "../ModalDiscountContainer";
+
+import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
+
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { PiHandbagLight } from "react-icons/pi";
+
 
 
 export default function Header() {
@@ -23,6 +27,11 @@ export default function Header() {
   const [productOfTheDay, setProductOfTheDay] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  // Состояние для бокового меню
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Функция для переключения состояния меню
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   // Получаем состояние корзины и избранных товаров из Redux
   const cartState = useSelector((state) => state.cart);
@@ -129,7 +138,29 @@ export default function Header() {
               </span>
             </Link>
           </div>
+
+          <div className={s.burger_icon} onClick={toggleMenu}> 
+              {isMenuOpen ? <RxCross2 /> :  <RxHamburgerMenu />}
+          </div>
         </div>
+
+                     {/* Боковое выезжающее меню  */}
+                     <div className={`${s.side_menu} ${isMenuOpen ? s.side_menu_open : ""}`}>
+
+                     <RxCross2 className={s.close_icon} onClick={toggleMenu} />
+
+          <nav className={s.side_nav_links}>
+            <Link to="/" onClick={toggleMenu}>Main page</Link>
+            <Link to="/categories" onClick={toggleMenu}>Categories</Link>
+            <Link to="/products" onClick={toggleMenu}>All Products</Link>
+            <Link to="/sales" onClick={toggleMenu}>All Sales</Link>
+          </nav>
+
+          <div className={s.discount_container} onClick={handleOpenModal}>
+            <p className={s.discount_text}>1 day discount!</p>
+          </div>
+        </div>
+        
       </div>
       {/* Подключаем модальное окно, передавая все необходимые пропсы */}
       <ModalDiscountContainer
@@ -139,9 +170,16 @@ export default function Header() {
         error={error}
         handleCloseModal={handleCloseModal}
       />
+
+
+
+      <div className={s.linie}></div>
+
       {/* Показывать line для скидки только если showCheckbox установлен в true */}
       {showLine &&
       <div className={s.line}></div>}
+
     </header>
   );
 }
+
