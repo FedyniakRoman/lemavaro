@@ -88,7 +88,10 @@
 }
 
 @media (max-width: 1000px) {
-
+    .form_container{
+        width:960px;
+    }
+    
     .form_image {
         object-position: center;
         max-width: 50%;

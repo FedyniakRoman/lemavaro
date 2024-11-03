@@ -40,19 +40,26 @@
     text-decoration: none;
 }
 
-
+@media (max-width: 1000px){
+    .container{
+        padding: 0 20px;
+        max-width: 1000px;
+    }
+}
+@media(max-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+    .title {
+        font-size: 56px;
+    }
+}
 @media (min-width: 360px) and (max-width: 479px) {
     .btn_div {
         display: none;
     }
-    .line {
-        display: none;
-    
-    }
-    .title {
-        
+    .title { 
         font-size: 40px;
         font-weight: 700;
-
     }
 }

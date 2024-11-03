@@ -178,7 +178,9 @@
 }
 
 @media (max-width: 1000px) {
-
+  .nav_container{
+    padding: 0 20px;;
+  }
 }
 
 
