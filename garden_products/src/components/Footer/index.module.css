@@ -23,13 +23,11 @@
 }
 
 .colum{
-
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     padding: 32px 0px 0px 0px;
-    /* background-color: #F2F6D3; */
-    background-color: var(--card-color);
+    background-color: var(--cart-color);
     gap: 16px;
     width: 100%;
     height: 100%; 
@@ -69,6 +67,7 @@
     padding-left: 25px;
     margin-bottom: 10px;
 }
+
 .map_container {
     display: block;
     flex-direction:row ;
