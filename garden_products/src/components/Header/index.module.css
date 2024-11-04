@@ -7,6 +7,7 @@
   justify-content: space-between;
   flex-direction: column;
   max-width: 1440px;
+  width: 100%;
   padding: 0 40px;
   margin: 0 auto;
 }
@@ -103,6 +104,7 @@
 
 .tree_icon {
   max-width: 70px;
+  width: 100%;
 }
 
 .header_container_top {
@@ -190,17 +192,6 @@
 
 }
 
-@media  (min-width: 481px) and (max-width: 600px) {
-  .nav_menu {
-    gap: 5px;
-    font-size: 12px;
-
-  }
-
-}
-
-
-
 
 @media (max-width: 480px) {
   .burger_icon {
@@ -220,6 +211,21 @@
   /* Центрируем бургер-иконку по вертикали в шапке */
   .header_container_top {
     align-items: center;
+  }
+
+  .tree_icon {
+    max-width: 44px;
+  }
+
+  .nav_container {
+    padding: 0 20px;
+    
+  }
+
+  .header_container_top {
+
+    justify-content: space-between;
+    
   }
 
 
@@ -253,3 +259,4 @@
 
 
 }
+

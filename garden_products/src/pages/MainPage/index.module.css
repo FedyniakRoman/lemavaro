@@ -2,6 +2,7 @@
     margin: 0 auto;
     padding: 0 40px;
     max-width: 1440px;
+    width: 100%;
 }
 .title_container{
     align-items: center;
@@ -54,5 +55,33 @@
         font-size: 40px;
         font-weight: 700;
 
+    }
+}
+
+@media (max-width: 480px) {
+    .btn_link {
+        max-width: 130px;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .title {
+        max-width: 270px;
+        width: 100%;
+        font-size: 48px;
+    }
+
+    .container{
+        padding: 0 20px;
+        
+    }
+
+}
+
+@media (min-width: 481px) and (max-width:750px) {
+    .title
+    {
+        font-size: 48px;
+        
     }
 }

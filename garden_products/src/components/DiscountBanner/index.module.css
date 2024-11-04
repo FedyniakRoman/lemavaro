@@ -110,6 +110,8 @@
   @media (min-width: 480px) and (max-width: 768px){
     .container {
       height: 600px;
+    
+      width: 100%;
     }
   
     .content {
@@ -130,6 +132,10 @@
       padding: 12px 52px 12px 52px;
       font-size: 14px;
       width: 180px;
+    }
+
+    .img {
+      width: 100%;
     }
 
     
@@ -170,4 +176,5 @@
       
     }
   }
-  
+
+

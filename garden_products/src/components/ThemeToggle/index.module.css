@@ -3,4 +3,16 @@
     border-radius: 35px;
     height: 30px;   /*Высота кнопки подобрана так, чтобы не изменялся размер кнопки в зависимости от вида кнопки (Лев)*/
     cursor: pointer;
+
 }
+
+@media (min-width: 481px) and (max-width: 725px) {
+    .button {
+        position: relative;
+        top: -20px; /* Смещает иконку выше */
+        margin-bottom: 10px; /* Дополнительный отступ снизу */
+    }
+}
+
+
+
