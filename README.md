@@ -51,8 +51,7 @@ https://mariabeljawski.atlassian.net/jira/software/projects/KAN/boards/1
 Авторы проекта
 
 Мария Белджавски
-Телефон: +49 176 21 88 33 16
-
++49 176 21 88 33 16
 https://www.linkedin.com/in/maria-beljawski-7668432b6/
 
 - Настройка проекта. Инициализация проекта с использованием Create React App. Установка и настройка Redux. Настройка маршрутизации с использованием React Router.
@@ -62,12 +61,13 @@ https://www.linkedin.com/in/maria-beljawski-7668432b6/
 
 
 Василина Любинец
++49 163 922 52 21
+https://www.linkedin.com/in/vasylyna-liubinets-0b990a336/
 Footer, SinglePage, BreadCrumbs with changing Category, Мобильная адаптация.
+
 
 Роман Красов
 Header, Навигационное меню, Мобильная адаптация.
-
-
 
 
 Лев Легостаев
