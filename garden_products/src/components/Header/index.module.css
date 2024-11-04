@@ -147,7 +147,9 @@
 .burger_icon {                     
   display: none;
   cursor: pointer;
-  color: #424436;
+  /* color: #424436; */
+  color: var(--color);
+
 }
 
 .heart_icon  {
