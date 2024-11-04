@@ -43,7 +43,9 @@
 .link {
     color: #8b8b8b;
 }
-
+.head_link{
+    color:var(--color-2);
+}
 .wrapper {
     margin-bottom: 40px;
 }

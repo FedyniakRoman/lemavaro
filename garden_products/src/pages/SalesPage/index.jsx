@@ -68,7 +68,7 @@ function SalesPage() {
             </Link>
           </li>
           <li className={s.item}>
-            <Link to="/sales" onClick={resetFilters}>
+            <Link to="/sales" onClick={resetFilters} className={s.head_link}>
               All sales
             </Link>
           </li>

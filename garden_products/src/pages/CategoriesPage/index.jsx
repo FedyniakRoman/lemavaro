@@ -28,7 +28,7 @@ function CategoriesPage() {
           </Link>
         </li>
         <li className={s.item}>
-          <Link to={"/categories"}>Categories</Link>
+          <Link to={"/categories"} className={s.head_link}>Categories</Link>
         </li>
       </ul>
     </nav>

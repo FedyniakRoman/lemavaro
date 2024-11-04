@@ -85,7 +85,7 @@ function ProductsByCategoryPage() {
           <li className={s.item}>
             {/* Отображаем текущую категорию */}
             {category && (
-              <span className={s.current_category} onClick={resetFilters}>
+              <span onClick={resetFilters} className={s.head_link}>
                 {category.title}
               </span>
             )}

@@ -15,8 +15,9 @@
   gap: 16px;
 }
 
-.current_category {
+.link_head{
   cursor: pointer;
+  color:var(--color-2);
 }
 
 .item {
@@ -45,7 +46,7 @@
 }
 
 .link {
-  color: var(--color-2);
+  color: #8b8b8b;
 }
 
 .title {

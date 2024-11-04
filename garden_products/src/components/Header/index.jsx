@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import treeIcon from "../../assets/images/tree.svg";
-import heartIcon from "../../assets/images/heart.svg";
-import bagIcon from "../../assets/images/bag.svg";
 import s from "./index.module.css";
 import ThemeToggle from "../ThemeToggle"; // Импорт компонента для переключения Темы Приложения
 import { useSelector } from "react-redux";
 import backendUrl from "../../config"; // Переменная для удобного переключения между локальным и удаленным бэкендом.
 import ModalDiscountContainer from "../ModalDiscountContainer";
-
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
-
-import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { PiHandbagLight } from "react-icons/pi";
+
 
 
 
@@ -29,7 +25,8 @@ export default function Header() {
   const [error, setError] = useState(null);
   // Состояние для бокового меню
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  console.log(isMenuOpen);
+  
   // Функция для переключения состояния меню
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
